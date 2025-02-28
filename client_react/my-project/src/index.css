@@ -1,35 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+/* 스크롤바 숨김 */
+* {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari 스크롤바 숨김 */
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
+  /* 초기 설정 */
   margin: 0;
   padding: 0;
-
-  /* 시스템 기본 폰트 설정 (폴백 순서대로) */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Hi Melody", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url("/public/pattern.png");
+  background-size: 150px 150px;
+  background-color: #a3a3a3;
+  background-repeat: repeat;
 
   /* 폰트 렌더링 최적화 */
-  -webkit-font-smoothing: antialiased; /* 맥OS Chrome/Safari용 폰트 부드럽게 */
-  -moz-osx-font-smoothing: grayscale; /* 맥OS Firefox용 폰트 부드럽게 */
-
-  /* 스크롤바 관련 설정 */
-  -ms-overflow-style: none; /* IE와 Edge의 스크롤바 숨김 */
-
-  /* Webkit 기반 브라우저(Chrome, Safari 등)의 스크롤바 숨김 */
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* html 태그에 대한 스타일 */
 html {
-  /* 기본 여백 제거 */
   margin: 0;
   padding: 0;
-}
-
-/* code 태그에 대한 스타일 */
-code {
-  /* 코드용 고정폭 폰트 설정 (폴백 순서대로) */
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

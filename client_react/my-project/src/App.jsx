@@ -1,15 +1,16 @@
-import "./App.css";
-import Header from "./components/layout/header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import gsap from "gsap";
 import Main from "./components/layout/main";
-import Footer from "./components/layout/footer";
 
 const App = () => {
+  // 시작 애니메이션 나중에 넣기
+
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
