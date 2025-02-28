@@ -114,9 +114,10 @@ export const MainBackground3_1 = styled.div`
 export const MainBackground3_2 = styled.div`
   background-color: #f1f1f1;
   border-radius: 12px;
-  width: 1030px;
+  width: 990px;
   height: 760px;
   margin: 0;
+  padding: 0 20px;
 `;
 
 // [ Fix: 나중에 스프링 추가]
@@ -142,11 +143,14 @@ export const MainBackground3_1_contentBackground = styled.div`
   justify-content: center;
 `;
 
-export const MainBackground3_2_header = styled.div`
+export const MainBackground3_2_contentBackground = styled.div`
+  border: 2px solid #d4d4d4;
+  background-color: #ffffff;
+  width: 100%;
+  height: 680px;
+  border-radius: 9px;
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
+  justify-content: center;
+  position: relative;
 `;
-
-export const MainBackground3_2_contentBackground = styled.div``;
