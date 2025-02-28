@@ -87,7 +87,7 @@ export const MainBackground1 = styled.div`
 `;
 
 export const MainBackground2 = styled.div`
-  border: 2px dashed white;
+  border: 2px dashed #ffffff;
   border-radius: 9px;
   width: 100%;
   height: 100%;
@@ -105,9 +105,10 @@ export const MainBackground3 = styled.div`
 export const MainBackground3_1 = styled.div`
   background-color: #f1f1f1;
   border-radius: 12px;
-  width: 350px;
+  width: 320px;
   height: 760px;
   margin: 0;
+  padding: 0 20px;
 `;
 
 export const MainBackground3_2 = styled.div`
@@ -118,9 +119,8 @@ export const MainBackground3_2 = styled.div`
   margin: 0;
 `;
 
-export const MainBackground3SpringGroup = styled.div`
-  margin: 0 10px 0 10px;
-`;
+// [ Fix: 나중에 스프링 추가]
+export const MainBackground3SpringGroup = styled.div``;
 
 export const MainBackground3Spring = styled.div`
   /* background-color: #e8e8e8;
@@ -129,6 +129,24 @@ export const MainBackground3Spring = styled.div`
   height: 20px;
   position: absolute;
   top: 80px; 
-  [ Fix: 나중에 스프링 추가]
   */
 `;
+
+export const MainBackground3_1_contentBackground = styled.div`
+  background-color: #ffffff;
+  border: 2px solid #d4d4d4;
+  border-radius: 9px;
+  width: 100%;
+  height: 680px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const MainBackground3_2_header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+`;
+
+export const MainBackground3_2_contentBackground = styled.div``;
