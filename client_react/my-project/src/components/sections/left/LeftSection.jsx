@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import axios from "axios";
 import { WiDaySunny, WiRain, WiCloudy, WiSnow } from "react-icons/wi";
 import {
@@ -8,6 +7,12 @@ import {
   TodayText,
   WeatherIcon,
   WeatherDescription,
+  L_ShortPR,
+  L_ShortSnippet,
+  L_CyWriteInfo,
+  L_CyName,
+  L_CyEmail,
+  L_CyGender,
 } from "../../../assets/css/sections/left/LeftSection.style";
 
 const LeftSection = () => {
@@ -120,6 +125,20 @@ const LeftSection = () => {
             <WeatherDescription>{weather.description}</WeatherDescription>
           </TodayText>
         </L_FeelingBox>
+        <L_ShortPR>
+          <L_ShortSnippet>
+            안녕하세요! 창의적이고 혁신적인 문제 해결을 통해 팀과 조직에
+            실질적인 가치를 제공하며, 지속적인 학습과 발전을 추구하는
+            한덕용입니다.
+          </L_ShortSnippet>
+        </L_ShortPR>
+        <L_CyWriteInfo>
+          <L_CyName>
+            한덕용<L_CyGender></L_CyGender>
+          </L_CyName>
+
+          <L_CyEmail>qbixroqkfwk@gmail.com</L_CyEmail>
+        </L_CyWriteInfo>
       </div>
     </>
   );
