@@ -22,3 +22,22 @@ export const L_FeelingBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const TodayText = styled.div`
+  color: #2aacd3;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 20px;
+`;
+
+export const WeatherIcon = styled.span`
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.color || "#000"};
+`;
+
+export const WeatherDescription = styled.span`
+  color: black;
+`;
