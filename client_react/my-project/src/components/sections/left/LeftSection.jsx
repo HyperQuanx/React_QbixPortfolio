@@ -33,12 +33,12 @@ const LeftSection = () => {
         const baseTime = hour + "00";
 
         const response = await axios.get(
-          // getUltraSrtNcst는 초단기실황 정보
-          `${import.meta.env.VITE_WEATHER_API_ENDPOINT}`,
+          `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`,
           {
             params: {
-              serviceKey: import.meta.env.VITE_WEATHER_API_KEY,
-              numOfRows: "10",
+              serviceKey:
+                "Y5AU7Ss+e1GMwPVStRefwOrZrpRzfQM1JDVifiAkFw0nUcFiEbi7ZuII3XiNQIjwMi+rZ/TiMP9F8gD/rZa1A==",
+              numOfRows: "60",
               pageNo: "1",
               base_date: `${year}${month}${day}`,
               base_time: baseTime,
@@ -49,7 +49,7 @@ const LeftSection = () => {
           }
         );
 
-        // console.log("API 응답:", response.data);
+        console.log("API 응답:", response.data);
 
         if (
           response.data &&
@@ -57,19 +57,20 @@ const LeftSection = () => {
           response.data.response.body
         ) {
           const weatherData = response.data.response.body.items.item;
-          // console.log("날씨 데이터:", weatherData);
 
-          const ptyItem = weatherData.find((item) => item.category === "PTY");
-          if (ptyItem) {
-            const skyValue = ptyItem.obsrValue;
+          // 현재 시간의 데이터 찾기
+          const currentData = weatherData.filter(
+            (item) => item.fcstTime === baseTime
+          );
 
-            let icon, description, iconColor;
-            switch (skyValue) {
-              case "0":
-                icon = <WiDaySunny />;
-                description = "맑음";
-                iconColor = "#FFB200";
-                break;
+          const ptyItem = currentData.find((item) => item.category === "PTY");
+          const skyItem = currentData.find((item) => item.category === "SKY");
+
+          let icon, description, iconColor;
+
+          // 먼저 강수형태 체크
+          if (ptyItem && ptyItem.fcstValue !== "0") {
+            switch (ptyItem.fcstValue) {
               case "1":
                 icon = <WiRain />;
                 description = "비";
@@ -83,30 +84,49 @@ const LeftSection = () => {
               case "3":
                 icon = <WiSnow />;
                 description = "눈";
-                iconColor = "#379980";
+                iconColor = "#FFFFFF";
                 break;
               case "4":
                 icon = <WiRain />;
                 description = "소나기";
                 iconColor = "#2E5C8A";
                 break;
+            }
+          } else if (skyItem) {
+            // 강수가 없을 때 하늘상태 체크
+            switch (skyItem.fcstValue) {
+              case "1":
+                icon = <WiDaySunny />;
+                description = "맑음";
+                iconColor = "#FFB200";
+                break;
+              case "3":
+                icon = <WiCloudy />;
+                description = "구름많음";
+                iconColor = "#8C8C8C";
+                break;
+              case "4":
+                icon = <WiCloudy />;
+                description = "흐림";
+                iconColor = "#646464";
+                break;
               default:
                 icon = <WiDaySunny />;
                 description = "맑음";
                 iconColor = "#FFB200";
             }
-
-            setWeather({
-              icon: icon,
-              description: description,
-              iconColor: iconColor,
-            });
           }
+
+          setWeather({
+            icon: icon,
+            description: description,
+            iconColor: iconColor,
+          });
         }
       } catch (error) {
-        console.error("날씨 정보 가져오기 실패 : ", error);
+        console.error("날씨 정보를 가져오는데 실패했습니다:", error);
         if (error.response) {
-          console.log("외앉뒘? : ", error.response.data);
+          console.log("에러 응답:", error.response.data);
         }
       }
     };

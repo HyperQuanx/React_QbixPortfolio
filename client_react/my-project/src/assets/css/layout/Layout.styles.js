@@ -146,11 +146,10 @@ export const MainBackground3_1_contentBackground = styled.div`
 export const MainBackground3_2_contentBackground = styled.div`
   border: 2px solid #d4d4d4;
   background-color: #ffffff;
-  width: 100%;
-  height: 680px;
+  height: 640px;
   border-radius: 9px;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
   position: relative;
+  padding: 20px;
+  overflow-y: auto;
 `;

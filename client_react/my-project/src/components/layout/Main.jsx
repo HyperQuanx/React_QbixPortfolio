@@ -14,6 +14,7 @@ import {
 import ViewCountArea from "../common/ViewCountArea";
 import MainRightHeader from "../common/MainRightHeader";
 import LeftSection from "../sections/left/LeftSection";
+import Section00_Group from "../sections/right/Section00_Group";
 
 const main = () => {
   return (
@@ -36,7 +37,7 @@ const main = () => {
               <MainRightHeader />
 
               <MainBackground3_2_contentBackground>
-                {/* <RightSection /> */}
+                <Section00_Group />
               </MainBackground3_2_contentBackground>
             </MainBackground3_2>
           </MainBackground3>

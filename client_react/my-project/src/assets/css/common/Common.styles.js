@@ -15,3 +15,16 @@ export const ViewCountGroup = styled.div`
     font-weight: bold;
   }
 `;
+
+export const SectionTitle = styled.div`
+  color: #00bfff;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0 0 5px 10px;
+`;
+
+export const SectionTitleUnderLine = styled.div`
+  border-top: 0.5px solid #808080;
+  border-radius: 50%;
+  margin-bottom: 10px;
+`;
