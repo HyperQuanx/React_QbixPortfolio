@@ -13,6 +13,7 @@ import {
 } from "../../assets/css/layout/Layout.styles";
 import ViewCountArea from "../common/ViewCountArea";
 import MainRightHeader from "../common/MainRightHeader";
+import LeftSection from "../sections/left/LeftSection";
 
 const main = () => {
   return (
@@ -23,18 +24,19 @@ const main = () => {
             <MainBackground3_1>
               <ViewCountArea />
 
-              <MainBackground3_1_contentBackground></MainBackground3_1_contentBackground>
+              <MainBackground3_1_contentBackground>
+                <LeftSection />
+              </MainBackground3_1_contentBackground>
             </MainBackground3_1>
 
             <MainBackground3SpringGroup>
               <MainBackground3Spring></MainBackground3Spring>
             </MainBackground3SpringGroup>
             <MainBackground3_2>
-
               <MainRightHeader />
 
               <MainBackground3_2_contentBackground>
-                asd
+                {/* <RightSection /> */}
               </MainBackground3_2_contentBackground>
             </MainBackground3_2>
           </MainBackground3>

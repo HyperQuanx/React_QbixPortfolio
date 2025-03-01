@@ -16,3 +16,6 @@ export const ViewCountGroup = styled.div`
   }
 `;
 
+export const FontColor_SkyBlue = styled.div`
+  color: #4682c2;
+`;

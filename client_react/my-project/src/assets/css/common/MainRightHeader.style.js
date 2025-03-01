@@ -10,6 +10,7 @@ export const MainRightHeaderGroup = styled.div`
 
 export const PortfolioTitle = styled.div`
   font-size: 24px;
+  font-weight: 500;
   color: #4682c2;
   margin-top: auto;
 `;

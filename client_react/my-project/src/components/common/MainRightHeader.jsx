@@ -8,11 +8,8 @@ const MainRightHeader = () => {
   return (
     <MainRightHeaderGroup>
       <PortfolioTitle>Front-End Portfolio</PortfolioTitle>
-      <PortfolioGithubLink
-        href="https://github.com/HyperQuanx?tab=repositories"
-        target="_blank"
-      >
-        https://github.com/HyperQuanx?tab=repositories
+      <PortfolioGithubLink href="https://github.com/HyperQuanx" target="_blank">
+        https://github.com/HyperQuanx
       </PortfolioGithubLink>
     </MainRightHeaderGroup>
   );
