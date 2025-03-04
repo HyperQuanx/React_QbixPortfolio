@@ -45,7 +45,7 @@ const LeftSection = () => {
         }
         baseTime = String(hour).padStart(2, "0") + "30";
 
-        console.log("요청 시간:", `${year}${month}${day}`, baseTime);
+        // console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
         const response = await axios.get(
           // getUltraSrtNcst는 초단기실황 정보
@@ -78,26 +78,24 @@ const LeftSection = () => {
           }
         );
 
-        console.log("API 응답:", response.data);
-
         if (response.data?.response?.body?.items?.item) {
           const weatherData = response.data.response.body.items.item;
-          console.log("날씨 데이터:", weatherData);
+          // console.log("날씨 데이터:", weatherData);
 
           // 응답 데이터의 첫 번째 항목의 예보 시각을 확인
-          if (weatherData.length > 0) {
-            console.log("첫 번째 데이터의 예보 시각:", weatherData[0].fcstTime);
-          }
+          // if (weatherData.length > 0) {
+          //   console.log("첫 번째 데이터의 예보 시각:", weatherData[0].fcstTime);
+          // }
 
           // 모든 예보 시각 출력
           const availableTimes = [
             ...new Set(weatherData.map((item) => item.fcstTime)),
           ];
-          console.log("사용 가능한 예보 시각들:", availableTimes);
+          // console.log("사용 가능한 예보 시각들:", availableTimes);
 
           // 가장 최근 예보 시각 사용
           const latestTime = availableTimes[0];
-          console.log("사용할 예보 시각:", latestTime);
+          // console.log("사용할 예보 시각:", latestTime);
 
           const ptyItem = weatherData.find(
             (item) => item.category === "PTY" && item.fcstTime === latestTime
@@ -106,8 +104,8 @@ const LeftSection = () => {
             (item) => item.category === "SKY" && item.fcstTime === latestTime
           );
 
-          console.log("강수형태(PTY) 데이터:", ptyItem);
-          console.log("하늘상태(SKY) 데이터:", skyItem);
+          // console.log("강수형태(PTY) 데이터:", ptyItem);
+          // console.log("하늘상태(SKY) 데이터:", skyItem);
 
           let icon, description, iconColor;
 
