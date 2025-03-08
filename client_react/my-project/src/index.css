@@ -23,7 +23,7 @@ body {
   font-weight: 400;
   font-style: normal;
   background-image: url("/public/pattern.png");
-  background-size: 150px 150px;
+  background-size: 7.8125vw 7.8125vw;
   background-color: #a3a3a3;
   background-repeat: repeat;
 
@@ -32,12 +32,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* reset css */
+
 html {
   margin: 0;
   padding: 0;
 }
 
-/* reset css */
 a {
   text-decoration: none;
   color: inherit;

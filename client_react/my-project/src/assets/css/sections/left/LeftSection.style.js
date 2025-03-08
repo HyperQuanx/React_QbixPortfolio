@@ -94,18 +94,26 @@ export const L_CyName = styled.div`
   gap: 3px;
 `;
 
-export const L_CyGender = styled.div`
-  width: 8px;
-  height: 8px;
+export const L_CyGenderBox = styled.div`
+  width: 13px;
+  height: 13px;
   padding: 5px;
   border: 1px solid rgb(130, 123, 123);
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+`;
+
+export const L_CyGender = styled.div`
+  width: 100%;
+  height: 100%;
   background-image: url("/public/cy_gender_male.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   display: inline-block;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 `;
 
 export const L_CyEmail = styled.div`

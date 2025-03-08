@@ -13,6 +13,7 @@ import {
   L_CyName,
   L_CyEmail,
   L_CyGender,
+  L_CyGenderBox,
 } from "../../../assets/css/sections/left/LeftSection.style";
 
 const LeftSection = () => {
@@ -26,24 +27,40 @@ const LeftSection = () => {
   // 공식문서 죄다 뜯어서 메모 GPT 안씀
   // 출저 - 기상청41_단기예보 조회서비스_오픈API활용가이드_241128
 
+  // 2025/03/09 00:10 [트러블슈팅]
+  // 문제 : 작업 중 갑자기 날씨 정보 아이콘이 표시되지 않음
+  // 원인 : 날씨 정보 가져올 시 No Data 반환
+  // 검증 : Postman에서 직접 API 호출 시 No Data를 반환함.
+  // Params 중 자정을 넘기게 되면 오늘 날짜의 어제 시간을 호출하게 됨 -> 예보가 뜨지도 않은 시간 데이터를 가져오게 됨.
+  // 해결 : 자정 ~ 0030 사이일 때는 이전 날짜의 23:30 데이터를 사용하도록 수정
+
   useEffect(() => {
     const getWeather = async () => {
       try {
         const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-
+        let year = now.getFullYear();
+        let month = String(now.getMonth() + 1).padStart(2, "0");
+        let day = String(now.getDate()).padStart(2, "0");
         let hour = now.getHours();
         let baseTime;
 
         // API가 매시 30분에 생성되므로 30분 이전이면 한 시간 전 데이터를 사용
         // 매시간 30분에 생성되고 10분마다 최신 정보로 업데이트
-        if (now.getMinutes() < 30) {
-          hour = hour - 1;
-          if (hour < 0) hour = 23;
+        if (hour === 0 && now.getMinutes() < 30) {
+          const yesterday = new Date(now);
+          yesterday.setDate(yesterday.getDate() - 1);
+
+          year = yesterday.getFullYear();
+          month = String(yesterday.getMonth() + 1).padStart(2, "0");
+          day = String(yesterday.getDate()).padStart(2, "0");
+          baseTime = "2330";
+        } else {
+          if (now.getMinutes() < 30) {
+            hour = hour - 1;
+            if (hour < 0) hour = 23;
+          }
+          baseTime = String(hour).padStart(2, "0") + "30";
         }
-        baseTime = String(hour).padStart(2, "0") + "30";
 
         // console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
@@ -186,14 +203,15 @@ const LeftSection = () => {
         </L_FeelingBox>
         <L_ShortPR>
           <L_ShortSnippet>
-            안녕하세요! 창의적이고 혁신적인 문제 해결을 통해 팀과 조직에
-            실질적인 가치를 제공하며, 지속적인 학습과 발전을 추구하는
-            한덕용입니다.
+            제 포트폴리오를 방문해주셔서 진심으로 감사합니다.
           </L_ShortSnippet>
         </L_ShortPR>
         <L_CyWriteInfo>
           <L_CyName>
-            한덕용<L_CyGender></L_CyGender>
+            한덕용
+            <L_CyGenderBox>
+              <L_CyGender></L_CyGender>
+            </L_CyGenderBox>
           </L_CyName>
 
           <L_CyEmail>qbixroqkfwk@gmail.com</L_CyEmail>
