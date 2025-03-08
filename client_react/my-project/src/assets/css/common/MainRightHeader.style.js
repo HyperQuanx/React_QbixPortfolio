@@ -5,7 +5,7 @@ export const MainRightHeaderGroup = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  padding: 0 0 0 5px;
+  padding: 0 0 0 1.04vw;
 `;
 
 export const PortfolioTitle = styled.div`

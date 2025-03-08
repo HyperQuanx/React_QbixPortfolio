@@ -3,13 +3,9 @@ import styled, { css } from "styled-components";
 // 적응형 기점 포인트
 const breakpoints = {
   mobile: "480px", // 모바일
-  tablet: "768px", // 태블릿
-  laptop: "1024px", // 노트북
-  desktop: "1450px", // FHD 이하
-  FHD: "1920px", // FHD
-  QHD: "2560px", // QHD
-  UHD: "3840px", // 4K
 };
+
+// 웹 디자인 트러블슈팅 무적권 넣는다 아 머리아파
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -24,65 +20,17 @@ export const MainBackground1 = styled.div`
   position: relative;
   display: flex;
   padding: 20px;
+  width: 75.52vw;
+  min-width: 1450px;
+  height: 84vh;
+  min-height: 800px;
+  top: 4.63vh;
+  left: 2.6vw;
 
   /* 모바일 (480px 이하) */
   /* @media (max-width: ${breakpoints.mobile}) {
     width: 100%;
     min-height: 640px;
-  } */
-
-  /* 그 사이 어딘가 (480px - 768px) */
-  /* @media (min-width: ${breakpoints.mobile}) and (max-width: ${breakpoints.tablet}) {
-    width: 100%;
-    min-height: 640px;
-  } */
-
-  /* 태블릿 (768px - 1023px) */
-  /* @media (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.laptop}) {
-    width: 768px;
-    height: 1024px;
-    top: 30px;
-    left: 30px;
-  } */
-
-  /* 노트북 (1024px - 1449px) */
-  /* @media (min-width: ${breakpoints.laptop}) and (max-width: ${breakpoints.desktop}) {
-    width: 1024px;
-    height: 768px;
-    top: 40px;
-    left: 40px;
-  } */
-
-  /* 데스크탑 (1450px - 1919px) */
-  /* @media (min-width: ${breakpoints.desktop}) and (max-width: ${breakpoints.FHD}) {
-    width: 1450px;
-    height: 950px;
-    top: 50px;
-    left: 50px;
-  } */
-
-  /* FHD (1920px - 2559px) [Fix : 나중에 FHD로 변환]*/
-  /* @media (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.QHD}) { */
-  width: 1450px;
-  height: 800px;
-  top: 50px;
-  left: 50px;
-  /* } */
-
-  /* QHD (2560px - 3839px) */
-  /* @media (min-width: ${breakpoints.QHD}) and (max-width: ${breakpoints.UHD}) {
-    width: 1800px;
-    height: 1000px;
-    top: 100px;
-    left: 100px;
-  } */
-
-  /* 4K 이상 (3840px 이상) */
-  /* @media (min-width: ${breakpoints.UHD}) {
-    width: 2400px;
-    height: 1300px;
-    top: 150px;
-    left: 150px;
   } */
 `;
 
@@ -97,27 +45,33 @@ export const MainBackground2 = styled.div`
 
 export const MainBackground3 = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  align-items: center;
+  padding: 0 1.04vw;
 `;
 
 export const MainBackground3_1 = styled.div`
   background-color: #f1f1f1;
   border-radius: 12px;
-  width: 320px;
-  height: 760px;
+  width: 16.67vw;
+  min-width: 320px;
+  height: 95%;
+  min-height: 760px;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 1.04vw;
 `;
 
 export const MainBackground3_2 = styled.div`
   background-color: #f1f1f1;
   border-radius: 12px;
-  width: 990px;
-  height: 760px;
+  width: 51.56vw;
+  min-width: 990px;
+  height: 95%;
+  min-height: 760px;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 1.04vw;
 `;
 
 // [ Fix: 나중에 스프링 추가]
@@ -138,7 +92,8 @@ export const MainBackground3_1_contentBackground = styled.div`
   border: 2px solid #d4d4d4;
   border-radius: 9px;
   width: 100%;
-  height: 680px;
+  height: 89.47%;
+  min-height: 680px;
   display: flex;
   justify-content: center;
 `;
@@ -146,10 +101,11 @@ export const MainBackground3_1_contentBackground = styled.div`
 export const MainBackground3_2_contentBackground = styled.div`
   border: 2px solid #d4d4d4;
   background-color: #ffffff;
-  height: 640px;
+  height: 84.21%;
+  min-height: 640px;
   border-radius: 9px;
   overflow: hidden;
   position: relative;
-  padding: 20px;
+  padding: 1.04vw;
   overflow-y: auto;
 `;
