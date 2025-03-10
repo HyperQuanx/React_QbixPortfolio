@@ -4,12 +4,13 @@ export const MainRightHeaderGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 5.56vh;
+  min-height: 60px;
   padding: 0 0 0 1.04vw;
 `;
 
 export const PortfolioTitle = styled.div`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 500;
   color: #4682c2;
   margin-top: auto;
@@ -34,7 +35,7 @@ export const PortfolioGithubLink = styled.a`
     color: white;
     padding: 5px 10px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 0.75rem;
     white-space: nowrap;
     z-index: 1000;
   }

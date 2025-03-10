@@ -74,6 +74,11 @@ export const MainBackground3_2 = styled.div`
   padding: 0 1.04vw;
 `;
 
+export const MainBackground3_2_Flex = styled.div`
+  display: flex;
+  height: 100%;
+`;
+
 // [ Fix: 나중에 스프링 추가]
 export const MainBackground3SpringGroup = styled.div``;
 
@@ -99,13 +104,15 @@ export const MainBackground3_1_contentBackground = styled.div`
 `;
 
 export const MainBackground3_2_contentBackground = styled.div`
-  border: 2px solid #d4d4d4;
   background-color: #ffffff;
-  height: 84.21%;
-  min-height: 640px;
+  border: 2px solid #d4d4d4;
   border-radius: 9px;
+  width: 100%;
+  height: 89.47%;
+  min-height: 680px;
   overflow: hidden;
   position: relative;
-  padding: 1.04vw;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
 `;

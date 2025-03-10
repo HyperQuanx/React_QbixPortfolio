@@ -193,7 +193,6 @@ const LeftSection = () => {
   return (
     <>
       <div>
-        <L_ProfileImg />
         <L_FeelingBox>
           <TodayText>
             TODAY IS..
@@ -201,9 +200,10 @@ const LeftSection = () => {
             <WeatherDescription>{weather.description}</WeatherDescription>
           </TodayText>
         </L_FeelingBox>
+        <L_ProfileImg />
         <L_ShortPR>
           <L_ShortSnippet>
-            제 포트폴리오를 방문해주셔서 진심으로 감사합니다.
+            제 포트폴리오를 방문해주셔서 진심으로 감사드립니다.
           </L_ShortSnippet>
         </L_ShortPR>
         <L_CyWriteInfo>

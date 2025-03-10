@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   MainBackground1,
   MainBackground2,
@@ -7,6 +7,7 @@ import {
   MainBackground3_1_contentBackground,
   MainBackground3_2,
   MainBackground3_2_contentBackground,
+  MainBackground3_2_Flex,
   MainBackground3Spring,
   MainBackground3SpringGroup,
   MainContainer,
@@ -15,8 +16,12 @@ import ViewCountArea from "../common/ViewCountArea";
 import MainRightHeader from "../common/MainRightHeader";
 import LeftSection from "../sections/left/LeftSection";
 import Section00_Group from "../sections/right/Section00_Group";
+import SectionCategoryGroup from "../sections/right/SectionCategoryGroup";
 
-const main = () => {
+const Main = () => {
+  const [activeSection, setActiveSection] = useState(0);
+  const sectionRefs = useRef([]);
+
   return (
     <MainContainer>
       <MainBackground1>
@@ -33,12 +38,23 @@ const main = () => {
             <MainBackground3SpringGroup>
               <MainBackground3Spring></MainBackground3Spring>
             </MainBackground3SpringGroup>
+
             <MainBackground3_2>
               <MainRightHeader />
 
-              <MainBackground3_2_contentBackground>
-                <Section00_Group />
-              </MainBackground3_2_contentBackground>
+              <MainBackground3_2_Flex>
+                <MainBackground3_2_contentBackground className="main-background3-2-content">
+                  <Section00_Group
+                    setActiveSection={setActiveSection}
+                    sectionRefs={sectionRefs}
+                  />
+                </MainBackground3_2_contentBackground>
+
+                <SectionCategoryGroup
+                  activeSection={activeSection}
+                  sectionRefs={sectionRefs}
+                />
+              </MainBackground3_2_Flex>
             </MainBackground3_2>
           </MainBackground3>
         </MainBackground2>
@@ -47,4 +63,4 @@ const main = () => {
   );
 };
 
-export default main;
+export default Main;

@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  H500px,
   SectionTitle,
   SectionTitleUnderLine,
 } from "../../../assets/css/common/Common.styles";
@@ -33,6 +34,7 @@ const Section02_Skills = () => {
           <SkillItemDescriptionTitle>ETC</SkillItemDescriptionTitle>
         </SkillItemDescriptionGroup> */}
       </SkillLayout>
+      <H500px></H500px>
     </>
   );
 };

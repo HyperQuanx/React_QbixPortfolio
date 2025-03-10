@@ -73,3 +73,12 @@ img {
   background: none;
   cursor: pointer;
 }
+
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
