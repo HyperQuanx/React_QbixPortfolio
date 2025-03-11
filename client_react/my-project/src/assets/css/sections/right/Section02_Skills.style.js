@@ -16,13 +16,23 @@ export const SkillCategoryMenu = styled.div`
   background-color: #f8f8f8;
   padding: 20px 0;
   border-right: 1px solid #e0e0e0;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 3px;
+    background-color: #00bfff;
+    transition: top 0.3s ease, height 0.2s ease;
+    top: ${(props) => props.indicatorPosition}px;
+    height: ${(props) => props.indicatorHeight}px;
+  }
 `;
 
 export const CategoryItem = styled.div`
   padding: 15px 20px;
   cursor: pointer;
-  border-left: ${(props) =>
-    props.active ? "3px solid #00bfff" : "3px solid transparent"};
   background-color: ${(props) => (props.active ? "#e6f7ff" : "transparent")};
   color: ${(props) => (props.active ? "#00bfff" : "#333")};
   font-weight: ${(props) => (props.active ? "bold" : "normal")};
@@ -47,7 +57,6 @@ export const SkillTitle = styled.h3`
   align-items: center;
 
   &::before {
-    content: "@";
     margin-right: 8px;
     color: #00bfff;
   }
