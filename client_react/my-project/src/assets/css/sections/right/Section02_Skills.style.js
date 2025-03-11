@@ -30,7 +30,7 @@ export const SkillCategoryMenu = styled.div`
   }
 `;
 
-export const CategoryItem = styled.div`
+export const SkillCategoryItem = styled.div`
   padding: 15px 20px;
   cursor: pointer;
   background-color: ${(props) => (props.active ? "#e6f7ff" : "transparent")};
@@ -113,7 +113,7 @@ export const SkillName = styled.h4`
 
 export const SkillDescription = styled.p`
   color: #666666;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 
   &::before {

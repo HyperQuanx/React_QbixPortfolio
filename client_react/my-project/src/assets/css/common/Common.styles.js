@@ -21,7 +21,7 @@ export const SectionTitle = styled.div`
   color: #00bfff;
   font-family: "Hi Melody", cursive;
   font-weight: 500;
-  font-size: 2.25rem;
+  font-size: 3rem;
   margin: 0 0 0 0.52vw;
   line-height: 1;
 `;

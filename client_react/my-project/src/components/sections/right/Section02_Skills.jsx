@@ -6,7 +6,7 @@ import {
 import {
   SkillLayout,
   SkillCategoryMenu,
-  CategoryItem,
+  SkillCategoryItem,
   SkillContentArea,
   SkillTitle,
   SkillItemContainer,
@@ -75,27 +75,27 @@ const Section02_Skills = () => {
           indicatorPosition={indicatorPosition}
           indicatorHeight={indicatorHeight}
         >
-          <CategoryItem
+          <SkillCategoryItem
             ref={frontEndRef}
             active={activeCategory === "FrontEnd"}
             onClick={() => handleCategoryClick("FrontEnd")}
           >
             FrontEnd
-          </CategoryItem>
-          <CategoryItem
+          </SkillCategoryItem>
+          <SkillCategoryItem
             ref={backEndRef}
             active={activeCategory === "BackEnd"}
             onClick={() => handleCategoryClick("BackEnd")}
           >
             BackEnd
-          </CategoryItem>
-          <CategoryItem
+          </SkillCategoryItem>
+          <SkillCategoryItem
             ref={etcRef}
             active={activeCategory === "ETC"}
             onClick={() => handleCategoryClick("ETC")}
           >
             ETC
-          </CategoryItem>
+          </SkillCategoryItem>
         </SkillCategoryMenu>
 
         <SkillContentArea style={{ opacity: isAnimating ? 0 : 1 }}>
@@ -178,7 +178,7 @@ const Section02_Skills = () => {
                     </SkillDescription>
                     <SkillDescription>
                       React 환경에서 TypeScript 적용 경험, ESLint & Prettier와
-                      함께 코드 품질 관리
+                      함께 코드 품질 관리 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -193,15 +193,12 @@ const Section02_Skills = () => {
                   <SkillInfo>
                     <SkillName>React</SkillName>
                     <SkillDescription>
-                      함수형 컴포넌트 및 React Hooks(useState, useEffect,
-                      useContext 등)을 활용한 UI 개발 경험
+                      함수형 컴포넌트 및 React Hooks를 활용한 UI 개발, React
+                      Router를 이용한 SPA 구현 경험
                     </SkillDescription>
                     <SkillDescription>
                       Redux, Recoil 등을 활용한 상태 관리 경험, React Query를
                       활용한 비동기 데이터 관리 가능
-                    </SkillDescription>
-                    <SkillDescription>
-                      React Router를 이용한 SPA 구현 경험
                     </SkillDescription>
                     <SkillDescription>
                       Styled-components 사용 경험, 반응형 웹 디자인 구현 가능
@@ -212,7 +209,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/SocketIo.svg"
+                      src="/public/icons/skills/frontend/Socket_io_icon.svg"
                       alt="Socket.io"
                     />
                   </SkillIcon>
@@ -234,7 +231,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/vue.png"
+                      src="/public/icons/skills/frontend/vue_icon.svg"
                       alt="Vue"
                     />
                   </SkillIcon>
@@ -255,7 +252,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/java.png"
+                      src="/public/icons/skills/backend/java_logo_icon.svg"
                       alt="Java"
                     />
                   </SkillIcon>
@@ -274,7 +271,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/springBoot.png"
+                      src="/public/icons/skills/backend/spring_boot_icon.svg"
                       alt="SpringBoot"
                     />
                   </SkillIcon>
@@ -297,14 +294,14 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/mariadb.png"
+                      src="/public/icons/skills/backend/mariadb_icon.svg"
                       alt="MariaDB"
                     />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>MariaDB</SkillName>
                     <SkillDescription>
-                      데이터베이스 설계, 테이블 생성 및 최적화 쿼리 작성 가능.
+                      데이터베이스 설계, 테이블 생성 및 최적화 쿼리 작성 가능
                     </SkillDescription>
                     <SkillDescription>
                       JOIN, 서브쿼리 등 복잡한 SQL 문법 활용 경험
@@ -314,13 +311,19 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img src="/public/icons/skills/backend/jsp.png" alt="Jsp" />
+                    <img
+                      src="/public/icons/skills/backend/jsp_icon.svg"
+                      alt="Jsp"
+                    />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Jsp</SkillName>
                     <SkillDescription>
-                      JavaScript 런타임 환경으로 서버 사이드 애플리케이션을
-                      개발할 수 있습니다.
+                      동적 웹 페이지 생성 및 서버 사이드에서 HTML과 Java의
+                      결합을 통한 페이지 작성 가능
+                    </SkillDescription>
+                    <SkillDescription>
+                      EL 및 스크립틀릿을 활용한 기능 구현 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -328,15 +331,35 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/Thymeleaf.svg"
+                      src="/public/icons/skills/backend/thymeleaf_icon.svg"
                       alt="Thymeleaf"
                     />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Thymeleaf</SkillName>
                     <SkillDescription>
-                      JavaScript 런타임 환경으로 서버 사이드 애플리케이션을
-                      개발할 수 있습니다.
+                      Spring Boot와 통합하여 동적 콘텐츠 생성 및 RESTful API
+                      연동 경험
+                    </SkillDescription>
+                    <SkillDescription>"[Fix]" 나중에 채워</SkillDescription>
+                  </SkillInfo>
+                </SkillItem>
+
+                <SkillItem>
+                  <SkillIcon>
+                    <img
+                      src="/public/icons/skills/backend/fastapi_icon.svg"
+                      alt="FastAPI"
+                    />
+                  </SkillIcon>
+                  <SkillInfo>
+                    <SkillName>FastAPI</SkillName>
+                    <SkillDescription>
+                      FastAPI로 Restful API 개발 및 비동기 처리 경험
+                    </SkillDescription>
+                    <SkillDescription>
+                      Chat-GPT API를 연동하여 실시간 데이터 분석 및 API 응답
+                      최적화 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -344,19 +367,25 @@ const Section02_Skills = () => {
             </>
           )}
 
+          {/* 그 외 */}
           {activeCategory === "ETC" && (
             <>
               <SkillTitle>ETC</SkillTitle>
               <SkillItemContainer>
                 <SkillItem>
                   <SkillIcon>
-                    <img src="/public/icons/skills/etc/Git.png" alt="Git" />
+                    <img
+                      src="/public/icons/skills/etc/git_icon.svg"
+                      alt="Git"
+                    />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Git</SkillName>
                     <SkillDescription>
-                      기본적인 버전 관리 및 협업을 위한 Git 사용 경험이
-                      있습니다.
+                      기본적인 버전 관리 및 협업을 위한 Git 사용 경험
+                    </SkillDescription>
+                    <SkillDescription>
+                      Jenkins와 연동하여 자동화 및 배포 설정 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -364,15 +393,17 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/etc/github.svg"
+                      src="/public/icons/skills/etc/github_icon.svg"
                       alt="Github"
                     />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Github</SkillName>
                     <SkillDescription>
-                      UI/UX 디자인 및 프로토타이핑을 위한 Figma 사용 경험이
-                      있습니다.
+                      GitHub를 활용한 소스 코드 관리 및 버전 관리 경험
+                    </SkillDescription>
+                    <SkillDescription>
+                      대부분의 프로젝트에서 GitHub 관리 및 브랜치 관리 담당
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -380,38 +411,14 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/etc/sourceTree.png"
+                      src="/public/icons/skills/etc/sourcetree_icon.svg"
                       alt="SourceTree"
                     />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>SourceTree</SkillName>
                     <SkillDescription>
-                      기본적인 AWS 서비스를 활용한 배포 경험이 있습니다.
-                    </SkillDescription>
-                  </SkillInfo>
-                </SkillItem>
-
-                <SkillItem>
-                  <SkillIcon>
-                    <img src="/public/icons/skills/etc/slack.png" alt="slack" />
-                  </SkillIcon>
-                  <SkillInfo>
-                    <SkillName>Slack</SkillName>
-                    <SkillDescription>
-                      기본적인 AWS 서비스를 활용한 배포 경험이 있습니다.
-                    </SkillDescription>
-                  </SkillInfo>
-                </SkillItem>
-
-                <SkillItem>
-                  <SkillIcon>
-                    <img src="/public/icons/skills/etc/figma.png" alt="Figma" />
-                  </SkillIcon>
-                  <SkillInfo>
-                    <SkillName>Figma</SkillName>
-                    <SkillDescription>
-                      기본적인 AWS 서비스를 활용한 배포 경험이 있습니다.
+                      SourceTree를 활용한 소스 코드 관리 및 버전 관리 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -419,14 +426,44 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/etc/notion.png"
+                      src="/public/icons/skills/etc/slack_icon.svg"
+                      alt="slack"
+                    />
+                  </SkillIcon>
+                  <SkillInfo>
+                    <SkillName>Slack</SkillName>
+                    <SkillDescription>
+                      팀원들과의 소통 및 협업을 위한 Slack 사용 경험
+                    </SkillDescription>
+                  </SkillInfo>
+                </SkillItem>
+
+                <SkillItem>
+                  <SkillIcon>
+                    <img
+                      src="/public/icons/skills/etc/figma_icon.svg"
+                      alt="Figma"
+                    />
+                  </SkillIcon>
+                  <SkillInfo>
+                    <SkillName>Figma</SkillName>
+                    <SkillDescription>
+                      UI/UX 디자인 및 프로토타이핑을 위한 Figma 사용 경험
+                    </SkillDescription>
+                  </SkillInfo>
+                </SkillItem>
+
+                <SkillItem>
+                  <SkillIcon>
+                    <img
+                      src="/public/icons/skills/etc/notion_icon.svg"
                       alt="Notion"
                     />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Notion</SkillName>
                     <SkillDescription>
-                      기본적인 AWS 서비스를 활용한 배포 경험이 있습니다.
+                      팀원들과의 소통 및 협업을 위한 Notion 사용 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
