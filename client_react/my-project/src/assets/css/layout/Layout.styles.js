@@ -104,6 +104,9 @@ export const MainBackground3_1_contentBackground = styled.div`
 `;
 
 export const MainBackground3_2_contentBackground = styled.div`
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: #ffffff;
   border: 2px solid #d4d4d4;
   border-radius: 9px;

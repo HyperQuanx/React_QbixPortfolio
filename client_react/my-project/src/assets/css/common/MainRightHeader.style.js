@@ -16,6 +16,16 @@ export const PortfolioTitle = styled.div`
   margin-top: auto;
 `;
 
+export const PortfolioTitleRightArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const Re_Animation_Button = styled.button`
+  cursor: pointer;
+`;
+
 export const PortfolioGithubLink = styled.a`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
