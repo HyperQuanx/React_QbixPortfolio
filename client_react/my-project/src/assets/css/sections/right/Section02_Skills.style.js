@@ -4,6 +4,7 @@ export const SkillLayout = styled.div`
   display: flex;
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 20px;
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;

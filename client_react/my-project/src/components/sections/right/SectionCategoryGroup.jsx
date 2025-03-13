@@ -5,8 +5,8 @@ import {
 } from "../../../assets/css/sections/right/SectionCategoryGroup.style";
 
 const SectionCategoryGroup = ({ activeSection, sectionRefs }) => {
-  const scrollToSection = (index) => {
-    const element = sectionRefs.current[index];
+  const scrollToSection = (i) => {
+    const element = sectionRefs.current[i];
     if (!element) return;
 
     const container = element.closest(".main-background3-2-content");
