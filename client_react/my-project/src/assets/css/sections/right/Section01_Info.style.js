@@ -8,12 +8,15 @@ const fadeIn = keyframes`
 export const InfoMain = styled.section`
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
   font-family: "Nanum Gothic", sans-serif;
   padding: 2rem;
   background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   border-radius: 12px;
   animation: ${fadeIn} 0.8s ease-out forwards;
+`;
+
+export const InfoMainDiv = styled.div`
+  min-height: 60vh;
 `;
 
 export const InfoHi = styled.h2`

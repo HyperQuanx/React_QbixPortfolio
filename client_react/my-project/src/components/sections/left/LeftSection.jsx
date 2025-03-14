@@ -276,8 +276,8 @@ const LeftSection = () => {
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>
-                <AboutMeInfoLabel>이메일</AboutMeInfoLabel>
-                <AboutMeInfoValue>qbixroqkfwk@gmail.com</AboutMeInfoValue>
+                <AboutMeInfoLabel>위치</AboutMeInfoLabel>
+                <AboutMeInfoValue>서울특별시</AboutMeInfoValue>
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>
@@ -286,8 +286,9 @@ const LeftSection = () => {
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>
-                <AboutMeInfoLabel>위치</AboutMeInfoLabel>
-                <AboutMeInfoValue>서울특별시</AboutMeInfoValue>
+                <AboutMeInfoLabel>교육</AboutMeInfoLabel>
+                <AboutMeInfoValue>천재교육 FullStack 수료</AboutMeInfoValue>
+                <AboutMeInfoValue>항해99 FrontEnd 수료</AboutMeInfoValue>
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>

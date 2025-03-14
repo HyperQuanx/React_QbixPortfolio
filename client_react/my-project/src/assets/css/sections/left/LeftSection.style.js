@@ -218,7 +218,7 @@ export const AboutMeInfoPopup = styled.div`
     content: "";
     position: absolute;
     bottom: -10px;
-    right: 15px;
+    right: 30px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid white;
@@ -261,6 +261,7 @@ export const AboutMePopupTitle = styled.h4`
   margin: 0;
   font-size: 1rem;
   color: #3498db;
+  font-weight: bold;
 `;
 
 export const AboutMeCloseButton = styled.button`
