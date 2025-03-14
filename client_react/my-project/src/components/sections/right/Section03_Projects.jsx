@@ -7,11 +7,11 @@ import {
 
 const Section03_Projects = () => {
   return (
-    <>
+    <section>
       <SectionTitle>Projects</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
       <H500px></H500px>
-    </>
+    </section>
   );
 };
 

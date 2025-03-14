@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { WiDaySunny, WiRain, WiCloudy, WiSnow } from "react-icons/wi";
+import { FaCaretRight, FaTimes } from "react-icons/fa";
+import styled from "styled-components";
 import {
   L_FeelingBox,
   L_ProfileImg,
@@ -11,10 +13,39 @@ import {
   L_ShortSnippet,
   L_CyWriteInfo,
   L_CyName,
-  L_CyEmail,
   L_CyGender,
   L_CyGenderBox,
+  L_CyMyInfo,
+  AboutMeHoverMessageContainer,
+  AboutMeText,
+  AboutMeHoverMessage,
+  BounceButton,
+  AboutMeInfoPopup,
+  AboutMeInfoGrid,
+  AboutMeInfoItem,
+  AboutMeInfoLabel,
+  AboutMeInfoValue,
+  AboutMePopupHeader,
+  AboutMePopupTitle,
+  AboutMeCloseButton,
+  AboutMeButtonContainer,
+  bounce,
 } from "../../../assets/css/sections/left/LeftSection.style";
+import {
+  FlexCenter,
+  FlexSpaceBetween,
+} from "../../../assets/css/common/Common.styles";
+
+const HoverContainer = styled(FlexSpaceBetween)`
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  position: relative;
+
+  &:hover ${BounceButton} {
+    animation: ${bounce} 1s infinite;
+    color: #3498db;
+  }
+`;
 
 const LeftSection = () => {
   const [weather, setWeather] = useState({
@@ -22,6 +53,9 @@ const LeftSection = () => {
     description: "",
     iconColor: "",
   });
+
+  // 정보 팝업 표시 상태
+  const [showInfo, setShowInfo] = useState(false);
 
   // 날씨 정보 가져오기
   // 공식문서 죄다 뜯어서 메모 GPT 안씀
@@ -191,33 +225,97 @@ const LeftSection = () => {
   }, []);
 
   return (
-    <>
-      <div>
-        <L_FeelingBox>
-          <TodayText>
-            TODAY IS..
-            <WeatherIcon color={weather.iconColor}>{weather.icon}</WeatherIcon>
-            <WeatherDescription>{weather.description}</WeatherDescription>
-          </TodayText>
-        </L_FeelingBox>
-        <L_ProfileImg />
-        <L_ShortPR>
-          <L_ShortSnippet>
-            제 포트폴리오를 방문해주셔서 진심으로 감사드립니다.
-          </L_ShortSnippet>
-        </L_ShortPR>
-        <L_CyWriteInfo>
-          <L_CyName>
-            한덕용
-            <L_CyGenderBox>
-              <L_CyGender></L_CyGender>
-            </L_CyGenderBox>
-          </L_CyName>
+    <section>
+      <L_FeelingBox>
+        <TodayText>
+          TODAY IS..
+          <WeatherIcon color={weather.iconColor}>{weather.icon}</WeatherIcon>
+          <WeatherDescription>{weather.description}</WeatherDescription>
+        </TodayText>
+      </L_FeelingBox>
+      <L_ProfileImg />
+      <L_ShortPR>
+        <L_ShortSnippet>
+          제 포트폴리오를 방문해주셔서
+          <br />
+          진심으로 감사드립니다.
+        </L_ShortSnippet>
+      </L_ShortPR>
 
-          <L_CyEmail>qbixroqkfwk@gmail.com</L_CyEmail>
-        </L_CyWriteInfo>
-      </div>
-    </>
+      <HoverContainer>
+        <AboutMeHoverMessageContainer>
+          <AboutMeText>
+            <FaCaretRight size={10} style={{ marginRight: "4px" }} />
+            About Me
+            <AboutMeHoverMessage>
+              우측 버튼을 누르면 개인정보가 나옵니다!
+            </AboutMeHoverMessage>
+          </AboutMeText>
+        </AboutMeHoverMessageContainer>
+
+        <AboutMeButtonContainer>
+          <BounceButton onClick={() => setShowInfo(!showInfo)}>▲</BounceButton>
+
+          <AboutMeInfoPopup isVisible={showInfo}>
+            <AboutMePopupHeader>
+              <AboutMePopupTitle>About Me</AboutMePopupTitle>
+              <AboutMeCloseButton onClick={() => setShowInfo(false)}>
+                <FaTimes />
+              </AboutMeCloseButton>
+            </AboutMePopupHeader>
+
+            <AboutMeInfoGrid>
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>이름</AboutMeInfoLabel>
+                <AboutMeInfoValue>한덕용</AboutMeInfoValue>
+              </AboutMeInfoItem>
+
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>연락처</AboutMeInfoLabel>
+                <AboutMeInfoValue>010-8904-4623</AboutMeInfoValue>
+              </AboutMeInfoItem>
+
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>이메일</AboutMeInfoLabel>
+                <AboutMeInfoValue>qbixroqkfwk@gmail.com</AboutMeInfoValue>
+              </AboutMeInfoItem>
+
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>생년월일</AboutMeInfoLabel>
+                <AboutMeInfoValue>1999.06.03</AboutMeInfoValue>
+              </AboutMeInfoItem>
+
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>위치</AboutMeInfoLabel>
+                <AboutMeInfoValue>서울특별시</AboutMeInfoValue>
+              </AboutMeInfoItem>
+
+              <AboutMeInfoItem>
+                <AboutMeInfoLabel>학력</AboutMeInfoLabel>
+                <AboutMeInfoValue>
+                  학점은행제 재학중
+                  <br />
+                  (컴퓨터공학)
+                </AboutMeInfoValue>
+              </AboutMeInfoItem>
+            </AboutMeInfoGrid>
+          </AboutMeInfoPopup>
+        </AboutMeButtonContainer>
+      </HoverContainer>
+
+      <L_CyWriteInfo>
+        <L_CyName>
+          한덕용
+          <L_CyGenderBox>
+            <L_CyGender></L_CyGender>
+          </L_CyGenderBox>
+        </L_CyName>
+
+        <L_CyMyInfo>
+          <p>qbixroqkfwk@gmail.com</p>
+        </L_CyMyInfo>
+      </L_CyWriteInfo>
+    </section>
   );
 };
 

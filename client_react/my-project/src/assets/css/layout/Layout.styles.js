@@ -92,7 +92,7 @@ export const MainBackground3Spring = styled.div`
   */
 `;
 
-export const MainBackground3_1_contentBackground = styled.div`
+export const MainBackground3_1_contentBackground = styled.aside`
   background-color: #ffffff;
   border: 2px solid #d4d4d4;
   border-radius: 9px;
@@ -103,11 +103,11 @@ export const MainBackground3_1_contentBackground = styled.div`
   justify-content: center;
 `;
 
-export const MainBackground3_2_contentBackground = styled.div`
+export const MainBackground3_2_contentBackground = styled.main`
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   border: 2px solid #d4d4d4;
   border-radius: 9px;
   width: 100%;

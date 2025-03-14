@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainRightHeaderGroup = styled.div`
+export const MainRightHeaderGroup = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@ export const MainRightHeaderGroup = styled.div`
   padding: 0 0 0 1.04vw;
 `;
 
-export const PortfolioTitle = styled.div`
+export const PortfolioTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 500;
   color: #4682c2;

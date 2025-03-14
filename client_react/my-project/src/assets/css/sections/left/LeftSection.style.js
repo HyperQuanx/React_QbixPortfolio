@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const L_ProfileImg = styled.div`
   width: 10.42vw;
@@ -90,7 +90,7 @@ export const L_CyWriteInfo = styled.div`
 `;
 
 export const L_CyName = styled.div`
-  font-size: 1.125rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -120,7 +120,164 @@ export const L_CyGender = styled.div`
   display: inline-block;
 `;
 
-export const L_CyEmail = styled.div`
-  font-size: 1rem;
+export const L_CyMyInfo = styled.section`
+  font-size: 1.2rem;
   color: #e8b793;
+`;
+
+// AboutMeHoverMessage
+export const bounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+`;
+
+export const AboutMeHoverMessageContainer = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+`;
+
+export const AboutMeHoverMessage = styled.span`
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  background-color: rgba(52, 152, 219, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 10;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(52, 152, 219, 0.9);
+  }
+`;
+
+export const AboutMeText = styled.p`
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover ${AboutMeHoverMessage} {
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+
+export const BounceButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  ${AboutMeHoverMessageContainer}:hover ~ & {
+    animation: ${bounce} 1s infinite;
+    color: #3498db;
+  }
+`;
+
+// 정보 팝업 관련 스타일
+export const AboutMeInfoPopup = styled.div`
+  position: absolute;
+  top: -250px;
+  right: -30px;
+  width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 100;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+  transition: opacity 0.3s, visibility 0.3s;
+  border: 1px solid #e1e1e1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 15px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+  }
+`;
+
+export const AboutMeInfoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+`;
+
+export const AboutMeInfoItem = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const AboutMeInfoLabel = styled.span`
+  font-size: 0.7rem;
+  color: #7f8c8d;
+  margin-bottom: 3px;
+`;
+
+export const AboutMeInfoValue = styled.span`
+  font-size: 0.85rem;
+  color: #2c3e50;
+  font-weight: 500;
+`;
+
+export const AboutMePopupHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f1f1;
+`;
+
+export const AboutMePopupTitle = styled.h4`
+  margin: 0;
+  font-size: 1rem;
+  color: #3498db;
+`;
+
+export const AboutMeCloseButton = styled.button`
+  background: none;
+  border: none;
+  color: #95a5a6;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+
+  &:hover {
+    color: #e74c3c;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+`;
+
+export const AboutMeButtonContainer = styled.div`
+  position: relative;
 `;

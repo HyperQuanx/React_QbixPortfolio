@@ -7,11 +7,11 @@ import {
 
 const Section06_Feedback = () => {
   return (
-    <>
+    <section>
       <SectionTitle>Feedback</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
       <H500px></H500px>
-    </>
+    </section>
   );
 };
 

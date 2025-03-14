@@ -17,7 +17,7 @@ export const ViewCountGroup = styled.div`
   }
 `;
 
-export const SectionTitle = styled.div`
+export const SectionTitle = styled.h2`
   color: #00bfff;
   font-family: "Hi Melody", cursive;
   font-weight: 500;
@@ -34,6 +34,17 @@ export const SectionTitleUnderLine = styled.div`
 
 export const Flex = styled.div`
   display: flex;
+`;
+
+export const FlexSpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const FlexCenter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const H100 = styled.div`

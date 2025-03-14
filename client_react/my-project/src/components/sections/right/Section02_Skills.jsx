@@ -66,7 +66,7 @@ const Section02_Skills = () => {
   };
 
   return (
-    <>
+    <section>
       <SectionTitle>Skills</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
 
@@ -472,7 +472,7 @@ const Section02_Skills = () => {
           )}
         </SkillContentArea>
       </SkillLayout>
-    </>
+    </section>
   );
 };
 
