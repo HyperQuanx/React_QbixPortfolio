@@ -16,7 +16,7 @@ const MainRightHeader = () => {
 
   return (
     <MainRightHeaderGroup>
-      <PortfolioTitle>Front-End Portfolio</PortfolioTitle>
+      <PortfolioTitle>Web Developer Portfolio</PortfolioTitle>
       <PortfolioTitleRightArea>
         <Re_Animation_Button onClick={handleReAnimation}>
           로딩 애니메이션 재시작

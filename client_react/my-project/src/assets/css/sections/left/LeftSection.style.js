@@ -80,7 +80,6 @@ export const L_ShortSnippet = styled.div`
   text-align: center;
   line-height: 1.5;
   width: 100%;
-  max-width: 10.42vw;
   word-break: keep-all;
   overflow-wrap: break-word;
 `;

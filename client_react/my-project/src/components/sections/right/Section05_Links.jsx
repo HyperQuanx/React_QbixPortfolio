@@ -8,7 +8,7 @@ import {
 const Section05_Links = () => {
   return (
     <section>
-      <SectionTitle>Links</SectionTitle>
+      <SectionTitle>Archiving</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
       <H500px></H500px>
     </section>

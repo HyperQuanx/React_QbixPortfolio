@@ -286,9 +286,9 @@ const LeftSection = () => {
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>
-                <AboutMeInfoLabel>교육</AboutMeInfoLabel>
-                <AboutMeInfoValue>천재교육 FullStack 수료</AboutMeInfoValue>
-                <AboutMeInfoValue>항해99 FrontEnd 수료</AboutMeInfoValue>
+                <AboutMeInfoLabel>교육 이수</AboutMeInfoLabel>
+                <AboutMeInfoValue>천재교육 FullStack</AboutMeInfoValue>
+                <AboutMeInfoValue>항해99 FrontEnd</AboutMeInfoValue>
               </AboutMeInfoItem>
 
               <AboutMeInfoItem>
