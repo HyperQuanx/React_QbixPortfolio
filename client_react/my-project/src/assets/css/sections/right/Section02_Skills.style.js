@@ -95,10 +95,16 @@ export const SkillIcon = styled.div`
   align-items: center;
   margin-right: 20px;
   border: 2px solid #00bfff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   img {
     max-width: 60%;
     max-height: 60%;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 191, 255, 0.3);
   }
 `;
 

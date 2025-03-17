@@ -33,19 +33,19 @@ export const SectionCategoryItem = styled.li`
     top: 12vh;
   }
   &:nth-child(2) {
-    top: 17vh;
+    top: 16.5vh;
   }
   &:nth-child(3) {
-    top: 22vh;
+    top: 21vh;
   }
   &:nth-child(4) {
-    top: 27vh;
+    top: 25.5vh;
   }
   &:nth-child(5) {
-    top: 32vh;
+    top: 30vh;
   }
   &:nth-child(6) {
-    top: 37vh;
+    top: 34.5vh;
   }
 
   &:hover {

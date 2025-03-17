@@ -16,7 +16,18 @@ export const InfoMain = styled.section`
 `;
 
 export const InfoMainDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 60vh;
+  padding-bottom: 2rem;
+`;
+
+export const InfoMainDiv2 = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const InfoHi = styled.h2`
@@ -71,6 +82,9 @@ export const CharacteristicSection = styled.section`
   animation: ${fadeIn} 0.8s ease-out forwards;
   animation-delay: 0.8s;
   opacity: 0;
+  min-height: 63vh;
+  display: flex;
+  align-items: center;
 `;
 
 export const CharacteristicTitle = styled.h3`
@@ -164,4 +178,60 @@ export const CharacteristicDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: #34495e;
+`;
+
+export const ScrollButton = styled.button`
+  background: rgba(52, 152, 219, 0.1);
+  border: 2px solid rgba(52, 152, 219, 0.3);
+  border-radius: 30px;
+  color: #3498db;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  margin-top: 3rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.1);
+
+  &:hover {
+    background: rgba(52, 152, 219, 0.2);
+    border-color: rgba(52, 152, 219, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.15);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(52, 152, 219, 0.1);
+  }
+
+  span {
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+`;
+
+export const ScrollIcon = styled.div`
+  color: #3498db;
+  font-size: 1.2rem;
+  animation: bounce 2s infinite;
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-8px);
+    }
+    60% {
+      transform: translateY(-4px);
+    }
+  }
 `;

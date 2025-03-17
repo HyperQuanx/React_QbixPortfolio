@@ -46,13 +46,13 @@ const SectionCategoryGroup = ({ activeSection, sectionRefs }) => {
           active={activeSection === 3}
           onClick={() => scrollToSection(3)}
         >
-          Contact
+          Repository
         </SectionCategoryItem>
         <SectionCategoryItem
           active={activeSection === 4}
           onClick={() => scrollToSection(4)}
         >
-          Links
+          Contact
         </SectionCategoryItem>
         <SectionCategoryItem
           active={activeSection === 5}

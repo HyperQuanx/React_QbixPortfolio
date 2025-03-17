@@ -5,14 +5,14 @@ import {
   SectionTitleUnderLine,
 } from "../../../assets/css/common/Common.styles";
 
-const Section05_Links = () => {
+const Section05_Contact = () => {
   return (
     <section>
-      <SectionTitle>Archiving</SectionTitle>
+      <SectionTitle>Contact</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
       <H500px></H500px>
     </section>
   );
 };
 
-export default Section05_Links;
+export default Section05_Contact;
