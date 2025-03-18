@@ -41,6 +41,16 @@ export const FlexSpaceBetween = styled.div`
   justify-content: space-between;
 `;
 
+export const FlexDirectionColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FlexDirectionColumnReverse = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`;
+
 export const FlexCenter = styled.div`
   display: flex;
   align-items: center;

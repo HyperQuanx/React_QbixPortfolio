@@ -10,7 +10,10 @@ export const SectionCategoryList = styled.ul`
 
 export const SectionCategoryItem = styled.li`
   border: 1px solid black;
-  background-color: ${(props) => (props.active ? "#ffffff" : "#359dc2")};
+  background: ${(props) =>
+    props.active
+      ? "linear-gradient(to bottom right, #ffffff, #f5f9ff)"
+      : "#359dc2"};
   color: ${(props) => (props.active ? "#000000" : "#ffffff")};
   border-left: 1px solid white;
   width: 5.21vw;

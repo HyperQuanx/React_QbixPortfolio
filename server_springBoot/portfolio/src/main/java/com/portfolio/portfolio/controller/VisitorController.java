@@ -40,7 +40,7 @@ public class VisitorController {
       visitorCookie.setHttpOnly(true); // JavaScript 접근 방어
       
       // 보안을 위해 Secure 플래그 설정 (HTTPS에서만 작동)
-      // 개발 환경에서는 주석 처리하고 프로덕션에서 활성화
+      // [Fix] 개발 환경에서는 주석 처리하고 프로덕션에서 활성화
       // visitorCookie.setSecure(true);
       
       response.addCookie(visitorCookie);
