@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MainRightHeaderGroup = styled.header`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   height: 5.56vh;
   min-height: 60px;
   padding: 0 0 0 1.04vw;

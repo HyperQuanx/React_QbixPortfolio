@@ -51,6 +51,11 @@ export const FlexDirectionColumnReverse = styled.div`
   flex-direction: column-reverse;
 `;
 
+export const FlexAlignEnd = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
 export const FlexCenter = styled.div`
   display: flex;
   align-items: center;

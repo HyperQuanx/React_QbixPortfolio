@@ -7,6 +7,7 @@ import {
   PortfolioTitleRightArea,
   Re_Animation_Button,
 } from "../../assets/css/common/MainRightHeader.style";
+import { FlexAlignEnd } from "../../assets/css/common/Common.styles";
 
 const MainRightHeader = () => {
   const handleReAnimation = () => {
@@ -18,9 +19,9 @@ const MainRightHeader = () => {
     <MainRightHeaderGroup>
       <PortfolioTitle>Web Developer Portfolio</PortfolioTitle>
       <PortfolioTitleRightArea>
-        <Re_Animation_Button onClick={handleReAnimation}>
+        {/* <Re_Animation_Button onClick={handleReAnimation}>
           로딩 애니메이션 재시작
-        </Re_Animation_Button>
+        </Re_Animation_Button> */}
         <PortfolioGithubLink
           href="https://github.com/HyperQuanx"
           target="_blank"

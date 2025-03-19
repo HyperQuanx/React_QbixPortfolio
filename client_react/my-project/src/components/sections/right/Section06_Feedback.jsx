@@ -53,6 +53,13 @@ const Section06_Feedback = () => {
   const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
 
+  // 비밀번호 확인 모달 관련 상태 추가
+  const [passwordModalOpen, setPasswordModalOpen] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [selectedFeedback, setSelectedFeedback] = useState(null);
+  const [actionType, setActionType] = useState(""); // "edit" 또는 "delete"
+  const [editMode, setEditMode] = useState(false); // 수정 모드 상태
+
   const feedbackMaxLengths = {
     feedbackName: 10,
     feedbackPassword: 20,
@@ -122,6 +129,91 @@ const Section06_Feedback = () => {
     fileInputRef.current.value = null;
   };
 
+  // 수정 또는 삭제 버튼 클릭 핸들러
+  const handleActionClick = (feedback, action) => {
+    setSelectedFeedback(feedback);
+    setActionType(action);
+    setPasswordModalOpen(true);
+    setPasswordInput("");
+  };
+
+  // 비밀번호 입력 핸들러
+  const handlePasswordChange = (e) => {
+    setPasswordInput(e.target.value);
+  };
+
+  // 비밀번호 확인 핸들러 수정
+  const handlePasswordSubmit = async () => {
+    try {
+      setLoading(true);
+
+      if (actionType === "edit") {
+        // 수정 모드 활성화
+        setEditMode(true);
+        setIsPopupOpen(true);
+        setFormData({
+          feedbackName: selectedFeedback.name,
+          feedbackPassword: passwordInput,
+          feedbackContent: selectedFeedback.contents,
+        });
+        if (selectedFeedback.image) {
+          setPreviewUrl(getImageUrl(selectedFeedback.image));
+          setIsDefaultImage(
+            selectedFeedback.image === "/public/cyHumanRBG.png"
+          );
+        } else {
+          setPreviewUrl(DEFAULT_IMAGE);
+          setIsDefaultImage(true);
+        }
+        setSelectedImage(null);
+        setPasswordModalOpen(false);
+      } else if (actionType === "delete") {
+        // 삭제 API 호출로 비밀번호 확인 (기존 API 활용)
+        try {
+          const response = await axios.delete(
+            `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
+              selectedFeedback.idx
+            }`,
+            {
+              params: { password: passwordInput },
+            }
+          );
+
+          if (response.data.success) {
+            Swal.fire("성공", "피드백이 삭제되었습니다.", "success");
+            fetchFeedbacks(); // 목록 새로고침
+            setPasswordModalOpen(false);
+          } else {
+            Swal.fire(
+              "오류",
+              response.data.message || "비밀번호가 일치하지 않습니다.",
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("피드백 삭제 오류:", error);
+
+          // 오류 응답이 있는 경우 메시지 표시
+          if (error.response && error.response.data) {
+            Swal.fire(
+              "오류",
+              error.response.data.message || "비밀번호가 일치하지 않습니다.",
+              "error"
+            );
+          } else {
+            Swal.fire("오류", "삭제 중 오류가 발생했습니다.", "error");
+          }
+        }
+      }
+    } catch (error) {
+      console.error("비밀번호 확인 오류:", error);
+      Swal.fire("오류", "처리 중 오류가 발생했습니다.", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 폼 제출 핸들러 수정 (등록 및 수정 기능 통합)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -135,31 +227,64 @@ const Section06_Feedback = () => {
         formDataObj.append("image", selectedImage);
       }
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/api/feedback`,
-        formDataObj,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      let response;
+      if (editMode) {
+        // 수정 API 호출
+        formDataObj.append("idx", selectedFeedback.idx);
+        response = await axios.put(
+          `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
+            selectedFeedback.idx
+          }`,
+          formDataObj,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      } else {
+        // 등록 API 호출
+        response = await axios.post(
+          `${import.meta.env.VITE_SERVER_URL}/api/feedback`,
+          formDataObj,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
 
       if (response.data.success) {
-        Swal.fire("성공", "피드백이 등록되었습니다.", "success");
+        Swal.fire(
+          "성공",
+          editMode ? "피드백이 수정되었습니다." : "피드백이 등록되었습니다.",
+          "success"
+        );
         fetchFeedbacks();
         resetForm();
+        setEditMode(false);
       } else {
         Swal.fire("오류", response.data.message, "error");
       }
     } catch (error) {
-      Swal.fire("오류", "피드백 등록 중 오류가 발생했습니다.", "error");
-      console.error("피드백 등록 오류:", error);
+      Swal.fire(
+        "오류",
+        editMode
+          ? "피드백 수정 중 오류가 발생했습니다."
+          : "피드백 등록 중 오류가 발생했습니다.",
+        "error"
+      );
+      console.error(
+        editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
+        error
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  // 폼 초기화 함수 수정
   const resetForm = () => {
     setFormData({
       feedbackName: "",
@@ -170,6 +295,8 @@ const Section06_Feedback = () => {
     setPreviewUrl(DEFAULT_IMAGE);
     setIsDefaultImage(true);
     setIsPopupOpen(false);
+    setEditMode(false);
+    setSelectedFeedback(null);
   };
 
   // 날짜 포맷 함수
@@ -244,7 +371,13 @@ const Section06_Feedback = () => {
                 </span>
               </FeedbackHeaderLeft>
               <FeedbackHeaderRight>
-                {/* 수정/삭제 기능은 추후 구현 */}
+                <button onClick={() => handleActionClick(feedback, "edit")}>
+                  수정
+                </button>
+                |
+                <button onClick={() => handleActionClick(feedback, "delete")}>
+                  삭제
+                </button>
               </FeedbackHeaderRight>
             </FeedbackHeader>
             <FeedbackContent>
@@ -259,12 +392,59 @@ const Section06_Feedback = () => {
         ))}
       </FeedbackContainer>
 
-      {/* 팝업창 */}
+      {/* 비밀번호 확인 모달 */}
+      {passwordModalOpen && (
+        <FeedbackPopupOverlay>
+          <FeedbackPopupContainer
+            style={{ maxWidth: "400px", padding: "20px" }}
+          >
+            <FeedbackPopupTitle>
+              {actionType === "edit" ? "피드백 수정" : "피드백 삭제"}
+            </FeedbackPopupTitle>
+            <p style={{ marginBottom: "20px" }}>
+              {actionType === "edit"
+                ? "피드백을 수정하려면 비밀번호를 입력해주세요."
+                : "피드백을 삭제하려면 비밀번호를 입력해주세요."}
+            </p>
+            <FeedbackFormGroup>
+              <FeedbackLabel htmlFor="verifyPassword">비밀번호</FeedbackLabel>
+              <FeedbackInput
+                type="password"
+                id="verifyPassword"
+                value={passwordInput}
+                onChange={handlePasswordChange}
+                autoFocus
+              />
+            </FeedbackFormGroup>
+            <FeedbackButtonGroup>
+              <FeedbackButton
+                type="button"
+                onClick={() => setPasswordModalOpen(false)}
+              >
+                취소
+              </FeedbackButton>
+              <FeedbackButton
+                type="button"
+                primary
+                onClick={handlePasswordSubmit}
+                disabled={loading}
+              >
+                {loading ? "확인 중..." : "확인"}
+              </FeedbackButton>
+            </FeedbackButtonGroup>
+          </FeedbackPopupContainer>
+        </FeedbackPopupOverlay>
+      )}
+
+      {/* 작성 및 수정 팝업창 */}
       {isPopupOpen && (
         <FeedbackPopupOverlay>
           <FeedbackPopupContainer>
-            <FeedbackPopupTitle>피드백 작성하기</FeedbackPopupTitle>
+            <FeedbackPopupTitle>
+              {editMode ? "피드백 수정하기" : "피드백 작성하기"}
+            </FeedbackPopupTitle>
             <form onSubmit={handleSubmit}>
+              {/* 이름 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackName">이름</FeedbackLabel>
                 <FeedbackInput
@@ -274,6 +454,7 @@ const Section06_Feedback = () => {
                   value={formData.feedbackName}
                   onChange={handleChange}
                   required
+                  readOnly={editMode} // 수정 모드에서는 이름 변경 불가
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -286,6 +467,7 @@ const Section06_Feedback = () => {
                 </FeedbackCharCount>
               </FeedbackFormGroup>
 
+              {/* 비밀번호 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackPassword">
                   비밀번호
@@ -297,6 +479,7 @@ const Section06_Feedback = () => {
                   value={formData.feedbackPassword}
                   onChange={handleChange}
                   required
+                  readOnly={editMode} // 수정 모드에서는 비밀번호 변경 불가
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -338,6 +521,7 @@ const Section06_Feedback = () => {
                 </FeedbackCharCount>
               </FeedbackImageUploadGroup>
 
+              {/* 내용 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackContent">내용</FeedbackLabel>
                 <FeedbackTextArea
@@ -363,7 +547,13 @@ const Section06_Feedback = () => {
                   취소
                 </FeedbackButton>
                 <FeedbackButton type="submit" primary disabled={loading}>
-                  {loading ? "등록 중..." : "등록"}
+                  {loading
+                    ? editMode
+                      ? "수정 중..."
+                      : "등록 중..."
+                    : editMode
+                    ? "수정"
+                    : "등록"}
                 </FeedbackButton>
               </FeedbackButtonGroup>
             </form>
