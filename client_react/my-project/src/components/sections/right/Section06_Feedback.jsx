@@ -53,7 +53,6 @@ const Section06_Feedback = () => {
   const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
 
-  // 비밀번호 확인 모달 관련 상태 추가
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [selectedFeedback, setSelectedFeedback] = useState(null);
@@ -86,7 +85,7 @@ const Section06_Feedback = () => {
         "피드백 목록을 불러오는 중 오류가 발생했습니다.",
         "error"
       );
-      console.error("피드백 목록 조회 오류:", error);
+      // console.error("피드백 목록 조회 오류:", error);
     } finally {
       setLoading(false);
     }
@@ -148,25 +147,59 @@ const Section06_Feedback = () => {
       setLoading(true);
 
       if (actionType === "edit") {
-        // 수정 모드 활성화
-        setEditMode(true);
-        setIsPopupOpen(true);
-        setFormData({
-          feedbackName: selectedFeedback.name,
-          feedbackPassword: passwordInput,
-          feedbackContent: selectedFeedback.contents,
-        });
-        if (selectedFeedback.image) {
-          setPreviewUrl(getImageUrl(selectedFeedback.image));
-          setIsDefaultImage(
-            selectedFeedback.image === "/public/cyHumanRBG.png"
+        // 비밀번호 검증 API 호출
+        try {
+          const response = await axios.post(
+            `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
+              selectedFeedback.idx
+            }/verify`,
+            null,
+            {
+              params: { password: passwordInput },
+            }
           );
-        } else {
-          setPreviewUrl(DEFAULT_IMAGE);
-          setIsDefaultImage(true);
+
+          if (response.data.success) {
+            // 비밀번호 일치 시 수정 모드 활성화
+            setEditMode(true);
+            setIsPopupOpen(true);
+            setFormData({
+              feedbackName: selectedFeedback.name,
+              feedbackPassword: passwordInput,
+              feedbackContent: selectedFeedback.contents,
+            });
+            if (selectedFeedback.image) {
+              setPreviewUrl(getImageUrl(selectedFeedback.image));
+              setIsDefaultImage(
+                selectedFeedback.image === "/public/cyHumanRBG.png"
+              );
+            } else {
+              setPreviewUrl(DEFAULT_IMAGE);
+              setIsDefaultImage(true);
+            }
+            setSelectedImage(null);
+            setPasswordModalOpen(false);
+          } else {
+            Swal.fire(
+              "오류",
+              response.data.message || "비밀번호가 일치하지 않습니다.",
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("비밀번호 확인 오류:", error);
+
+          // 오류 응답이 있는 경우 메시지 표시
+          if (error.response && error.response.data) {
+            Swal.fire(
+              "오류",
+              error.response.data.message || "비밀번호가 일치하지 않습니다.",
+              "error"
+            );
+          } else {
+            Swal.fire("오류", "비밀번호 확인 중 오류가 발생했습니다.", "error");
+          }
         }
-        setSelectedImage(null);
-        setPasswordModalOpen(false);
       } else if (actionType === "delete") {
         // 삭제 API 호출로 비밀번호 확인 (기존 API 활용)
         try {
@@ -275,10 +308,10 @@ const Section06_Feedback = () => {
           : "피드백 등록 중 오류가 발생했습니다.",
         "error"
       );
-      console.error(
-        editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
-        error
-      );
+      // console.error(
+      //   editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
+      //   error
+      // );
     } finally {
       setLoading(false);
     }
@@ -301,14 +334,15 @@ const Section06_Feedback = () => {
 
   // 날짜 포맷 함수
   const formatDate = (dateString) => {
-    const options = {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-    };
-    return new Date(dateString).toLocaleDateString("ko-KR", options);
+    const date = new Date(dateString);
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 +1
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return ` ${year}.${month}.${day} ${hours}:${minutes} `;
   };
 
   // 이미지 경로 처리 함수 수정
@@ -331,13 +365,13 @@ const Section06_Feedback = () => {
 
   // 이미지 로드 오류 처리 함수 추가
   const handleImageError = (e, imagePath) => {
-    console.error("이미지 로드 실패:", imagePath);
+    // console.error("이미지 로드 실패:", imagePath);
     e.target.src = DEFAULT_IMAGE;
 
     // 디버깅을 위해 이미지 URL 출력
     const img = new Image();
-    img.onload = () => console.log("이미지 로드 성공 테스트:", imagePath);
-    img.onerror = () => console.error("이미지 로드 실패 테스트:", imagePath);
+    // img.onload = () => console.log("이미지 로드 성공 테스트:", imagePath);
+    // img.onerror = () => console.error("이미지 로드 실패 테스트:", imagePath);
     img.src = getImageUrl(imagePath);
   };
 
@@ -392,7 +426,7 @@ const Section06_Feedback = () => {
         ))}
       </FeedbackContainer>
 
-      {/* 비밀번호 확인 모달 */}
+      {/* 비번 확인 모달 */}
       {passwordModalOpen && (
         <FeedbackPopupOverlay>
           <FeedbackPopupContainer
@@ -444,7 +478,6 @@ const Section06_Feedback = () => {
               {editMode ? "피드백 수정하기" : "피드백 작성하기"}
             </FeedbackPopupTitle>
             <form onSubmit={handleSubmit}>
-              {/* 이름 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackName">이름</FeedbackLabel>
                 <FeedbackInput
@@ -454,7 +487,7 @@ const Section06_Feedback = () => {
                   value={formData.feedbackName}
                   onChange={handleChange}
                   required
-                  readOnly={editMode} // 수정 모드에서는 이름 변경 불가
+                  readOnly={editMode} // 수정에서는 이름 빼기
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -467,7 +500,6 @@ const Section06_Feedback = () => {
                 </FeedbackCharCount>
               </FeedbackFormGroup>
 
-              {/* 비밀번호 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackPassword">
                   비밀번호
@@ -492,7 +524,6 @@ const Section06_Feedback = () => {
                 </FeedbackCharCount>
               </FeedbackFormGroup>
 
-              {/* 이미지 업로드 영역 */}
               <FeedbackImageUploadGroup>
                 <FeedbackImageUploadLabel>이미지</FeedbackImageUploadLabel>
                 <FeedbackImagePreviewContainer
@@ -521,7 +552,6 @@ const Section06_Feedback = () => {
                 </FeedbackCharCount>
               </FeedbackImageUploadGroup>
 
-              {/* 내용 입력 필드 */}
               <FeedbackFormGroup>
                 <FeedbackLabel htmlFor="feedbackContent">내용</FeedbackLabel>
                 <FeedbackTextArea

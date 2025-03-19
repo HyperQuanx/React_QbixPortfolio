@@ -37,13 +37,31 @@ const Section03_Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Portfolio",
-      description: ["포트폴리오 제작"],
+      title: "한덕용_Portfolio",
+      description: [
+        "제 포트폴리오입니다.",
+        "싸이컴즈 CMO님께 디자인 사용 허가를 받아 제작되었습니다.",
+      ],
       tags: ["FullStack"],
-      roles: ["ㅇ"],
-      skillsTags: ["FrontEnd"],
-      date: "2025.02.28 ~ 2025.03.16",
-      image: "/images/projects/lecture.jpg",
+      roles: [
+        "기상청 초단기예보 API 연동으로 오늘의 날씨를 구현하였습니다.",
+        "단독으로 기획부터 디자인, 프론트엔드·백엔드 개발 및 데이터베이스 구축까지 전 과정을 수행한 첫 프로젝트를 수행하였습니다.",
+        "Cyworld 방명록 디자인을 참고하여 Feedback 기능을 구현하였습니다.",
+        "AWS 배포와 CI/CD 구축을 진행하였습니다.",
+      ],
+      skillsTags: [
+        "React",
+        "Axios",
+        "React-Router",
+        "Styled-Components",
+        "SpringBoot",
+        "JPA",
+        "MySQL",
+        "AWS",
+        "Jenkins",
+      ],
+      date: "2025.02.28 ~ 2025.03.20",
+      image: "/public/project/portfolio_01.png",
       details: {
         title: "Portfolio",
         description:

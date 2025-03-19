@@ -102,6 +102,65 @@ public class FeedbackController {
         }
     }
     
+    // 비밀번호 검증 API 추가
+    @PostMapping("/{idx}/verify")
+    public ResponseEntity<?> verifyPassword(
+            @PathVariable Long idx,
+            @RequestParam("password") String password) {
+        
+        try {
+            boolean isValid = feedbackService.verifyPassword(idx, password);
+            
+            Map<String, Object> response = new HashMap<>();
+            if (isValid) {
+                response.put("success", true);
+                response.put("message", "비밀번호 검증 성공");
+            } else {
+                response.put("success", false);
+                response.put("message", "비밀번호가 일치하지 않습니다");
+            }
+            
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("success", false);
+            errorResponse.put("message", e.getMessage());
+            
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
+    }
+    
+    // 특정 피드백 조회 (비밀번호 검증 포함)
+    @GetMapping("/{idx}")
+    public ResponseEntity<?> getFeedback(
+            @PathVariable Long idx,
+            @RequestParam(value = "password", required = false) String password) {
+        
+        try {
+            FeedbackDTO feedback = feedbackService.getFeedbackByIdx(idx);
+            
+            // 비밀번호가 제공된 경우 검증
+            if (password != null && !password.isEmpty()) {
+                boolean isValid = feedbackService.verifyPassword(idx, password);
+                
+                if (!isValid) {
+                    Map<String, Object> errorResponse = new HashMap<>();
+                    errorResponse.put("success", false);
+                    errorResponse.put("message", "비밀번호가 일치하지 않습니다");
+                    
+                    return ResponseEntity.badRequest().body(errorResponse);
+                }
+            }
+            
+            feedback.setSuccess(true);
+            feedback.setMessage("피드백 조회 성공");
+            
+            return ResponseEntity.ok(feedback);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(FeedbackDTO.error(e.getMessage()));
+        }
+    }
+    
     // 피드백 수정
     @PutMapping("/{idx}")
     public ResponseEntity<FeedbackDTO> updateFeedback(
@@ -111,6 +170,13 @@ public class FeedbackController {
             @RequestParam(value = "image", required = false) MultipartFile imageFile) {
         
         try {
+            // 비밀번호 검증
+            boolean isValid = feedbackService.verifyPassword(idx, password);
+            
+            if (!isValid) {
+                return ResponseEntity.badRequest().body(FeedbackDTO.error("비밀번호가 일치하지 않습니다"));
+            }
+            
             String imagePath = null;
             
             // 이미지 파일이 있으면 업로드
@@ -126,12 +192,16 @@ public class FeedbackController {
                 String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
                 String newFilename = UUID.randomUUID().toString() + extension;
                 
-                // 파일 저장
-                Path filePath = Paths.get(UPLOAD_DIR + newFilename);
+                // 파일 저장 경로 (절대 경로)
+                String absolutePath = new File("").getAbsolutePath() + "/" + UPLOAD_DIR;
+                Path filePath = Paths.get(absolutePath + newFilename);
                 Files.write(filePath, imageFile.getBytes());
                 
-                // 이미지 경로 설정 - 클라이언트에서 접근 가능한 URL 경로로 설정
-                imagePath = "/uploads/feedback/" + newFilename;
+                // 이미지 경로 설정 (새로운 이미지 컨트롤러 사용)
+                imagePath = "/images/feedback/" + newFilename;
+                
+                System.out.println("이미지 저장 경로: " + filePath);
+                System.out.println("이미지 URL 경로: " + imagePath);
             }
             
             // 피드백 DTO 생성
@@ -160,6 +230,13 @@ public class FeedbackController {
             @RequestParam("password") String password) {
         
         try {
+            // 비밀번호 검증
+            boolean isValid = feedbackService.verifyPassword(idx, password);
+            
+            if (!isValid) {
+                return ResponseEntity.badRequest().body(FeedbackDTO.error("비밀번호가 일치하지 않습니다"));
+            }
+            
             feedbackService.deleteFeedback(idx, password);
             return ResponseEntity.ok(FeedbackDTO.success("피드백 삭제 성공"));
         } catch (Exception e) {
@@ -175,6 +252,13 @@ public class FeedbackController {
             @RequestParam("status") String status) {
         
         try {
+            // 비밀번호 검증
+            boolean isValid = feedbackService.verifyPassword(idx, password);
+            
+            if (!isValid) {
+                return ResponseEntity.badRequest().body(FeedbackDTO.error("비밀번호가 일치하지 않습니다"));
+            }
+            
             FeedbackDTO updatedFeedback = feedbackService.updateFeedbackStatus(idx, password, status);
             updatedFeedback.setSuccess(true);
             updatedFeedback.setMessage("피드백 상태 변경 성공");

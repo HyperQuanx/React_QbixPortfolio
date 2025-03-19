@@ -40,7 +40,7 @@ const Section04_Repository = () => {
     },
     {
       id: 5,
-      link: "제 이력서 파일입니다.",
+      link: "제 이력서입니다.",
       href: "준비중입니다",
       platform: "Word",
     },
