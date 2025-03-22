@@ -51,7 +51,7 @@ public class FeedbackController {
             @RequestParam(value = "image", required = false) MultipartFile imageFile) {
         
         try {
-            String imagePath = "/public/cyHumanRBG.png"; // 기본 이미지 경로
+            String imagePath = "/cyHumanRBG.png"; // 기본 이미지 경로
             
             // 이미지 파일이 있으면 업로드
             if (imageFile != null && !imageFile.isEmpty()) {
