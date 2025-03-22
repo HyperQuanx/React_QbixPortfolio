@@ -206,7 +206,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontEnd/Socket_io_icon.svg"
+                      src="/icons/skills/frontEnd/socket_io_icon.svg"
                       alt="Socket.io"
                     />
                   </SkillIcon>
