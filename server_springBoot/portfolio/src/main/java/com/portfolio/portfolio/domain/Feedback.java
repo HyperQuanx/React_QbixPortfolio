@@ -43,6 +43,6 @@ public class Feedback {
     public void prePersist() {
         this.regDate = LocalDateTime.now();
         this.status = this.status == null ? "public" : this.status;
-        this.image = this.image == null ? "/public/cyHumanRBG.png" : this.image;
+        this.image = this.image == null ? "/cyHumanRBG.png" : this.image;
     }
 }

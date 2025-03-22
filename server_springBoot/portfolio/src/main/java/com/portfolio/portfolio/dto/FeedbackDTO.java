@@ -48,7 +48,7 @@ public class FeedbackDTO {
                 .password(this.password)
                 .status(this.status != null ? this.status : "public")
                 .contents(this.contents)
-                .image(this.image != null ? this.image : "/public/cyHumanRBG.png")
+                .image(this.image != null ? this.image : "/cyHumanRBG.png")
                 .build();
     }
     
