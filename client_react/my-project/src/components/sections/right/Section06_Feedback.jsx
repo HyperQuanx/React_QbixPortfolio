@@ -214,7 +214,7 @@ const Section06_Feedback = () => {
 
           if (response.data.success) {
             Swal.fire("성공", "피드백이 삭제되었습니다.", "success");
-            fetchFeedbacks(); // 목록 새로고침
+            fetchFeedbacks();
             setPasswordModalOpen(false);
           } else {
             Swal.fire(
