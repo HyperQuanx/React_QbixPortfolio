@@ -13,7 +13,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173") // [Fix] 나중에 바꿔야됨
+                // .allowedOrigins("http://localhost:5173") // [Fix] 나중에 바꿔야됨
+                .allowedOrigins("https://react-qbix-portfolio.vercel.app/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);

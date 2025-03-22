@@ -107,7 +107,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontend/html_icon.svg"
+                      src="/icons/skills/frontEnd/html_icon.svg"
                       alt="HTML5"
                     />
                   </SkillIcon>
@@ -125,7 +125,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img src="/icons/skills/frontend/css_icon.svg" alt="CSS3" />
+                    <img src="/icons/skills/frontEnd/css_icon.svg" alt="CSS3" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>CSS</SkillName>
@@ -144,7 +144,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontend/javascript_icon.svg"
+                      src="/icons/skills/frontEnd/javascript_icon.svg"
                       alt="Javascript"
                     />
                   </SkillIcon>
@@ -163,7 +163,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontend/typescript_icon.svg"
+                      src="/icons/skills/frontEnd/typescript_icon.svg"
                       alt="Typescript"
                     />
                   </SkillIcon>
@@ -183,7 +183,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontend/react_icon.svg"
+                      src="/icons/skills/frontEnd/react_icon.svg"
                       alt="React"
                     />
                   </SkillIcon>
@@ -206,7 +206,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/frontend/Socket_io_icon.svg"
+                      src="/icons/skills/frontEnd/Socket_io_icon.svg"
                       alt="Socket.io"
                     />
                   </SkillIcon>
@@ -227,7 +227,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img src="/icons/skills/frontend/vue_icon.svg" alt="Vue" />
+                    <img src="/icons/skills/frontEnd/vue_icon.svg" alt="Vue" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Vue</SkillName>
@@ -246,7 +246,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/backend/java_logo_icon.svg"
+                      src="/icons/skills/backEnd/java_logo_icon.svg"
                       alt="Java"
                     />
                   </SkillIcon>
@@ -265,7 +265,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/backend/spring_boot_icon.svg"
+                      src="/icons/skills/backEnd/spring_boot_icon.svg"
                       alt="SpringBoot"
                     />
                   </SkillIcon>
@@ -288,7 +288,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/backend/mariadb_icon.svg"
+                      src="/icons/skills/backEnd/mariadb_icon.svg"
                       alt="MariaDB"
                     />
                   </SkillIcon>
@@ -305,7 +305,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img src="/icons/skills/backend/jsp_icon.svg" alt="Jsp" />
+                    <img src="/icons/skills/backEnd/jsp_icon.svg" alt="Jsp" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Jsp</SkillName>
@@ -322,7 +322,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/backend/thymeleaf_icon.svg"
+                      src="/icons/skills/backEnd/thymeleaf_icon.svg"
                       alt="Thymeleaf"
                     />
                   </SkillIcon>
@@ -339,7 +339,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/icons/skills/backend/fastapi_icon.svg"
+                      src="/icons/skills/backEnd/fastapi_icon.svg"
                       alt="FastAPI"
                     />
                   </SkillIcon>
