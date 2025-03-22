@@ -107,7 +107,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/html_icon.svg"
+                      src="/icons/skills/frontend/html_icon.svg"
                       alt="HTML5"
                     />
                   </SkillIcon>
@@ -125,10 +125,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/frontend/css_icon.svg"
-                      alt="CSS3"
-                    />
+                    <img src="/icons/skills/frontend/css_icon.svg" alt="CSS3" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>CSS</SkillName>
@@ -147,7 +144,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/javascript_icon.svg"
+                      src="/icons/skills/frontend/javascript_icon.svg"
                       alt="Javascript"
                     />
                   </SkillIcon>
@@ -166,7 +163,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/typescript_icon.svg"
+                      src="/icons/skills/frontend/typescript_icon.svg"
                       alt="Typescript"
                     />
                   </SkillIcon>
@@ -186,7 +183,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/react_icon.svg"
+                      src="/icons/skills/frontend/react_icon.svg"
                       alt="React"
                     />
                   </SkillIcon>
@@ -209,7 +206,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/frontend/Socket_io_icon.svg"
+                      src="/icons/skills/frontend/Socket_io_icon.svg"
                       alt="Socket.io"
                     />
                   </SkillIcon>
@@ -230,10 +227,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/frontend/vue_icon.svg"
-                      alt="Vue"
-                    />
+                    <img src="/icons/skills/frontend/vue_icon.svg" alt="Vue" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Vue</SkillName>
@@ -252,7 +246,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/java_logo_icon.svg"
+                      src="/icons/skills/backend/java_logo_icon.svg"
                       alt="Java"
                     />
                   </SkillIcon>
@@ -271,7 +265,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/spring_boot_icon.svg"
+                      src="/icons/skills/backend/spring_boot_icon.svg"
                       alt="SpringBoot"
                     />
                   </SkillIcon>
@@ -294,7 +288,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/mariadb_icon.svg"
+                      src="/icons/skills/backend/mariadb_icon.svg"
                       alt="MariaDB"
                     />
                   </SkillIcon>
@@ -311,10 +305,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/backend/jsp_icon.svg"
-                      alt="Jsp"
-                    />
+                    <img src="/icons/skills/backend/jsp_icon.svg" alt="Jsp" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Jsp</SkillName>
@@ -331,7 +322,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/thymeleaf_icon.svg"
+                      src="/icons/skills/backend/thymeleaf_icon.svg"
                       alt="Thymeleaf"
                     />
                   </SkillIcon>
@@ -348,7 +339,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/backend/fastapi_icon.svg"
+                      src="/icons/skills/backend/fastapi_icon.svg"
                       alt="FastAPI"
                     />
                   </SkillIcon>
@@ -374,10 +365,7 @@ const Section02_Skills = () => {
               <SkillItemContainer>
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/etc/git_icon.svg"
-                      alt="Git"
-                    />
+                    <img src="/icons/skills/etc/git_icon.svg" alt="Git" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Git</SkillName>
@@ -392,10 +380,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/etc/github_icon.svg"
-                      alt="Github"
-                    />
+                    <img src="/icons/skills/etc/github_icon.svg" alt="Github" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Github</SkillName>
@@ -411,7 +396,7 @@ const Section02_Skills = () => {
                 <SkillItem>
                   <SkillIcon>
                     <img
-                      src="/public/icons/skills/etc/sourcetree_icon.svg"
+                      src="/icons/skills/etc/sourcetree_icon.svg"
                       alt="SourceTree"
                     />
                   </SkillIcon>
@@ -425,10 +410,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/etc/slack_icon.svg"
-                      alt="slack"
-                    />
+                    <img src="/icons/skills/etc/slack_icon.svg" alt="slack" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Slack</SkillName>
@@ -440,10 +422,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/etc/figma_icon.svg"
-                      alt="Figma"
-                    />
+                    <img src="/icons/skills/etc/figma_icon.svg" alt="Figma" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Figma</SkillName>
@@ -455,10 +434,7 @@ const Section02_Skills = () => {
 
                 <SkillItem>
                   <SkillIcon>
-                    <img
-                      src="/public/icons/skills/etc/notion_icon.svg"
-                      alt="Notion"
-                    />
+                    <img src="/icons/skills/etc/notion_icon.svg" alt="Notion" />
                   </SkillIcon>
                   <SkillInfo>
                     <SkillName>Notion</SkillName>

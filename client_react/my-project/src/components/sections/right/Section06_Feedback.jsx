@@ -36,7 +36,7 @@ import {
   FeedbackImageRemoveButton,
 } from "../../../assets/css/sections/right/Section06_Feedback.style";
 
-const DEFAULT_IMAGE = "/public/cyHumanRBG.png";
+const DEFAULT_IMAGE = "/cyHumanRBG.png";
 
 const Section06_Feedback = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -170,9 +170,7 @@ const Section06_Feedback = () => {
             });
             if (selectedFeedback.image) {
               setPreviewUrl(getImageUrl(selectedFeedback.image));
-              setIsDefaultImage(
-                selectedFeedback.image === "/public/cyHumanRBG.png"
-              );
+              setIsDefaultImage(selectedFeedback.image === "/cyHumanRBG.png");
             } else {
               setPreviewUrl(DEFAULT_IMAGE);
               setIsDefaultImage(true);
@@ -350,7 +348,7 @@ const Section06_Feedback = () => {
     if (!imagePath) return DEFAULT_IMAGE;
 
     // 기본 이미지인 경우
-    if (imagePath === "/public/cyHumanRBG.png") {
+    if (imagePath === "/cyHumanRBG.png") {
       return DEFAULT_IMAGE;
     }
 

@@ -25,7 +25,7 @@ export const Section03_Projects_Arrays = () => {
         "AWS",
       ],
       date: "2024.12.16 ~ 2025.01.09",
-      image: "/public/project/aaa01.png",
+      image: "/project/aaa01.png",
       details: {
         Sortation: "팀 프로젝트",
         Achievement: "첫 단독 풀스택 프로젝트",
@@ -50,14 +50,14 @@ export const Section03_Projects_Arrays = () => {
         ],
         content: `
         <article>
-          <img src="/public/project/aaa_ppt_02.png" alt="온라인 학업성취도 평가 ppt2" />
+          <img src="/project/aaa_ppt_02.png" alt="온라인 학업성취도 평가 ppt2" />
         </article>
         <div class="pjDetails">
           <p>로그인/회원가입에선 Member 테이블을 사용하였고 시험 문제 풀이에선 Exam, Item 테이블, Report 에서는 통계 관련 테이블들을 사용하였습니다.</p>
         </div>
 
         <article>
-          <img src="/public/project/aaa_gif_01.gif" alt="온라인 학업성취도 평가 gif1" />
+          <img src="/project/aaa_gif_01.gif" alt="온라인 학업성취도 평가 gif1" />
         </article>
         <div class="pjDetails">
           <p>기본 리포트입니다. 치룬 시험지를 선택한 후 점수를 확인할 수 있습니다.</p>
@@ -66,7 +66,7 @@ export const Section03_Projects_Arrays = () => {
         </div>
 
         <article>
-          <img src="/public/project/aaa_gif_02.gif" alt="온라인 학업성취도 평가 gif2" />
+          <img src="/project/aaa_gif_02.gif" alt="온라인 학업성취도 평가 gif2" />
         </article>
         <div class="pjDetails">
           <p>상세 리포트입니다. 시험 결과를 차트로 표현해 학생의 성취도를 시각화하였습니다.</p>
@@ -75,7 +75,7 @@ export const Section03_Projects_Arrays = () => {
         </div>
 
         <article>
-          <img src="/public/project/aaa_gif_03.gif" alt="온라인 학업성취도 평가 gif3" />
+          <img src="/project/aaa_gif_03.gif" alt="온라인 학업성취도 평가 gif3" />
         </article>
         <div class="pjDetails">
           <p>오답노트와 PDF 다운로드입니다.</p>
@@ -83,7 +83,7 @@ export const Section03_Projects_Arrays = () => {
         </div>
 
         <article>
-          <img src="/public/project/aaa_gif_04.gif" alt="온라인 학업성취도 평가 gif4" />
+          <img src="/project/aaa_gif_04.gif" alt="온라인 학업성취도 평가 gif4" />
         </article>
         <div class="pjDetails">
           <p>AI 튜터가 학생의 성적을 분석하고 학습 전략을 제시합니다.</p>
@@ -98,8 +98,8 @@ export const Section03_Projects_Arrays = () => {
                 <p>초기에 AI가 데이터를 잘못 분석하여 학생의 성취도를 잘못 평가하는 문제가 있었습니다.</p>
                 <p>원인을 찾아보니 데이터를 직접적으로 보내지 않고 js를 통해 페이지의 정보를 긁어 보내다보니 속도 저하 문제와 데이터 불일치 문제가 발생하였다는것을 깨달았습니다.</p>
                 <p>이를 해결하기 위해</p>
-                <img src="/public/project/aaa_code_ai01.png" alt="온라인 학업성취도 평가 code" />
-                <img src="/public/project/aaa_code_ai02.png" alt="온라인 학업성취도 평가 code" />
+                <img src="/project/aaa_code_ai01.png" alt="온라인 학업성취도 평가 code" />
+                <img src="/project/aaa_code_ai02.png" alt="온라인 학업성취도 평가 code" />
                 <p>위와 같이 데이터를 직접 보내는 방식으로 변경하고 Prompt 템플릿을 작성하여 문제를 해결했습니다.</p>
 
               </div>
@@ -111,7 +111,7 @@ export const Section03_Projects_Arrays = () => {
                 <p>Client가 진단을 할 때마다 세부적인 응답이 다르게 나오는 문제가 있었습니다.</p>
                 <p>또한 계속 불필요한 ChatGPT API 요청을 보내 비용과 정보 불일치 문제가 발생하였습니다.</p>
                 <p>이를 해결하기 위해</p>
-                <img src="/public/project/aaa_code_ai03.png" alt="온라인 학업성취도 평가 code" />
+                <img src="/project/aaa_code_ai03.png" alt="온라인 학업성취도 평가 code" />
                 <p>초기 시스템 메시지 템플릿을 지정해주었고 대화 기록을 저장하여 시험지에 대한 초기 응답을 받았다면 뒤부터는 기존 진단 불러오기 기능을 구현하여 문제를 해결했습니다.</p>
               </div>
             </details>
@@ -151,7 +151,7 @@ export const Section03_Projects_Arrays = () => {
         "Styled-components",
       ],
       date: "2023.12.01 ~ 2024.01.12",
-      image: "/public/project/nineCloud01.png",
+      image: "/project/nineCloud01.png",
       details: {
         Sortation: "팀 프로젝트",
         Achievement: "서비스 5일간 146명의 가입 유저",
@@ -192,7 +192,7 @@ export const Section03_Projects_Arrays = () => {
         </div>
 
         <article>
-          <img src="/public/project/ninecloud_architecture.png" alt="nineCloud Architecture" />
+          <img src="/project/ninecloud_architecture.png" alt="nineCloud Architecture" />
         </article>
         <div class="pjDetails">
           <p>프로젝트 아키텍처입니다.</p>
@@ -211,13 +211,13 @@ export const Section03_Projects_Arrays = () => {
           <tbody>
             <tr>
               <td>
-                <img src="/public/project/ninecloud_gif01.gif" alt="소셜 로그인 기능" />
+                <img src="/project/ninecloud_gif01.gif" alt="소셜 로그인 기능" />
               </td>
               <td>
-                <img src="/public/project/ninecloud_gif02.gif" alt="단락 페이지 기능" />
+                <img src="/project/ninecloud_gif02.gif" alt="단락 페이지 기능" />
               </td>
               <td>
-                <img src="/public/project/ninecloud_gif03.gif" alt="그림 그리기 기능" />
+                <img src="/project/ninecloud_gif03.gif" alt="그림 그리기 기능" />
               </td>
             </tr>
             <tr>
@@ -245,13 +245,13 @@ export const Section03_Projects_Arrays = () => {
           <tbody>
             <tr>
               <td>
-                <img src="/public/project/ninecloud_gif04.gif" alt="OpenAPI 기능" />
+                <img src="/project/ninecloud_gif04.gif" alt="OpenAPI 기능" />
               </td>
               <td>
-                <img src="/public/project/ninecloud_gif05.gif" alt="무한스크롤 기능" />
+                <img src="/project/ninecloud_gif05.gif" alt="무한스크롤 기능" />
               </td>
               <td>
-                <img src="/public/project/ninecloud_gif06.gif" alt="채팅방 기능" />
+                <img src="/project/ninecloud_gif06.gif" alt="채팅방 기능" />
               </td>
             </tr>
             <tr>
@@ -295,7 +295,7 @@ export const Section03_Projects_Arrays = () => {
                 <p>이를 해결하기 위해 서버에서 만료시간을 직접 관리하고 클라이언트에서는 만료된 이후 서버 요청 시 자동으로 토큰 재발급 URL로 이동하도록 Axios 인터셉터를 활용하여 문제를 해결했습니다.</p>
                 <p>또한 서버와 협의하여 419번 에러코드를 토큰 만료 코드로 통일하고, 인터셉터에서 419번 에러가 발생하면 자동으로 /token 경로로 이동하여 RefreshToken을 서버에 보내도록 구현하였습니다.</p>
                 <p>그 결과, 토큰이 만료되면 419번 에러코드가 발생하고, 자동으로 /token으로 이동하여 새로운 AccessToken을 발급받을 수 있도록 개선되었습니다.</p>
-                <img src="/public/project/ninecloud_code01.png" alt="토큰 만료시간 처리 로직" />
+                <img src="/project/ninecloud_code01.png" alt="토큰 만료시간 처리 로직" />
               </div>
             </details>
 
@@ -303,12 +303,12 @@ export const Section03_Projects_Arrays = () => {
               <summary class="troubleTitle">서버에서 지정해준 URL로 접근하지 못하는 현상</summary>
               <div class="troubleContent">
                 <p>서버에서 지정해준 URL로 접근하지 못하는 현상이 발생했습니다.</p>
-                <img src="/public/project/ninecloud_trouble_01.png" alt="nineCloud Trouble" />
+                <img src="/project/ninecloud_trouble_01.png" alt="nineCloud Trouble" />
                 <p>서버에서 설정해준 URL로 접근하는 과정이 쉽지 않았습니다.</p>
-                <img src="/public/project/ninecloud_trouble_02.png" alt="nineCloud Trouble" />
-                <img src="/public/project/ninecloud_trouble_03.png" alt="nineCloud Trouble" />
+                <img src="/project/ninecloud_trouble_02.png" alt="nineCloud Trouble" />
+                <img src="/project/ninecloud_trouble_03.png" alt="nineCloud Trouble" />
                 <p>분명 엔드포인트를 /community/chat/socket.io로 설정해놓았는데 막상 개발자 도구를 보면 설정한 엔드포인트로 접근하지 못했습니다.</p>
-                <img src="/public/project/ninecloud_trouble_04.png" alt="nineCloud Trouble" />
+                <img src="/project/ninecloud_trouble_04.png" alt="nineCloud Trouble" />
                 <p>혹시 path설정을 따로 해준다면 접근할 수 있을까 해서 기존에 하던 방식과 다르게 path 설정을 따로 해줬습니다.</p>
                 <img src="https://github.com/final-project-hh99/front/assets/128838463/92dc4443-ffff-4204-8e45-bfa78206b532" alt="nineCloud Trouble" />
                 <p>결국 Server와 연결에 성공하였고 채팅 기능 구현에 성공했습니다.</p>
@@ -318,14 +318,14 @@ export const Section03_Projects_Arrays = () => {
         `,
         end: `
         <article>
-          <img src="/public/project/best_hanghae.png" alt="최고의인기프로젝트상" />
+          <img src="/project/best_hanghae.png" alt="최고의인기프로젝트상" />
         </article>
         <div class="pjDetails">
           <p>항해99 17기 최고의 인기 프로젝트 상을 수상하였습니다.</p>
         </div>
 
         <article>
-          <img src="/public/project/ninecloud_service.png" alt="nineCloud 서비스" />
+          <img src="/project/ninecloud_service.png" alt="nineCloud 서비스" />
         </article>
         <div class="pjDetails">
           <p>첫 대규모 프로젝트였고, 잠깐이나마 실제 서비스를 했던 첫 프로젝트였던만큼 큰 애정을 가지고 작업에 임했습니다. 그 결과로 감사하게도 유저테스트 기간 5일동안 총 146명이 가입하였고 648개의 게시물이 등록되고 75개의 유저피드백을 받았습니다.</p>
@@ -361,7 +361,7 @@ export const Section03_Projects_Arrays = () => {
         "Jenkins",
       ],
       date: "2025.02.28 ~ 2025.03.22",
-      image: "/public/project/portfolio_01.png",
+      image: "/project/portfolio_01.png",
       details: {
         Sortation: "개인 프로젝트",
         Achievement: "첫 단독 풀스택 프로젝트",
@@ -385,7 +385,7 @@ export const Section03_Projects_Arrays = () => {
         content: `
         <h3 style="text-align: center; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold;">※현재 모바일 적응형 작업 중입니다.※</h3>
         <article>
-          <img src="/public/project/portfolio_01.png" alt="한덕용 포트폴리오" />
+          <img src="/project/portfolio_01.png" alt="한덕용 포트폴리오" />
         </article>
         <table class="feature-table">
           <thead>
@@ -399,16 +399,16 @@ export const Section03_Projects_Arrays = () => {
             <tr>
               <td style="text-align: center; vertical-align: middle;">
                 <img 
-                  src="/public/project/portfolio_video01.gif" 
+                  src="/project/portfolio_video01.gif" 
                   alt="포트폴리오 메인화면" 
                   style="display: block; margin: 0 auto; max-width: 100%; height: auto;"
                 />
               </td>
               <td>
-                <img src="/public/project/portfolio_video02.gif" alt="포트폴리오 팝업 이벤트" />
+                <img src="/project/portfolio_video02.gif" alt="포트폴리오 팝업 이벤트" />
               </td>
               <td>
-                <img src="/public/project/portfolio_video03.gif" alt="포트폴리오 오늘의 날씨" />
+                <img src="/project/portfolio_video03.gif" alt="포트폴리오 오늘의 날씨" />
               </td>
             </tr>
             <tr>
@@ -436,13 +436,13 @@ export const Section03_Projects_Arrays = () => {
           <tbody>
             <tr>
               <td>
-                <img src="/public/project/portfolio_video04.gif" alt="포트폴리오 프로젝트 팝업" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
+                <img src="/project/portfolio_video04.gif" alt="포트폴리오 프로젝트 팝업" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
               </td>
               <td style="text-align: center; vertical-align: middle;">
-                <img src="/public/project/portfolio_video05.gif" alt="포트폴리오 Contact" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
+                <img src="/project/portfolio_video05.gif" alt="포트폴리오 Contact" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
               </td>
               <td style="text-align: center; vertical-align: middle;">
-                <img src="/public/project/portfolio_video06.gif" alt="포트폴리오 Feedback" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
+                <img src="/project/portfolio_video06.gif" alt="포트폴리오 Feedback" style="display: block; margin: 0 auto; max-width: 100%; height: auto;" />
               </td>
             </tr>
             <tr>
@@ -468,7 +468,7 @@ export const Section03_Projects_Arrays = () => {
                 <p>원인을 찾기 위해 Postman에서 직접 API를 호출해보니 No Data를 반환하였습니다.</p>
                 <p>Params를 검증해보니 자정을 넘기게 되면 오늘 날짜의 어제 시간을 호출하고 있던 문제를 발견하였습니다.</p>
                 <p>해결 : 자정 ~ 0030 사이일 때는 이전 날짜의 23:30 데이터를 사용하도록 수정하였습니다.</p>
-                <img src="/public/project/portfolio_trouble01.png" alt="한덕용 포트폴리오 Trouble" />
+                <img src="/project/portfolio_trouble01.png" alt="한덕용 포트폴리오 Trouble" />
               </div>
             </details>
           </div>
@@ -502,7 +502,7 @@ export const Section03_Projects_Arrays = () => {
         "MySQL",
       ],
       date: "2024.12.05 ~ 2024.12.13",
-      image: "/public/project/swc01.png",
+      image: "/project/swc01.png",
       details: {
         Sortation: "팀 프로젝트",
         Achievement:
@@ -538,7 +538,7 @@ export const Section03_Projects_Arrays = () => {
           </div>
 
           <article>
-            <img src="/public/project/swc_ppt01.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
+            <img src="/project/swc_ppt01.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
           </article>
           <div class="pjDetails">
             <p>JWT 기반 인증 시스템을 구현하였습니다. 사용자가 서버에 요청을 보낼 때, JWT 필터를 통해 먼저 토큰을 확인하는 구조로 설계하였습니다.</p>
@@ -548,7 +548,7 @@ export const Section03_Projects_Arrays = () => {
           </div>
 
           <article>
-            <img src="/public/project/swc_ppt02.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
+            <img src="/project/swc_ppt02.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
           </article>
           <div class="pjDetails">
             <p>Google OAuth2 기반의 로그인 시스템을 구현하였습니다. 사용자가 Google 로그인을 요청하면, OAuth2 인증 프로세스가 자동으로 진행되도록 Spring Security OAuth2 Client를 활용하였습니다.</p>
@@ -598,7 +598,7 @@ export const Section03_Projects_Arrays = () => {
         "MySQL",
       ],
       date: "2024.11.25 ~ 2024.12.01",
-      image: "/public/project/inflearn_clone_coding01.png",
+      image: "/project/inflearn_clone_coding01.png",
       details: {
         Sortation: "팀 프로젝트",
         Achievement: "Spring을 사용한 첫 프로젝트, 대부분의 CRUD 구현 성공",
@@ -660,7 +660,7 @@ export const Section03_Projects_Arrays = () => {
             </div>
 
             <article>
-              <img src="/public/project/inflearn_clone_coding_ppt01.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
+              <img src="/project/inflearn_clone_coding_ppt01.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
             </article>
             <div class="pjDetails">
               <p>Spring Security와 BCryptPasswordEncoder를 활용하여 안전한 회원가입 시스템을 구현하였습니다.</p>
@@ -670,7 +670,7 @@ export const Section03_Projects_Arrays = () => {
             </div>
 
             <article>
-              <img src="/public/project/inflearn_clone_coding_ppt02.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
+              <img src="/project/inflearn_clone_coding_ppt02.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
             </article>
             <div class="pjDetails">
               <p>Spring Security와 JWT를 활용하여 로그인 기능을 구현하였습니다.</p>
@@ -680,7 +680,7 @@ export const Section03_Projects_Arrays = () => {
             </div>
 
             <article>
-              <img src="/public/project/inflearn_clone_coding_ppt03.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
+              <img src="/project/inflearn_clone_coding_ppt03.png" alt="SWC" style="box-shadow:none; border-radius:0; width: 100%;" />
             </article>
             <div class="pjDetails">
               <p>토큰을 클라이언트 쿠키에 저장시켜 사용자 인증 상태를 유지하도록 구현하였습니다.</p>
@@ -710,7 +710,7 @@ export const Section03_Projects_Arrays = () => {
       ],
       skillsTags: ["JavaScript", "Jsp", "Spring", "MySQL", "Bootstrap"],
       date: "2024.11.11 ~ 2024.11.18",
-      image: "/public/project/nanusam01.png",
+      image: "/project/nanusam01.png",
       details: {
         Sortation: "팀 프로젝트",
         Achievement: "Spring을 사용한 첫 프로젝트, 대부분의 CRUD 구현 성공",
@@ -744,11 +744,11 @@ export const Section03_Projects_Arrays = () => {
             </div>
 
             <article>
-              <img src="/public/project/nanusam_ppt01.png" alt="나누샘사진" style="box-shadow:none; border-radius:0; width: 100%;" />
+              <img src="/project/nanusam_ppt01.png" alt="나누샘사진" style="box-shadow:none; border-radius:0; width: 100%;" />
             </article>
 
             <article>
-              <img src="/public/project/nanusam_ppt02.png" alt="나누샘사진" style="box-shadow:none; border-radius:0; width: 100%;" />
+              <img src="/project/nanusam_ppt02.png" alt="나누샘사진" style="box-shadow:none; border-radius:0; width: 100%;" />
             </article>
             `,
         end: `

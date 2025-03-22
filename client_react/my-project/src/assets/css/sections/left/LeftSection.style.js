@@ -6,7 +6,7 @@ export const L_ProfileImg = styled.div`
   height: 23.15vh;
   min-height: 250px;
   border: 1px solid black;
-  background-image: url("/public/한덕용_증명사진.jpg");
+  background-image: url("/한덕용_증명사진.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,7 +112,7 @@ export const L_CyGenderBox = styled.div`
 export const L_CyGender = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url("/public/cy_gender_male.png");
+  background-image: url("/cy_gender_male.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
