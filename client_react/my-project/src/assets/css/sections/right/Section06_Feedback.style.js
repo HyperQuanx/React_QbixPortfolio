@@ -140,6 +140,7 @@ export const FeedbackPopupTitle = styled.h3`
   font-family: "Nanum Brush Script", sans-serif;
   font-size: 1.8rem;
   position: relative;
+  margin-bottom: 20px;
 
   &::after {
     content: "✏️";

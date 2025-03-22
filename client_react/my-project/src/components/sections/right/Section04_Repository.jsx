@@ -10,6 +10,7 @@ import {
   TableRow,
   TableCell,
   IndexCell,
+  RepositoryLink,
 } from "../../../assets/css/sections/right/Section04_Repository.style";
 
 const Section04_Repository = () => {
@@ -40,7 +41,7 @@ const Section04_Repository = () => {
     },
     {
       id: 5,
-      link: "제 이력서 파일입니다.",
+      link: "제 이력서입니다.",
       href: "준비중입니다",
       platform: "Word",
     },
@@ -52,6 +53,7 @@ const Section04_Repository = () => {
     },
   ];
 
+  // 준비중때문에 span으로 처리
   const handleLinkClick = (repo) => {
     if (repo.href === "준비중입니다") {
       Swal.fire({
@@ -82,12 +84,9 @@ const Section04_Repository = () => {
           <TableRow key={repo.id}>
             <IndexCell>{repo.id}</IndexCell>
             <TableCell width={3}>
-              <span
-                style={{ color: "#3b7ead", cursor: "pointer" }}
-                onClick={() => handleLinkClick(repo)}
-              >
+              <RepositoryLink onClick={() => handleLinkClick(repo)}>
                 {repo.link}
-              </span>
+              </RepositoryLink>
             </TableCell>
             <TableCell width={0.5}>{repo.platform}</TableCell>
           </TableRow>

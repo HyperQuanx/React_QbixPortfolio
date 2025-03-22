@@ -38,3 +38,13 @@ export const IndexCell = styled(TableCell)`
   flex: 0.5;
   justify-content: center;
 `;
+
+export const RepositoryLink = styled.span`
+  color: #3b7ead;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;

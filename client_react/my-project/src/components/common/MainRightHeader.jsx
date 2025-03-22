@@ -25,6 +25,7 @@ const MainRightHeader = () => {
         <PortfolioGithubLink
           href="https://github.com/HyperQuanx"
           target="_blank"
+          rel="noopener noreferrer"
         >
           https://github.com/HyperQuanx
         </PortfolioGithubLink>

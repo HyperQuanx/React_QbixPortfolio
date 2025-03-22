@@ -90,4 +90,18 @@ public class FeedbackService {
         Feedback saved = feedbackRepository.save(updatedFeedback);
         return FeedbackDTO.fromEntity(saved);
     }
+
+    public boolean verifyPassword(Long idx, String password) {
+        Feedback feedback = feedbackRepository.findById(idx)
+                .orElseThrow(() -> new RuntimeException("피드백을 찾을 수 없습니다"));
+        
+        return feedback.getPassword().equals(password);
+    }
+
+    public FeedbackDTO getFeedbackByIdx(Long idx) {
+        Feedback feedback = feedbackRepository.findById(idx)
+                .orElseThrow(() -> new RuntimeException("피드백을 찾을 수 없습니다"));
+        
+        return FeedbackDTO.fromEntity(feedback);
+    }
 }
