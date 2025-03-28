@@ -104,7 +104,7 @@ const Section02_Skills = () => {
             <>
               <SkillTitle>FrontEnd</SkillTitle>
               <SkillItemContainer>
-                <SkillItem>
+                {/* <SkillItem>
                   <SkillIcon>
                     <img
                       src="/icons/skills/frontEnd/html_icon.svg"
@@ -121,9 +121,9 @@ const Section02_Skills = () => {
                       SEO를 고려한 마크업 구축 경험
                     </SkillDescription>
                   </SkillInfo>
-                </SkillItem>
+                </SkillItem> */}
 
-                <SkillItem>
+                {/* <SkillItem>
                   <SkillIcon>
                     <img src="/icons/skills/frontEnd/css_icon.svg" alt="CSS3" />
                   </SkillIcon>
@@ -137,6 +137,29 @@ const Section02_Skills = () => {
                     </SkillDescription>
                     <SkillDescription>
                       Sass를 활용한 스타일링 경험
+                    </SkillDescription>
+                  </SkillInfo>
+                </SkillItem> */}
+
+                <SkillItem>
+                  <SkillIcon>
+                    <img
+                      src="/icons/skills/frontEnd/react_icon.svg"
+                      alt="React"
+                    />
+                  </SkillIcon>
+                  <SkillInfo>
+                    <SkillName>React</SkillName>
+                    <SkillDescription>
+                      함수형 컴포넌트 및 React Hooks를 활용한 UI 개발, React
+                      Router를 이용한 SPA 구현 경험
+                    </SkillDescription>
+                    <SkillDescription>
+                      Redux, Recoil 등을 활용한 상태 관리 경험, React Query를
+                      활용한 비동기 데이터 관리 가능
+                    </SkillDescription>
+                    <SkillDescription>
+                      Styled-components 사용 경험, 반응형 웹 디자인 구현 가능
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -176,29 +199,6 @@ const Section02_Skills = () => {
                     <SkillDescription>
                       React 환경에서 TypeScript 적용 경험, ESLint & Prettier와
                       함께 코드 품질 관리 경험
-                    </SkillDescription>
-                  </SkillInfo>
-                </SkillItem>
-
-                <SkillItem>
-                  <SkillIcon>
-                    <img
-                      src="/icons/skills/frontEnd/react_icon.svg"
-                      alt="React"
-                    />
-                  </SkillIcon>
-                  <SkillInfo>
-                    <SkillName>React</SkillName>
-                    <SkillDescription>
-                      함수형 컴포넌트 및 React Hooks를 활용한 UI 개발, React
-                      Router를 이용한 SPA 구현 경험
-                    </SkillDescription>
-                    <SkillDescription>
-                      Redux, Recoil 등을 활용한 상태 관리 경험, React Query를
-                      활용한 비동기 데이터 관리 가능
-                    </SkillDescription>
-                    <SkillDescription>
-                      Styled-components 사용 경험, 반응형 웹 디자인 구현 가능
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
@@ -243,7 +243,7 @@ const Section02_Skills = () => {
             <>
               <SkillTitle>BackEnd</SkillTitle>
               <SkillItemContainer>
-                <SkillItem>
+                {/* <SkillItem>
                   <SkillIcon>
                     <img
                       src="/icons/skills/backEnd/java_logo_icon.svg"
@@ -260,7 +260,7 @@ const Section02_Skills = () => {
                       파일 처리, 컬렉션 등 Java의 주요 기능 활용 가능
                     </SkillDescription>
                   </SkillInfo>
-                </SkillItem>
+                </SkillItem> */}
 
                 <SkillItem>
                   <SkillIcon>
@@ -332,7 +332,10 @@ const Section02_Skills = () => {
                       Spring Boot와 통합하여 동적 콘텐츠 생성 및 RESTful API
                       연동 경험
                     </SkillDescription>
-                    <SkillDescription>"[Fix]" 나중에 채워</SkillDescription>
+                    <SkillDescription>
+                      Thymeleaf 템플릿 레이아웃, fragments 활용으로 재사용
+                      가능한 UI 컴포넌트 구현
+                    </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
 

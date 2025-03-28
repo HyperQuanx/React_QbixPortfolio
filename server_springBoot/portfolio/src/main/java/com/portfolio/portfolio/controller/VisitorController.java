@@ -40,8 +40,15 @@ public class VisitorController {
       visitorCookie.setHttpOnly(true); // JavaScript 접근 방어
       
       // 보안을 위해 Secure 플래그 설정 (HTTPS에서만 작동)
-      // [Fix] 개발 환경에서는 주석 처리하고 프로덕션에서 활성화
-      // visitorCookie.setSecure(true);
+      // [Fix] 개발 환경에서는 주석 처리하고 서비스에서 활성화
+      visitorCookie.setSecure(true);
+      
+      // SameSite 속성 설정 (Spring Boot 2.7+ 이상에서 사용 가능)
+      // response.setHeader("Set-Cookie", visitorCookie.getName() + "=" + visitorCookie.getValue() 
+      //         + "; Max-Age=" + visitorCookie.getMaxAge() 
+      //         + "; Path=" + visitorCookie.getPath() 
+      //         + "; HttpOnly"
+      //         + "; Secure; SameSite=None");
       
       response.addCookie(visitorCookie);
     }
