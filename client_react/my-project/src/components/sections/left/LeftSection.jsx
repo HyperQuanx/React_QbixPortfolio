@@ -96,7 +96,7 @@ const LeftSection = () => {
           baseTime = String(hour).padStart(2, "0") + "30";
         }
 
-        // console.log("요청 시간:", `${year}${month}${day}`, baseTime);
+        console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
         const response = await axios.get(
           // getUltraSrtNcst는 초단기실황 정보
