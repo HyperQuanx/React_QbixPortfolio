@@ -203,7 +203,7 @@ const Section02_Skills = () => {
                   </SkillInfo>
                 </SkillItem>
 
-                <SkillItem>
+                {/* <SkillItem>
                   <SkillIcon>
                     <img
                       src="/icons/skills/frontEnd/socket_io_icon.svg"
@@ -223,7 +223,7 @@ const Section02_Skills = () => {
                       구현 경험
                     </SkillDescription>
                   </SkillInfo>
-                </SkillItem>
+                </SkillItem> */}
 
                 <SkillItem>
                   <SkillIcon>
