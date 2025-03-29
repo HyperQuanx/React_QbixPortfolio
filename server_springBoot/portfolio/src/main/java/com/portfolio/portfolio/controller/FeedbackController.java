@@ -166,7 +166,9 @@ public class FeedbackController {
     public ResponseEntity<FeedbackDTO> updateFeedback(
             @PathVariable Long idx,
             @RequestParam("password") String password,
+            @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "contents", required = false) String contents,
+            @RequestParam(value = "imagePath", required = false) String imagePath,
             @RequestParam(value = "image", required = false) MultipartFile imageFile) {
         
         try {
@@ -177,10 +179,14 @@ public class FeedbackController {
                 return ResponseEntity.badRequest().body(FeedbackDTO.error("비밀번호가 일치하지 않습니다"));
             }
             
-            String imagePath = null;
+            String updatedImagePath = null;
             
+            // 기본 이미지 경로가 명시적으로 전달된 경우
+            if (imagePath != null && imagePath.equals("/cyHumanRBG.png")) {
+                updatedImagePath = imagePath;
+            }
             // 이미지 파일이 있으면 업로드
-            if (imageFile != null && !imageFile.isEmpty()) {
+            else if (imageFile != null && !imageFile.isEmpty()) {
                 // 디렉토리 생성
                 File directory = new File(UPLOAD_DIR);
                 if (!directory.exists()) {
@@ -198,16 +204,17 @@ public class FeedbackController {
                 Files.write(filePath, imageFile.getBytes());
                 
                 // 이미지 경로 설정 (새로운 이미지 컨트롤러 사용)
-                imagePath = "/images/feedback/" + newFilename;
+                updatedImagePath = "/images/feedback/" + newFilename;
                 
                 System.out.println("이미지 저장 경로: " + filePath);
-                System.out.println("이미지 URL 경로: " + imagePath);
+                System.out.println("이미지 URL 경로: " + updatedImagePath);
             }
             
-            // 피드백 DTO 생성
             FeedbackDTO feedbackDTO = FeedbackDTO.builder()
+                    .name(name)
+                    //.password(newPassword)  // 비밀번호도 수정 가능 (주의: 검증용 password는 그대로 사용)
                     .contents(contents)
-                    .image(imagePath)
+                    .image(updatedImagePath)
                     .build();
             
             // 피드백 수정

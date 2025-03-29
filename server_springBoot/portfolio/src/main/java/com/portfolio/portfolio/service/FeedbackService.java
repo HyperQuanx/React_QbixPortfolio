@@ -41,12 +41,11 @@ public class FeedbackService {
             throw new IllegalArgumentException("피드백을 찾을 수 없거나 비밀번호가 일치하지 않습니다.");
         }
         
-        // Entity Update
         Feedback updatedFeedback = Feedback.builder()
                 .idx(feedback.getIdx())
-                .name(feedback.getName())
+                .name(feedbackDTO.getName() != null ? feedbackDTO.getName() : feedback.getName())
                 .regDate(feedback.getRegDate())
-                .password(feedback.getPassword())
+                .password(feedbackDTO.getPassword() != null ? feedbackDTO.getPassword() : feedback.getPassword())
                 .status(feedbackDTO.getStatus() != null ? feedbackDTO.getStatus() : feedback.getStatus())
                 .contents(feedbackDTO.getContents() != null ? feedbackDTO.getContents() : feedback.getContents())
                 .image(feedbackDTO.getImage() != null ? feedbackDTO.getImage() : feedback.getImage())
