@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import lombok.ToString;
 
 @Entity
@@ -41,7 +42,7 @@ public class Feedback {
     
     @PrePersist
     public void prePersist() {
-        this.regDate = LocalDateTime.now();
+        this.regDate = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
         this.status = this.status == null ? "public" : this.status;
         this.image = this.image == null ? "/cyHumanRBG.png" : this.image;
     }
