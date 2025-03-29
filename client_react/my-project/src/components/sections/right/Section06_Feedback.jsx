@@ -121,11 +121,19 @@ const Section06_Feedback = () => {
     }
   };
 
-  const handleRemoveImage = () => {
+  const handleRemoveImage = (e) => {
+    e.stopPropagation();
     setSelectedImage(null);
     setPreviewUrl(DEFAULT_IMAGE);
     setIsDefaultImage(true);
     fileInputRef.current.value = null;
+    
+    if (editMode) {
+      setSelectedFeedback({
+        ...selectedFeedback,
+        image: "/cyHumanRBG.png"
+      });
+    }
   };
 
   // 수정 또는 삭제 버튼 클릭 핸들러
@@ -254,8 +262,13 @@ const Section06_Feedback = () => {
       formDataObj.append("name", formData.feedbackName);
       formDataObj.append("password", formData.feedbackPassword);
       formDataObj.append("contents", formData.feedbackContent);
+      
       if (selectedImage) {
         formDataObj.append("image", selectedImage);
+      } else if (isDefaultImage || editMode) {
+        // 기본 이미지인 경우 또는 수정 모드에서 이미지를 제거한 경우
+        // 명시적으로 기본 이미지 경로 전송
+        formDataObj.append("imagePath", "/cyHumanRBG.png");
       }
 
       let response;
@@ -485,7 +498,6 @@ const Section06_Feedback = () => {
                   value={formData.feedbackName}
                   onChange={handleChange}
                   required
-                  readOnly={editMode} // 수정에서는 이름 빼기
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -509,7 +521,6 @@ const Section06_Feedback = () => {
                   value={formData.feedbackPassword}
                   onChange={handleChange}
                   required
-                  readOnly={editMode} // 수정 모드에서는 비밀번호 변경 불가
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -525,7 +536,7 @@ const Section06_Feedback = () => {
               <FeedbackImageUploadGroup>
                 <FeedbackImageUploadLabel>이미지</FeedbackImageUploadLabel>
                 <FeedbackImagePreviewContainer
-                  onClick={() => fileInputRef.current.click()}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <FeedbackImagePreview src={previewUrl} alt="미리보기" />
                   {!isDefaultImage && (
