@@ -122,16 +122,21 @@ const Section06_Feedback = () => {
   };
 
   const handleRemoveImage = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation(); // 이벤트 버블링 방지 (이벤트가 있을 때만 실행)
+
     setSelectedImage(null);
     setPreviewUrl(DEFAULT_IMAGE);
     setIsDefaultImage(true);
-    fileInputRef.current.value = null;
-    
-    if (editMode) {
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null;
+    }
+
+    // 수정 모드에서 명시적으로 기본 이미지 경로 설정
+    if (editMode && selectedFeedback) {
       setSelectedFeedback({
         ...selectedFeedback,
-        image: "/cyHumanRBG.png"
+        image: "/cyHumanRBG.png",
       });
     }
   };
@@ -155,7 +160,7 @@ const Section06_Feedback = () => {
       setLoading(true);
 
       if (actionType === "edit") {
-        // 비밀번호 검증 API 호출
+        // 비번 검증
         try {
           const response = await axios.post(
             `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
@@ -195,7 +200,6 @@ const Section06_Feedback = () => {
         } catch (error) {
           console.error("비밀번호 확인 오류:", error);
 
-          // 오류 응답이 있는 경우 메시지 표시
           if (error.response && error.response.data) {
             Swal.fire(
               "오류",
@@ -207,7 +211,6 @@ const Section06_Feedback = () => {
           }
         }
       } else if (actionType === "delete") {
-        // 삭제 API 호출로 비밀번호 확인 (기존 API 활용)
         try {
           const response = await axios.delete(
             `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
@@ -232,7 +235,6 @@ const Section06_Feedback = () => {
         } catch (error) {
           console.error("피드백 삭제 오류:", error);
 
-          // 오류 응답이 있는 경우 메시지 표시
           if (error.response && error.response.data) {
             Swal.fire(
               "오류",
@@ -262,18 +264,20 @@ const Section06_Feedback = () => {
       formDataObj.append("name", formData.feedbackName);
       formDataObj.append("password", formData.feedbackPassword);
       formDataObj.append("contents", formData.feedbackContent);
-      
+
+      // 이미지 처리 로직 개선
       if (selectedImage) {
+        // 새 이미지 선택한 경우
         formDataObj.append("image", selectedImage);
-      } else if (isDefaultImage || editMode) {
-        // 기본 이미지인 경우 또는 수정 모드에서 이미지를 제거한 경우
-        // 명시적으로 기본 이미지 경로 전송
+        console.log("새 이미지 업로드:", selectedImage.name);
+      } else if (isDefaultImage) {
+        // 기본 이미지로 설정된 경우 (명시적으로 경로 전송)
         formDataObj.append("imagePath", "/cyHumanRBG.png");
+        console.log("기본 이미지 경로 설정");
       }
 
       let response;
       if (editMode) {
-        // 수정 API 호출
         formDataObj.append("idx", selectedFeedback.idx);
         response = await axios.put(
           `${import.meta.env.VITE_SERVER_URL}/api/feedback/${
@@ -287,7 +291,6 @@ const Section06_Feedback = () => {
           }
         );
       } else {
-        // 등록 API 호출
         response = await axios.post(
           `${import.meta.env.VITE_SERVER_URL}/api/feedback`,
           formDataObj,
@@ -312,6 +315,10 @@ const Section06_Feedback = () => {
         Swal.fire("오류", response.data.message, "error");
       }
     } catch (error) {
+      console.error(
+        editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
+        error
+      );
       Swal.fire(
         "오류",
         editMode
@@ -319,10 +326,6 @@ const Section06_Feedback = () => {
           : "피드백 등록 중 오류가 발생했습니다.",
         "error"
       );
-      // console.error(
-      //   editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
-      //   error
-      // );
     } finally {
       setLoading(false);
     }
@@ -521,6 +524,7 @@ const Section06_Feedback = () => {
                   value={formData.feedbackPassword}
                   onChange={handleChange}
                   required
+                  readOnly={editMode}
                 />
                 <FeedbackCharCount
                   isLimit={
@@ -536,7 +540,7 @@ const Section06_Feedback = () => {
               <FeedbackImageUploadGroup>
                 <FeedbackImageUploadLabel>이미지</FeedbackImageUploadLabel>
                 <FeedbackImagePreviewContainer
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={() => fileInputRef.current.click()}
                 >
                   <FeedbackImagePreview src={previewUrl} alt="미리보기" />
                   {!isDefaultImage && (
