@@ -43,14 +43,14 @@ public class VisitorController {
       // [Fix] 개발 환경에서는 주석 처리하고 서비스에서 활성화
       visitorCookie.setSecure(true);
       
-      // SameSite 속성 설정 (Spring Boot 2.7+ 이상에서 사용 가능)
-      // response.setHeader("Set-Cookie", visitorCookie.getName() + "=" + visitorCookie.getValue() 
-      //         + "; Max-Age=" + visitorCookie.getMaxAge() 
-      //         + "; Path=" + visitorCookie.getPath() 
-      //         + "; HttpOnly"
-      //         + "; Secure; SameSite=None");
+      // SameSite 속성을 None으로 명시적 설정 (크로스 도메인 쿠키 허용)
+      response.setHeader("Set-Cookie", visitorCookie.getName() + "=" + visitorCookie.getValue() 
+              + "; Max-Age=" + visitorCookie.getMaxAge() 
+              + "; Path=" + visitorCookie.getPath() 
+              + "; HttpOnly"
+              + "; Secure; SameSite=None");
       
-      response.addCookie(visitorCookie);
+      // response.addCookie(visitorCookie);
     }
     
     return ResponseEntity.ok().build();

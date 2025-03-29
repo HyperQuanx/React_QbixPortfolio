@@ -5,6 +5,9 @@ import axios from "axios";
 const api = axios.create({
   baseURL: import.meta.env.VITE_SERVER_URL,
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 const ViewCountArea = () => {
@@ -16,16 +19,28 @@ const ViewCountArea = () => {
   useEffect(() => {
     const incrementVisitorCount = async () => {
       try {
-        const response = await api.post("/api/visitors/increment");
+        const response = await api.post(
+          "/api/visitors/increment",
+          {},
+          {
+            withCredentials: true,
+          }
+        );
         fetchVisitorCount();
-      } catch (error) {}
+      } catch (error) {
+        console.error("방문자 증가 오류:", error);
+      }
     };
 
     const fetchVisitorCount = async () => {
       try {
-        const response = await api.get("/api/visitors/count");
+        const response = await api.get("/api/visitors/count", {
+          withCredentials: true,
+        });
         setVisitorCount(response.data);
-      } catch (error) {}
+      } catch (error) {
+        console.error("방문자 조회 오류:", error);
+      }
     };
 
     incrementVisitorCount();
