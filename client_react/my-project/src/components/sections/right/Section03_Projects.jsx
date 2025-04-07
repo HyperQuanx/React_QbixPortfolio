@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   SectionTitle,
   SectionTitleUnderLine,
@@ -54,6 +54,11 @@ import { Section03_Projects_Arrays } from "./Section03_Projects_Arrays";
 const Section03_Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
+  // 각 섹션별 ref 배열 생성 (설명, 스택, 역할, 스킬)
+  const descriptionRefs = useRef([]);
+  const stackRefs = useRef([]);
+  const rolesRefs = useRef([]);
+  const skillsRefs = useRef([]);
 
   // 프로젝트 목록
   const projects = Section03_Projects_Arrays();
@@ -66,6 +71,73 @@ const Section03_Projects = () => {
     setSelectedProject(null);
   };
 
+  // 같은 행에 있는 섹션들의 높이를 일치시키는 함수
+  const equalizeHeights = () => {
+    // 각 행마다 2개의 프로젝트씩 그룹화
+    const rows = Math.ceil(projects.length / 2);
+
+    for (let row = 0; row < rows; row++) {
+      const startIdx = row * 2;
+      const endIdx = Math.min(startIdx + 1, projects.length - 1); // 마지막 행은 프로젝트가 하나일 수 있음
+
+      // 설명 섹션 높이 맞추기
+      if (
+        descriptionRefs.current[startIdx] &&
+        descriptionRefs.current[endIdx]
+      ) {
+        const height1 = descriptionRefs.current[startIdx].offsetHeight;
+        const height2 = descriptionRefs.current[endIdx].offsetHeight;
+        const maxHeight = Math.max(height1, height2);
+        descriptionRefs.current[startIdx].style.height = `${maxHeight}px`;
+        descriptionRefs.current[endIdx].style.height = `${maxHeight}px`;
+      }
+
+      // 스택 섹션 높이 맞추기
+      if (stackRefs.current[startIdx] && stackRefs.current[endIdx]) {
+        const height1 = stackRefs.current[startIdx].offsetHeight;
+        const height2 = stackRefs.current[endIdx].offsetHeight;
+        const maxHeight = Math.max(height1, height2);
+        stackRefs.current[startIdx].style.height = `${maxHeight}px`;
+        stackRefs.current[endIdx].style.height = `${maxHeight}px`;
+      }
+
+      // 역할 섹션 높이 맞추기
+      if (rolesRefs.current[startIdx] && rolesRefs.current[endIdx]) {
+        const height1 = rolesRefs.current[startIdx].offsetHeight;
+        const height2 = rolesRefs.current[endIdx].offsetHeight;
+        const maxHeight = Math.max(height1, height2);
+        rolesRefs.current[startIdx].style.height = `${maxHeight}px`;
+        rolesRefs.current[endIdx].style.height = `${maxHeight}px`;
+      }
+
+      // 스킬 섹션 높이 맞추기
+      if (skillsRefs.current[startIdx] && skillsRefs.current[endIdx]) {
+        const height1 = skillsRefs.current[startIdx].offsetHeight;
+        const height2 = skillsRefs.current[endIdx].offsetHeight;
+        const maxHeight = Math.max(height1, height2);
+        skillsRefs.current[startIdx].style.height = `${maxHeight}px`;
+        skillsRefs.current[endIdx].style.height = `${maxHeight}px`;
+      }
+    }
+  };
+
+  // refs 초기화 및 높이 조정
+  useEffect(() => {
+    // refs 배열 초기화
+    descriptionRefs.current = descriptionRefs.current.slice(0, projects.length);
+    stackRefs.current = stackRefs.current.slice(0, projects.length);
+    rolesRefs.current = rolesRefs.current.slice(0, projects.length);
+    skillsRefs.current = skillsRefs.current.slice(0, projects.length);
+
+    // 컴포넌트가 마운트된 후 및 리사이징 시 높이 조정
+    equalizeHeights();
+    window.addEventListener("resize", equalizeHeights);
+
+    return () => {
+      window.removeEventListener("resize", equalizeHeights);
+    };
+  }, [projects.length]);
+
   return (
     <section>
       <SectionTitle>Projects</SectionTitle>
@@ -74,7 +146,7 @@ const Section03_Projects = () => {
 
       <ProjectsContainer>
         <ProjectGrid>
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
               onClick={() => handleProjectClick(project)}
@@ -90,25 +162,35 @@ const Section03_Projects = () => {
                 {project.title}
               </ProjectTitle>
 
-              <ProjectContainerSection>
-                {project.description.map((desc, index) => (
-                  <ProjectDescription key={index}>{desc}</ProjectDescription>
+              <ProjectContainerSection
+                ref={(el) => (descriptionRefs.current[index] = el)}
+              >
+                {project.description.map((desc, descIndex) => (
+                  <ProjectDescription key={descIndex}>
+                    {desc}
+                  </ProjectDescription>
                 ))}
               </ProjectContainerSection>
 
-              <ProjectContainerSection>
+              <ProjectContainerSection
+                ref={(el) => (stackRefs.current[index] = el)}
+              >
                 <ProjectTag>{project.stack}</ProjectTag>
               </ProjectContainerSection>
 
-              <ProjectContainerSection>
-                {project.roles.map((tag, index) => (
-                  <RoleDescription key={index}>{tag}</RoleDescription>
+              <ProjectContainerSection
+                ref={(el) => (rolesRefs.current[index] = el)}
+              >
+                {project.roles.map((tag, roleIndex) => (
+                  <RoleDescription key={roleIndex}>{tag}</RoleDescription>
                 ))}
               </ProjectContainerSection>
 
-              <ProjectContainerSection>
-                {project.skillsTags.map((tag, index) => (
-                  <SkillsTags key={index}>{tag}</SkillsTags>
+              <ProjectContainerSection
+                ref={(el) => (skillsRefs.current[index] = el)}
+              >
+                {project.skillsTags.map((tag, skillIndex) => (
+                  <SkillsTags key={skillIndex}>{tag}</SkillsTags>
                 ))}
               </ProjectContainerSection>
 
