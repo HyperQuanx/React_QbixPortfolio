@@ -347,7 +347,7 @@ export const Section03_Projects_Arrays = () => {
         "기상청 초단기예보 API 연동으로 오늘의 날씨를 구현하였습니다.",
         "단독으로 기획부터 디자인, 프론트엔드·백엔드 개발 및 데이터베이스 구축까지 전 과정을 수행한 첫 프로젝트를 수행하였습니다.",
         "Cyworld 방명록 디자인을 참고하여 Feedback 기능을 구현하였습니다.",
-        "AWS 배포와 CI/CD 구축을 진행하였습니다.",
+        "Frontend는 Vercel, Backend는 Railway로 배포하였습니다.",
       ],
       skillsTags: [
         "React",
@@ -357,8 +357,7 @@ export const Section03_Projects_Arrays = () => {
         "SpringBoot",
         "JPA",
         "MySQL",
-        "AWS",
-        "Jenkins",
+        "Railway",
       ],
       date: "2025.02.28 ~ 2025.03.22",
       image: "/project/portfolio_01.png",
@@ -367,7 +366,7 @@ export const Section03_Projects_Arrays = () => {
         Achievement: "첫 단독 풀스택 프로젝트",
         developers: "FullStack : 한덕용",
         github: "https://github.com/HyperQuanx/React_QbixPortfolio",
-        url: "배포 중단",
+        url: "https://react-qbix-portfolio.vercel.app",
         features: [
           "예전 싸이월드가 생각나는 디자인으로 제작되었습니다.",
           "Today is 라는 문구를 통해 오늘의 날씨(서울 중구 기준)를 확인할 수 있습니다.",
@@ -380,7 +379,7 @@ export const Section03_Projects_Arrays = () => {
           "기상청 초단기예보 API 연동으로 오늘의 날씨를 구현하였습니다.",
           "단독으로 기획부터 디자인, 프론트엔드·백엔드 개발 및 데이터베이스 구축까지 전 과정을 수행한 첫 프로젝트를 수행하였습니다.",
           "Cyworld 방명록 디자인을 참고하여 Feedback 기능을 구현하였습니다.",
-          "AWS 배포와 CI/CD 구축을 진행하였습니다.",
+          "Frontend는 Vercel, Backend는 Railway로 배포하였습니다.",
         ],
         content: `
         <h3 style="text-align: center; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold;">※현재 모바일 적응형 작업 중입니다.※</h3>

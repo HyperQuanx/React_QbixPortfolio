@@ -97,6 +97,7 @@ export const ProjectTitle = styled.h3`
 export const ProjectContainerSection = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.5rem;
   margin: 0.5rem 0;
 `;
@@ -170,6 +171,7 @@ export const SkillsTags = styled.span`
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 500;
+  box-sizing: content-box;
 `;
 
 export const DateContainer = styled.div`
