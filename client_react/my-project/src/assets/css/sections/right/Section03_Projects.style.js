@@ -147,7 +147,7 @@ export const SkillsTags = styled.span`
     return "#359dc2";
   }};
   color: ${(props) => {
-    if (props.children.includes("React")) return "#000";
+    if (props.children.includes("React")) return "#FFF";
     if (props.children.includes("TypeScript")) return "#FFF";
     if (props.children.includes("Axios")) return "#FFF";
     if (props.children.includes("Styled")) return "#FFF";
