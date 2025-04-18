@@ -54,6 +54,7 @@ import { Section03_Projects_Arrays } from "./Section03_Projects_Arrays";
 const Section03_Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
+  
   // 각 섹션별 ref 배열 생성 (설명, 스택, 역할, 스킬)
   const descriptionRefs = useRef([]);
   const stackRefs = useRef([]);
