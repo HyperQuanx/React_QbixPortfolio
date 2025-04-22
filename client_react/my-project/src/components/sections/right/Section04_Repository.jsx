@@ -35,9 +35,21 @@ const Section04_Repository = () => {
     },
     {
       id: 4,
+      link: "제 Notion Portfolio입니다.",
+      href: "https://www.notion.so/Fullstack-Developer-14b56f3c798c803582e8dd33d56650bb",
+      platform: "Notion",
+    },
+    {
+      id: 5,
       link: "제 이력서입니다.",
       href: "준비중입니다",
       platform: "Word",
+    },
+    {
+      id: 6,
+      link: "제 자기소개서입니다.",
+      href: "준비중입니다",
+      platform: "PDF",
     },
   ];
 
