@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { WiDaySunny, WiRain, WiCloudy, WiSnow } from "react-icons/wi";
 import { FaCaretRight, FaTimes } from "react-icons/fa";
@@ -56,6 +56,7 @@ const LeftSection = () => {
 
   // 정보 팝업 표시 상태
   const [showInfo, setShowInfo] = useState(false);
+  const modalRef = useRef(null);
 
   // 날씨 정보 가져오기
   // 공식문서 죄다 뜯어서 메모 GPT 안씀
@@ -239,6 +240,23 @@ const LeftSection = () => {
     getWeather();
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        showInfo
+      ) {
+        setShowInfo(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInfo]);
+
   return (
     <section>
       <L_FeelingBox>
@@ -271,7 +289,7 @@ const LeftSection = () => {
         <AboutMeButtonContainer>
           <BounceButton onClick={() => setShowInfo(!showInfo)}>▲</BounceButton>
 
-          <AboutMeInfoPopup isVisible={showInfo}>
+          <AboutMeInfoPopup isVisible={showInfo} ref={modalRef}>
             <AboutMePopupHeader>
               <AboutMePopupTitle>About Me</AboutMePopupTitle>
               <AboutMeCloseButton onClick={() => setShowInfo(false)}>
