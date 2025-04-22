@@ -19,6 +19,7 @@ export const PortfolioTitleRightArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-bottom: 0.1em;
 `;
 
 export const Re_Animation_Button = styled.button`
