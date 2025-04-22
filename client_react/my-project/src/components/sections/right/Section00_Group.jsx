@@ -7,7 +7,6 @@ import Section05_Contact from "./Section05_Contact";
 import Section06_Feedback from "./Section06_Feedback";
 
 const Section00_Group = ({ setActiveSection, sectionRefs }) => {
-  // 스크롤 컨테이너 참조 생성
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -46,9 +45,7 @@ const Section00_Group = ({ setActiveSection, sectionRefs }) => {
       }
     };
 
-    // 스크롤 이벤트 핸들러
     const handleScroll = () => {
-      // 스크롤 이벤트가 너무 자주 발생하지 않도록 throttle 적용
       if (!handleScroll.ticking) {
         window.requestAnimationFrame(() => {
           findMostVisibleSection();

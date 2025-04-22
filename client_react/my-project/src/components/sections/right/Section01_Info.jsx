@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   FlexCenter,
   SectionTitle,
@@ -24,6 +24,7 @@ import { FaChevronDown } from "react-icons/fa";
 
 const Section01_Info = () => {
   const characteristicRef = useRef(null);
+  const [buttonOpacity, setButtonOpacity] = useState(1);
 
   const scrollToCharacteristic = () => {
     characteristicRef.current.scrollIntoView({
@@ -31,6 +32,45 @@ const Section01_Info = () => {
       block: "start",
     });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollContainer = document.querySelector(
+        ".main-background3-2-content"
+      );
+      if (!scrollContainer) return;
+
+      const scrollPosition = scrollContainer.scrollTop;
+
+      const minScroll = 200;
+      const maxScroll = 600;
+
+      if (scrollPosition <= minScroll) {
+        setButtonOpacity(1);
+      } else if (scrollPosition >= maxScroll) {
+        setButtonOpacity(0);
+      } else {
+        const opacity =
+          1 - (scrollPosition - minScroll) / (maxScroll - minScroll);
+        setButtonOpacity(opacity);
+      }
+    };
+
+    const scrollContainer = document.querySelector(
+      ".main-background3-2-content"
+    );
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleScroll);
+
+      handleScroll();
+    }
+
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -63,7 +103,14 @@ const Section01_Info = () => {
             </div>
           </InfoMainDiv2>
           <FlexCenter>
-            <ScrollButton onClick={scrollToCharacteristic}>
+            <ScrollButton
+              onClick={scrollToCharacteristic}
+              style={{
+                opacity: buttonOpacity,
+                transitionProperty:
+                  "transform, background, border-color, box-shadow",
+              }}
+            >
               <span>스크롤하여 진행해주세요!</span>
               <ScrollIcon>
                 <FaChevronDown />

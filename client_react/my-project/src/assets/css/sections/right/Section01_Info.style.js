@@ -187,14 +187,15 @@ export const ScrollButton = styled.button`
   color: #3498db;
   font-size: 1rem;
   font-weight: 500;
-  padding: 12px 24px;
-  margin-top: 3rem;
+  padding: 10px 24px 0 24px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(52, 152, 219, 0.1);
+  position: relative;
+  bottom: 5px;
 
   &:hover {
     background: rgba(52, 152, 219, 0.2);
