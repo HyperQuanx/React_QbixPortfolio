@@ -23,7 +23,7 @@ const Main = () => {
   const sectionRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  // // 모바일
+  // // 모바일 나중에 넣을 예정
   // useEffect(() => {
   //   const checkScreenSize = () => {
   //     setIsMobile(window.innerWidth <= 480);
