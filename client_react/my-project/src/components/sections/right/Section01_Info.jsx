@@ -185,8 +185,14 @@ const Section01_Info = () => {
                   &nbsp;] 사람입니다.
                 </CharacteristicHeader>
                 <CharacteristicDescription>
-                  문제를 해결하는 것을 좋아하고, 새로운 기술을 배우는 것을
-                  좋아합니다.
+                  새로운 기술을 배우는 것과 상상했던 아이디어를 실제로 구현하는
+                  것을 좋아합니다.
+                  <br />
+                  웹 개발의 전반적인 과정을 이해하기 위해 다양한 기술을 학습하고
+                  경험을 쌓고 있으며
+                  <br />
+                  오랫동안 구상해 온 서비스를 직접 운영하기 위해 개발을 준비하고
+                  있습니다.
                 </CharacteristicDescription>
               </CharacteristicCard>
             </CharacteristicList>
