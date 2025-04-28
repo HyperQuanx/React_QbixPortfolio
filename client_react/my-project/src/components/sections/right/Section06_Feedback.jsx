@@ -349,30 +349,28 @@ const Section06_Feedback = () => {
   // 날짜 포맷 함수
   const formatDate = (dateString) => {
     try {
-      // 날짜 형식 확인을 위한 정규표현식
+      // 다양한 날짜 형식 처리를 위한 정규표현식 수정
+      // 1. YYYY-MM-DD HH:MM:SS.ms 형식
+      // 2. YYYY.MM.DD HH:MM[:SS[.ms]] 형식 (초와 밀리초는 선택적)
       const datePattern =
-        /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})(?:\.\d+)?$/;
+        /^(\d{4})[-.\/](\d{2})[-.\/](\d{2}) (\d{2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?$/;
       const matches = dateString.match(datePattern);
 
       if (matches) {
-        // 정규표현식으로 각 부분 추출
         const year = parseInt(matches[1], 10);
         const month = parseInt(matches[2], 10) - 1; // 월은 0부터 시작
         const day = parseInt(matches[3], 10);
         const hours = parseInt(matches[4], 10);
         const minutes = parseInt(matches[5], 10);
-        const seconds = parseInt(matches[6], 10);
+        const seconds = matches[6] ? parseInt(matches[6], 10) : 0;
 
-        // Date 객체 생성
         const date = new Date(year, month, day, hours, minutes, seconds);
 
-        // 유효한 날짜인지 확인
         if (isNaN(date.getTime())) {
           console.error("유효하지 않은 날짜:", dateString);
           return "유효하지 않은 날짜";
         }
 
-        // 날짜 포맷팅
         const formattedYear = date.getFullYear();
         const formattedMonth = String(date.getMonth() + 1).padStart(2, "0");
         const formattedDay = String(date.getDate()).padStart(2, "0");
@@ -381,13 +379,17 @@ const Section06_Feedback = () => {
 
         return `${formattedYear}.${formattedMonth}.${formattedDay} ${formattedHours}:${formattedMinutes}`;
       } else {
-        // 정규표현식과 일치하지 않는 경우
         console.error("날짜 형식 불일치:", dateString);
-        return "날짜 형식 오류";
+
+        if (/^\d{4}\.\d{2}\.\d{2} \d{2}:\d{2}$/.test(dateString)) {
+          return dateString;
+        }
+
+        return "안됨.";
       }
     } catch (error) {
       console.error("날짜 포맷팅 오류:", error, dateString);
-      return "날짜 처리 오류";
+      return "안됨.";
     }
   };
 
