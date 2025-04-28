@@ -21,6 +21,16 @@ import SectionCategoryGroup from "../sections/right/SectionCategoryGroup";
 const Main = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 모바일
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    checkScreenSize();
+  });
 
   return (
     <MainContainer>

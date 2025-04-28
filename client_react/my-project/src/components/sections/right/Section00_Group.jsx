@@ -56,14 +56,12 @@ const Section00_Group = ({ setActiveSection, sectionRefs }) => {
     };
     handleScroll.ticking = false;
 
-    // 스크롤 컨테이너 찾기
     const scrollContainer = document.querySelector(
       ".main-background3-2-content"
     );
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", handleScroll);
 
-      // 초기 실행
       findMostVisibleSection();
     }
 
