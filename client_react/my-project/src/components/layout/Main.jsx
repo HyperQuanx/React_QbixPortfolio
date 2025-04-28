@@ -23,14 +23,14 @@ const Main = () => {
   const sectionRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  // 모바일
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 480);
-    };
+  // // 모바일
+  // useEffect(() => {
+  //   const checkScreenSize = () => {
+  //     setIsMobile(window.innerWidth <= 480);
+  //   };
 
-    checkScreenSize();
-  });
+  //   checkScreenSize();
+  // });
 
   return (
     <MainContainer>
