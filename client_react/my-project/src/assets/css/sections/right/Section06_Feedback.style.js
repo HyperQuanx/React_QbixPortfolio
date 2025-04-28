@@ -87,10 +87,11 @@ export const FeedbackContentImage = styled.div`
 `;
 
 export const FeedbackContentText = styled.div`
-  padding: 1vw;
-  font-size: 1rem;
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  padding: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
 `;
 
 // 팝업
