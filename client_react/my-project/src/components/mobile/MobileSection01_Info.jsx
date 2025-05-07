@@ -19,6 +19,7 @@ import {
 
 const MobileSection01_Info = () => {
   return (
+    // ㄴㄻㄹ
     <section>
       <SectionTitle>Info</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
