@@ -17,7 +17,7 @@ const MobileSection01_Info = () => {
       <SectionTitle>Info</SectionTitle>
       <SectionTitleUnderLine></SectionTitleUnderLine>
 
-      <InfoMain style={{ padding: "2rem 0 0 0" }}>
+      <InfoMain style={{ padding: "2rem 2rem 0 0" }}>
         <div>
           <InfoHi>안녕하세요!</InfoHi>
           <InfoContent delay="0.2s" style={{ fontSize: "1.725rem" }}>
