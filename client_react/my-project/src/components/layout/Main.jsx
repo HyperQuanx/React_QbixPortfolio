@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MainBackground1,
   MainBackground2,
@@ -17,58 +17,70 @@ import MainRightHeader from "../common/MainRightHeader";
 import LeftSection from "../sections/left/LeftSection";
 import Section00_Group from "../sections/right/Section00_Group";
 import SectionCategoryGroup from "../sections/right/SectionCategoryGroup";
+import Mobile from "./Mobile";
 
 const Main = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  // // 모바일 나중에 넣을 예정 d
-  // useEffect(() => {
-  //   const checkScreenSize = () => {
-  //     setIsMobile(window.innerWidth <= 480);
-  //   };
+  useEffect(() => {
+    checkIfMobile();
 
-  //   checkScreenSize();
-  // });
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
+
+  const checkIfMobile = () => {
+    setIsMobile(window.innerWidth <= 760);
+  };
 
   return (
     <MainContainer>
-      <MainBackground1>
-        <MainBackground2>
-          <MainBackground3>
-            <MainBackground3_1>
-              <ViewCountArea />
+      {isMobile ? (
+        <Mobile />
+      ) : (
+        <>
+          <MainBackground1>
+            <MainBackground2>
+              <MainBackground3>
+                <MainBackground3_1>
+                  <ViewCountArea />
 
-              <MainBackground3_1_contentBackground>
-                <LeftSection />
-              </MainBackground3_1_contentBackground>
-            </MainBackground3_1>
+                  <MainBackground3_1_contentBackground>
+                    <LeftSection />
+                  </MainBackground3_1_contentBackground>
+                </MainBackground3_1>
 
-            <MainBackground3SpringGroup>
-              <MainBackground3Spring></MainBackground3Spring>
-            </MainBackground3SpringGroup>
+                <MainBackground3SpringGroup>
+                  <MainBackground3Spring></MainBackground3Spring>
+                </MainBackground3SpringGroup>
 
-            <MainBackground3_2>
-              <MainRightHeader />
+                <MainBackground3_2>
+                  <MainRightHeader />
 
-              <MainBackground3_2_Flex>
-                <MainBackground3_2_contentBackground className="main-background3-2-content">
-                  <Section00_Group
-                    setActiveSection={setActiveSection}
-                    sectionRefs={sectionRefs}
-                  />
-                </MainBackground3_2_contentBackground>
+                  <MainBackground3_2_Flex>
+                    <MainBackground3_2_contentBackground className="main-background3-2-content">
+                      <Section00_Group
+                        setActiveSection={setActiveSection}
+                        sectionRefs={sectionRefs}
+                      />
+                    </MainBackground3_2_contentBackground>
 
-                <SectionCategoryGroup
-                  activeSection={activeSection}
-                  sectionRefs={sectionRefs}
-                />
-              </MainBackground3_2_Flex>
-            </MainBackground3_2>
-          </MainBackground3>
-        </MainBackground2>
-      </MainBackground1>
+                    <SectionCategoryGroup
+                      activeSection={activeSection}
+                      sectionRefs={sectionRefs}
+                    />
+                  </MainBackground3_2_Flex>
+                </MainBackground3_2>
+              </MainBackground3>
+            </MainBackground2>
+          </MainBackground1>
+        </>
+      )}
     </MainContainer>
   );
 };

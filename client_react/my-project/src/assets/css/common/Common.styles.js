@@ -41,6 +41,11 @@ export const FlexSpaceBetween = styled.div`
   justify-content: space-between;
 `;
 
+export const FlexAlignCenter = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const FlexDirectionColumn = styled.div`
   display: flex;
   flex-direction: column;

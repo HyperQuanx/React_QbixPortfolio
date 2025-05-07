@@ -28,7 +28,7 @@ export const Section03_Projects_Arrays = () => {
       image: "/project/aaa01.png",
       details: {
         Sortation: "팀 프로젝트",
-        Achievement: "첫 단독 풀스택 프로젝트",
+        Achievement: "회사와 연계하여 시작한 첫 프로젝트",
         developers: "FullStack : 한덕용, 강경민, 이원희, 조수진, 최사랑",
         github: "사측 디자인 파일 사용으로 비공개",
         url: "배포 중단",

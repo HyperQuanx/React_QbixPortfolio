@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 // 적응형 기점 포인트
 const breakpoints = {
-  mobile: "480px", // 모바일
+  mobile: "760px", // 모바일
 };
 
 // 웹 디자인 트러블슈팅 무적권 넣는다 아 머리아파

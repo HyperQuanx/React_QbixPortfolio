@@ -4,10 +4,9 @@ export const RepositoryTable = styled.div`
   background-color: white;
   border-radius: 5px;
   padding: 10px;
-  margin-top: 10px;
   font-size: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+  margin: 2rem 0 8rem 0;
 `;
 
 export const TableHeader = styled.div`
