@@ -78,7 +78,6 @@ export const MobileContentContainer = styled.div`
   position: relative;
   flex: 1;
   width: 100%;
-  display: flex;
   overflow-x: hidden;
   min-height: 0;
 `;
