@@ -27,7 +27,7 @@ const Mobile = () => {
       {/* 헤더 */}
       <MobileHeader>
         <FlexAlignCenter>
-          <MobileLogo src="/public/cyWorldLogoIconBgDelete.png" alt="logo" />
+          <MobileLogo src="/cyWorldLogoIconBgDelete.png" alt="logo" />
           Web Developer Portfolio
         </FlexAlignCenter>
         <FlexAlignCenter>

@@ -53,9 +53,7 @@ const MobileSection01_Info = () => {
       >
         <section>
           <CharacteristicTitle>
-            저는
-            <br />
-            [&nbsp;
+            저는 [&nbsp;
             <code>
               <span className="codeLet">let&nbsp;</span>
               characteristic
