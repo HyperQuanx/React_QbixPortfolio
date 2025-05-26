@@ -79,7 +79,10 @@ const Section06_Feedback = () => {
         Swal.fire("오류", response.data.message, "error");
       }
     } catch (error) {
-      setError("피드백 목록을 불러오는 중 오류가 발생했습니다.");
+      // setError("피드백 목록을 불러오는 중 오류가 발생했습니다.");
+      setError(
+        `현재 서버가 랜섬웨어에 감염되어 해결중에 있습니다.. \n 조금만 기다려주세요 ㅠㅠ`
+      );
       Swal.fire(
         "오류",
         "피드백 목록을 불러오는 중 오류가 발생했습니다.",
