@@ -16,8 +16,8 @@ jobs:
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
-          distribution: 'temurin'
+          java-version: "17"
+          distribution: "temurin"
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./server_springBoot/portfolio/gradlew
@@ -25,7 +25,7 @@ jobs:
       - name: Build Spring Boot app
         run: |
           cd ./server_springBoot/portfolio
-          ./gradlew build -x test
+          ./gradlew build -x test --no-daemon --info
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v0.1.6
@@ -38,5 +38,5 @@ jobs:
             cd ~/React_QbixPortfolio
             git pull origin main
             cd server_springBoot/portfolio
-            ./gradlew build -x test
+            ./gradlew build -x test --no-daemon --info
             sudo systemctl restart portfolio
