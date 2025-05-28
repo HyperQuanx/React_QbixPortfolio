@@ -8,38 +8,63 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
 public class VisitorCountService {
 
   private final VisitorCountRepository visitorCountRepository;
+  private final GeoLocationService geoLocationService;
 
   @Transactional
-  public void incrementCount() {
+  public void incrementCount(String ipAddress) {
     LocalDate today = LocalDate.now();
-    VisitorCount visitorCount = visitorCountRepository.findByVisitDate(today)
-        .orElse(VisitorCount.builder()
-            .visitDate(today)
-            .count(0L)
-            .build());
-
-    visitorCount.incrementCount();
-    visitorCountRepository.save(visitorCount);
+    LocalDateTime now = LocalDateTime.now();
+    
+    // 지역 정보 조회
+    String region = geoLocationService.getRegionInfo(ipAddress);
+    String detailedRegion = geoLocationService.getDetailedRegionInfo(ipAddress);
+    
+    // 매번 새로운 레코드 생성
+    VisitorCount newVisit = VisitorCount.createWithDetails(
+        today, now, region, detailedRegion, ipAddress
+    );
+    
+    visitorCountRepository.save(newVisit);
   }
 
   @Transactional(readOnly = true)
   public VisitorCountDTO getVisitorCount() {
     LocalDate today = LocalDate.now();
-    Long todayCount = visitorCountRepository.findByVisitDate(today)
-        .map(VisitorCount::getCount)
-        .orElse(0L);
-
-    Long totalCount = visitorCountRepository.getTotalCount();
-    if (totalCount == null) {
-      totalCount = 0L;
+    
+    // 오늘 방문자 수 계산
+    Long todayCount = visitorCountRepository.countByVisitDate(today);
+    
+    // 전체 방문자 수 계산
+    Long totalCount = visitorCountRepository.count();
+    
+    // 최근 방문자 정보
+    VisitorCount recentVisitor = visitorCountRepository.findTopByOrderByVisitDateTimeDesc()
+        .orElse(null);
+        
+    // 디버그용
+    String region = "알 수 없음";
+    String detailedRegion = "지역 정보 없음";
+    String ipAddress = "127.0.0.1";
+    
+    if (recentVisitor != null) {
+        region = recentVisitor.getRegion() != null ? recentVisitor.getRegion() : "알 수 없음";
+        detailedRegion = recentVisitor.getDetailedRegion() != null ? recentVisitor.getDetailedRegion() : "지역 정보 없음";
+        ipAddress = recentVisitor.getIpAddress() != null ? recentVisitor.getIpAddress() : "127.0.0.1";
     }
-
-    return new VisitorCountDTO(todayCount, totalCount);
+    
+    return VisitorCountDTO.builder()
+        .todayCount(todayCount)
+        .totalCount(totalCount)
+        .region(region)
+        .detailedRegion(detailedRegion)
+        .ipAddress(ipAddress)
+        .build();
   }
 }
