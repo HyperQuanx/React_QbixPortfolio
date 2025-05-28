@@ -22,9 +22,20 @@ public class VisitorCountService {
     LocalDate today = LocalDate.now();
     LocalDateTime now = LocalDateTime.now();
     
-    // 지역 정보 조회
-    String region = geoLocationService.getRegionInfo(ipAddress);
-    String detailedRegion = geoLocationService.getDetailedRegionInfo(ipAddress);
+    // 일단 기본값으로 처리
+    String region = "알 수 없음";
+    String detailedRegion = "지역 정보 없음";
+    
+    // 실제 IP인 경우에만 지역 정보 조회 시도
+    if (!ipAddress.equals("127.0.0.1") && !ipAddress.equals("::1") && !ipAddress.equals("0:0:0:0:0:0:0:1")) {
+        try {
+            // TODO: 나중에 지역 정보 API 연결
+            region = "외부 IP";
+            detailedRegion = "위치 확인 필요";
+        } catch (Exception e) {
+            // 오류 시 기본값 유지
+        }
+    }
     
     // 매번 새로운 레코드 생성
     VisitorCount newVisit = VisitorCount.createWithDetails(
@@ -47,8 +58,7 @@ public class VisitorCountService {
     // 최근 방문자 정보
     VisitorCount recentVisitor = visitorCountRepository.findTopByOrderByVisitDateTimeDesc()
         .orElse(null);
-        
-    // 디버그용
+    
     String region = "알 수 없음";
     String detailedRegion = "지역 정보 없음";
     String ipAddress = "127.0.0.1";
