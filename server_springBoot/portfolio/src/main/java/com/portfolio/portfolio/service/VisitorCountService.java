@@ -34,12 +34,21 @@ public class VisitorCountService {
     if (!ipAddress.equals("127.0.0.1") && !ipAddress.equals("::1") && !ipAddress.equals("0:0:0:0:0:0:0:1")) {
         System.out.println("외부 IP 감지됨: " + ipAddress);
         try {
-            // TODO: 나중에 지역 정보 API 연결
-            region = "외부 IP";
-            detailedRegion = "위치 확인 필요";
-            System.out.println("지역 정보 설정됨 - region: " + region + ", detailedRegion: " + detailedRegion);
+            // 실제 GeoLocationService 사용!
+            GeoLocationService.LocationInfo locationInfo = geoLocationService.getLocationFromIp(ipAddress);
+            if (locationInfo != null) {
+                region = locationInfo.getRegion();
+                detailedRegion = locationInfo.getDetailedRegion();
+                System.out.println("지역 정보 조회 성공 - region: " + region + ", detailedRegion: " + detailedRegion);
+            } else {
+                region = "외부 IP";
+                detailedRegion = "위치 확인 실패";
+                System.out.println("지역 정보 조회 실패");
+            }
         } catch (Exception e) {
-            System.out.println("지역 정보 설정 중 오류: " + e.getMessage());
+            System.out.println("지역 정보 조회 중 오류: " + e.getMessage());
+            region = "외부 IP";
+            detailedRegion = "위치 조회 오류";
         }
     } else {
         System.out.println("로컬 IP 감지됨: " + ipAddress);
