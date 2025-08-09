@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const SkillLayout = styled.div`
-  display: flex;
+export const M_SkillLayout = styled.div`
   width: 100%;
   margin-top: 20px;
   margin-bottom: 50px;
@@ -12,8 +11,8 @@ export const SkillLayout = styled.div`
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
-export const SkillCategoryMenu = styled.div`
-  width: 150px;
+export const M_SkillCategoryMenu = styled.div`
+  width: 100%;
   background-color: #f8f8f8;
   padding: 20px 0;
   border-right: 1px solid #e0e0e0;
@@ -31,7 +30,7 @@ export const SkillCategoryMenu = styled.div`
   }
 `;
 
-export const SkillCategoryItem = styled.div`
+export const M_SkillCategoryItem = styled.div`
   padding: 15px 20px;
   cursor: pointer;
   background-color: ${(props) => (props.active ? "#e6f7ff" : "transparent")};
@@ -44,13 +43,13 @@ export const SkillCategoryItem = styled.div`
   }
 `;
 
-export const SkillContentArea = styled.div`
+export const M_SkillContentArea = styled.div`
   flex: 1;
   padding: 30px;
   transition: opacity 0.5s ease;
 `;
 
-export const SkillTitle = styled.h3`
+export const M_SkillTitle = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #00bfff;
@@ -63,7 +62,7 @@ export const SkillTitle = styled.h3`
   }
 `;
 
-export const SkillItemContainer = styled.div`
+export const M_SkillItemContainer = styled.div`
   margin-top: 20px;
   animation: fadeIn 0.5s ease;
 
@@ -79,13 +78,13 @@ export const SkillItemContainer = styled.div`
   }
 `;
 
-export const SkillItem = styled.div`
+export const M_SkillItem = styled.div`
   display: flex;
   margin-bottom: 30px;
   align-items: flex-start;
 `;
 
-export const SkillIcon = styled.div`
+export const M_SkillIcon = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -108,21 +107,22 @@ export const SkillIcon = styled.div`
   }
 `;
 
-export const SkillInfo = styled.div`
+export const M_SkillInfo = styled.div`
   flex: 1;
 `;
 
-export const SkillName = styled.h4`
+export const M_SkillName = styled.h4`
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #333333;
 `;
 
-export const SkillDescription = styled.p`
+export const M_SkillDescription = styled.p`
   color: #666666;
   font-size: 0.95rem;
   line-height: 1.6;
   word-wrap: break-word;
+
   &::before {
     content: "•";
     margin-right: 8px;

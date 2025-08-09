@@ -347,7 +347,8 @@ export const Section03_Projects_Arrays = () => {
         "기상청 초단기예보 API 연동으로 오늘의 날씨를 구현하였습니다.",
         "단독으로 기획부터 디자인, 프론트엔드·백엔드 개발 및 데이터베이스 구축까지 전 과정을 수행한 첫 프로젝트를 수행하였습니다.",
         "Cyworld 방명록 디자인을 참고하여 Feedback 기능을 구현하였습니다.",
-        "Frontend는 Vercel, Backend는 Railway로 배포하였습니다.",
+        "Frontend는 Vercel, Backend는 AWS EC2로 배포하였습니다.",
+        "Github Actions를 활용하여 CI/CD 파이프라인을 구축하였습니다.",
       ],
       skillsTags: [
         "React",
@@ -357,7 +358,8 @@ export const Section03_Projects_Arrays = () => {
         "SpringBoot",
         "JPA",
         "MySQL",
-        "Railway",
+        "AWS EC2",
+        "Github Actions",
       ],
       date: "2025.02.28 ~ 2025.03.22",
       image: "/project/portfolio_01.png",
@@ -379,7 +381,8 @@ export const Section03_Projects_Arrays = () => {
           "기상청 초단기예보 API 연동으로 오늘의 날씨를 구현하였습니다.",
           "단독으로 기획부터 디자인, 프론트엔드·백엔드 개발 및 데이터베이스 구축까지 전 과정을 수행한 첫 프로젝트를 수행하였습니다.",
           "Cyworld 방명록 디자인을 참고하여 Feedback 기능을 구현하였습니다.",
-          "Frontend는 Vercel, Backend는 Railway로 배포하였습니다.",
+          "Frontend는 Vercel, Backend는 AWS EC2로 배포하였습니다.",
+          "Github Actions를 활용하여 CI/CD 파이프라인을 구축하였습니다.",
         ],
         content: `
         <h3 style="text-align: center; font-size: 1.2rem; margin-bottom: 20px; font-weight: bold;">※현재 모바일 적응형 작업 중입니다.※</h3>
@@ -468,6 +471,19 @@ export const Section03_Projects_Arrays = () => {
                 <p>Params를 검증해보니 자정을 넘기게 되면 오늘 날짜의 어제 시간을 호출하고 있던 문제를 발견하였습니다.</p>
                 <p>해결 : 자정 ~ 0030 사이일 때는 이전 날짜의 23:30 데이터를 사용하도록 수정하였습니다.</p>
                 <img src="/project/portfolio_trouble01.png" alt="한덕용 포트폴리오 Trouble" />
+              </div>
+            </details>
+          </div>
+          <div class="troubleshootingContainer">
+            <details class="troubleItem">
+              <summary class="troubleTitle">3306 Port 전체 허용 후 DB 바이러스 감염</summary>
+              <div class="troubleContent">
+                <p>EC2에서 MariaDB 3306 포트를 외부 어디서든 접근 가능하도록 전체 허용 설정을 해두었습니다.</p>
+                <p>하지만 어느 날과 같이 작업하던 중, DB의 데이터에 접근하지 못하는 문제가 발생하였습니다.</p>
+                <p>원인을 찾아보니 DB에 ReadMe 파일을 제외한 모든 데이터가 날아간 것을 확인하였고 랜섬웨어에 감염된 것으로 추정하였습니다.</p>
+                <p>이 문제를 해결하기 위해 EC2 서버를 초기화하고 집 IP가 아닌 경우에는 접근을 차단하도록 보안 규칙을 수정하였습니다.</p>
+                <p>이 경험을 통해 웹 보안과 DB 접근 관리의 중요성을 더욱 깊이 이해하게 되었습니다.</p>
+                <img src="/project/tqfostjadnpdj.PNG" alt="한덕용 랜섬웨어 감염 Trouble" />
               </div>
             </details>
           </div>

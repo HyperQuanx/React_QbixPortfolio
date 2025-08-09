@@ -83,13 +83,15 @@ export const MobileContentContainer = styled.div`
 `;
 
 export const MobileContent = styled.main`
-  min-width: 100%;
+  min-width: 103%;
   border: 2px solid #d4d4d4;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   min-height: 100vh;
   height: auto;
-  padding: 20px;
+  padding: 1rem;
+  padding-right: calc(3% + 1rem);
+  box-sizing: border-box;
   font-family: "Nanum Gothic", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -99,12 +101,17 @@ export const MobileContent = styled.main`
   transition: transform 0.3s ease-in-out;
   transform: ${(props) =>
     props.isMenuOpen ? "translateX(-34%)" : "translateX(0)"};
+  z-index: 100;
+`;
+
+export const MobileContentInner = styled.div`
+  width: 100%;
 `;
 
 export const MobileAside = styled.aside`
   position: fixed;
   top: 5vh;
-  right: -44px;
+  right: -5%;
   width: 34%;
   height: calc(100% - 5vh);
   margin: 0;

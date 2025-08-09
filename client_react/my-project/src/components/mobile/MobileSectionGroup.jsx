@@ -8,14 +8,14 @@ import MobileSection06_Feedback from "./MobileSection06_Feedback";
 
 const MobileSectionGroup = () => {
   return (
-    <>
+    <div style={{ width: "100%", height: "100%", padding: "1.04vw" }}>
       <MobileSection01_Info />
       <MobileSection02_Skills />
       <MobileSection03_Projects />
       <MobileSection04_Repository />
       <MobileSection05_Contact />
       <MobileSection06_Feedback />
-    </>
+    </div>
   );
 };
 

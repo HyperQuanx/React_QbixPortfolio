@@ -43,7 +43,9 @@ const Mobile = () => {
           </MobileMenuButton>
         </FlexAlignCenter>
       </MobileHeader>
+      {/* 헤더 */}
 
+      {/* 메인 */}
       <MobileContentContainer>
         <MobileContent isMenuOpen={isMenuOpen}>
           <MobileSectionGroup />
@@ -52,6 +54,7 @@ const Mobile = () => {
           <MobileCategoryGroup />
         </MobileAside>
       </MobileContentContainer>
+      {/* 메인 */}
     </MobileContainer>
   );
 };

@@ -218,6 +218,14 @@ export const ProjectModal = styled.div`
   max-width: 1200px;
   max-height: 90vh;
   animation: ${expandAnimation} 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  @media (max-width: 760px) {
+    width: 95%;
+    max-height: 95vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -406,40 +414,54 @@ export const ProjectInfoTable = styled.table`
   border-collapse: collapse;
   margin-bottom: 20px;
   border-bottom: 1px solid #e1e1e1;
+  table-layout: fixed;
 
   td {
     padding: 12px 4px;
     vertical-align: left;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   td:first-child {
     width: 200px;
     font-weight: bold;
+    white-space: nowrap;
   }
 
   tbody > tr > td:last-child {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    min-width: 0;
+    white-space: normal;
   }
 
   .iconCell {
     width: 30px;
     color: #666;
     font-size: 1rem;
+    flex: 0 0 auto;
   }
 
   .labelCell {
     width: 120px;
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .contentCell {
     color: #333;
+    min-width: 0;
   }
 
   a {
     color: #1e88e5;
     text-decoration: none;
+    display: inline-block;
+    max-width: 100%;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 
     &:hover {
       text-decoration: underline;
