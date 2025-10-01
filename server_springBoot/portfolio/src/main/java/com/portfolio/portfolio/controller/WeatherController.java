@@ -35,6 +35,7 @@ public class WeatherController {
             RestTemplate restTemplate = new RestTemplate();
             
             // UriComponentsBuilder를 사용하여 URL을 안전하게 구성
+            // 기상청 문제임
             URI uri = UriComponentsBuilder
                     .fromHttpUrl("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst")
                     .queryParam("serviceKey", apiKey)
