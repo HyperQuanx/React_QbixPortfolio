@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
 export const SectionCategoryList = styled.ul`
-  font-family: "Hi Melody", sans-serif;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Hi Melody", sans-serif; */
+  /* font-weight: 400; */
+  /* font-style: normal; */
+  /* font-size: 1.25rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
-  font-style: normal;
-  font-size: 1.25rem;
+
   color: #ffffff;
 `;
 
@@ -20,7 +27,13 @@ export const SectionCategoryItem = styled.li`
   min-width: 100px;
   height: 3.24vh;
   min-height: 35px;
-  font-size: 1.563rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1.563rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-size: 0.875rem;
+
   text-align: center;
   position: absolute;
   display: flex;

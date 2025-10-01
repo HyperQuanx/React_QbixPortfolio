@@ -8,7 +8,10 @@ const fadeIn = keyframes`
 export const InfoMain = styled.section`
   display: flex;
   flex-direction: column;
-  font-family: "Nanum Gothic", sans-serif;
+  /* font-family: "Nanum Gothic", sans-serif; */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
   padding: 2rem;
   background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   border-radius: 12px;
@@ -185,7 +188,16 @@ export const ScrollButton = styled.button`
   border: 2px solid rgba(52, 152, 219, 0.3);
   border-radius: 30px;
   color: #3498db;
-  font-size: 1rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+
   font-weight: 500;
   padding: 10px 24px 0 24px;
   cursor: pointer;

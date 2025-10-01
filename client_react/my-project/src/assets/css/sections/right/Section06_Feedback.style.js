@@ -2,8 +2,16 @@ import styled from "styled-components";
 
 export const WriteButton = styled.button`
   padding: 6px 20px;
-  font-family: "Nanum Brush Script", sans-serif;
-  font-size: 1.5rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Nanum Brush Script", sans-serif; */
+  /* font-size: 1.5rem; */
+
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -138,10 +146,18 @@ export const FeedbackPopupTitle = styled.h3`
   color: #3b7ead;
   border-bottom: 2px solid #3b7ead;
   padding-bottom: 12px;
-  font-family: "Nanum Brush Script", sans-serif;
-  font-size: 1.8rem;
   position: relative;
   margin-bottom: 20px;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Nanum Brush Script", sans-serif; */
+  /* font-size:1.8rem;*/
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
 
   &::after {
     content: "✏️";
@@ -244,6 +260,17 @@ export const FeedbackButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: ${(props) => (props.primary ? "bold" : "normal")};
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif; */
+  /*font-size: 0.875rem;*/
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
 
   &:hover {
     background-color: ${(props) => (props.primary ? "#359df0" : "#e0e0e0")};

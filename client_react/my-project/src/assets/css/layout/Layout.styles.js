@@ -104,9 +104,15 @@ export const MainBackground3_1_contentBackground = styled.aside`
 `;
 
 export const MainBackground3_2_contentBackground = styled.main`
-  font-family: "Nanum Gothic", sans-serif;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Nanum Gothic", sans-serif; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
+
   background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   border: 2px solid #d4d4d4;
   border-radius: 9px;

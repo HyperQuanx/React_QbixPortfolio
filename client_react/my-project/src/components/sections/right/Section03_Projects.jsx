@@ -54,7 +54,7 @@ import { Section03_Projects_Arrays } from "./Section03_Projects_Arrays";
 const Section03_Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
-  
+
   // 각 섹션별 ref 배열 생성 (설명, 스택, 역할, 스킬)
   const descriptionRefs = useRef([]);
   const stackRefs = useRef([]);
@@ -74,6 +74,21 @@ const Section03_Projects = () => {
 
   // 같은 행에 있는 섹션들의 높이를 일치시키는 함수
   const equalizeHeights = () => {
+    // 먼저 모든 높이 스타일을 초기화하여 실제 콘텐츠 높이를 측정할 수 있도록
+    // 이거 안넣었더니 깨짐;
+    descriptionRefs.current.forEach((ref) => {
+      if (ref) ref.style.height = "auto";
+    });
+    stackRefs.current.forEach((ref) => {
+      if (ref) ref.style.height = "auto";
+    });
+    rolesRefs.current.forEach((ref) => {
+      if (ref) ref.style.height = "auto";
+    });
+    skillsRefs.current.forEach((ref) => {
+      if (ref) ref.style.height = "auto";
+    });
+
     // 각 행마다 2개의 프로젝트씩 그룹화
     const rows = Math.ceil(projects.length / 2);
 

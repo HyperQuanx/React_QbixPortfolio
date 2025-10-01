@@ -9,7 +9,8 @@ export const MainRightHeaderGroup = styled.header`
 `;
 
 export const PortfolioTitle = styled.h2`
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
+  font-size: 1.25rem;
   font-weight: 500;
   color: #4682c2;
   margin-top: auto;
@@ -27,9 +28,17 @@ export const Re_Animation_Button = styled.button`
 `;
 
 export const PortfolioGithubLink = styled.a`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.8rem;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif; */
+  /* font-size: 0,8rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+
   position: relative;
   cursor: pointer;
   text-decoration: underline;

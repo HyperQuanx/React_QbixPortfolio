@@ -15,8 +15,15 @@ export const L_ProfileImg = styled.div`
 
 export const L_FeelingBox = styled.div`
   margin-top: 3.7vh;
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 1rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Nanum Pen Script", cursive; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+
   border: 1px solid black;
   height: 2.78vh;
   min-height: 30px;
@@ -39,7 +46,14 @@ export const L_FeelingBox = styled.div`
     font-size: 0.75rem;
     white-space: nowrap;
     z-index: 1000;
-    font-family: "Noto Sans KR", sans-serif;
+
+    /* 폰트 변경 버튼으로 바꿀 부분 */
+    /* font-family: "Noto Sans KR", sans-serif; */
+
+    /* 폰트 변경 버튼으로 바뀔 부분 */
+    font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
   }
 `;
 
@@ -48,7 +62,12 @@ export const TodayText = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 1.25rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1.25rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-size: 0.875rem;
 `;
 
 export const WeatherIcon = styled.span`
@@ -71,12 +90,25 @@ export const L_ShortPR = styled.div`
   align-items: flex-start;
   overflow-y: auto;
   padding: 0.93vh 0;
-  font-family: "Nanum Pen Script", cursive;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Nanum Pen Script", cursive; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
 `;
 
 export const L_ShortSnippet = styled.div`
   color: #2aacd3;
-  font-size: 1.625rem;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1.625rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-size: 0.875rem;
+
   text-align: center;
   line-height: 1.5;
   width: 100%;
@@ -85,11 +117,22 @@ export const L_ShortSnippet = styled.div`
 `;
 
 export const L_CyWriteInfo = styled.div`
-  font-family: "Hi Melody", cursive;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Hi Melody", cursive; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
 `;
 
 export const L_CyName = styled.div`
-  font-size: 1.3rem;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1.3rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-size: 0.875rem;
+
   display: flex;
   align-items: center;
   gap: 3px;
@@ -120,7 +163,12 @@ export const L_CyGender = styled.div`
 `;
 
 export const L_CyMyInfo = styled.section`
-  font-size: 1.2rem;
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-size: 1.2rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-size: 0.875rem;
+
   color: #e8b793;
 `;
 
@@ -152,7 +200,9 @@ export const AboutMeHoverMessage = styled.span`
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
+
   font-size: 0.7rem;
+
   white-space: nowrap;
   margin-bottom: 8px;
   opacity: 0;
@@ -174,6 +224,7 @@ export const AboutMeHoverMessage = styled.span`
 
 export const AboutMeText = styled.p`
   font-size: 0.8rem;
+
   font-weight: bold;
   display: flex;
   align-items: center;

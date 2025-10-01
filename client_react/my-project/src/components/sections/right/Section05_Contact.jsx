@@ -150,8 +150,8 @@ const Section05_Contact = () => {
 
       <ContactContainer>
         <ContactHeader>
-          <ContactHighlightText>프론트엔드</ContactHighlightText> 또는{" "}
-          <ContactHighlightText>백엔드</ContactHighlightText> 개발자로 성장하기
+          <ContactHighlightText>프론트엔드, 백엔드</ContactHighlightText> 또는{" "}
+          <ContactHighlightText>풀스택</ContactHighlightText> 개발자로 성장하기
           위해 항상 도전하고 노력하고 있습니다.
           <br />
           언제든지 연락 부탁드립니다!

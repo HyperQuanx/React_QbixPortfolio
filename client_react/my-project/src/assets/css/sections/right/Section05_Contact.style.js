@@ -83,11 +83,21 @@ export const ContactButton = styled.button`
   border: 1px solid ${(props) => (props.primary ? "#359dc2" : "#ddd")};
   border-radius: 4px;
   padding: 6px 15px;
-  font-size: 14px;
   cursor: pointer;
   &:hover {
     background-color: ${(props) => (props.primary ? "#359df0" : "#e0e0e0")};
   }
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif; */
+  /* font-size:1rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
 `;
 
 export const ContactCharCount = styled.span`

@@ -6,9 +6,19 @@ export const ViewCountGroup = styled.div`
   justify-content: center;
   height: 5.56vh;
   min-height: 60px;
-  font-size: 0.875rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif; */
+  /* font-size: 0.875rem; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+
+  box-sizing: content-box;
   gap: 10px;
 
   .red {
@@ -19,10 +29,20 @@ export const ViewCountGroup = styled.div`
 
 export const SectionTitle = styled.h2`
   color: #00bfff;
-  font-family: "Hi Melody", cursive;
-  font-weight: 500;
-  font-size: 3rem;
-  margin: 0 0 0 0.52vw;
+
+  /* 폰트 변경 버튼으로 바꿀 부분 */
+  /* font-family: "Hi Melody", cursive; */
+  /* font-weight: 500; */
+  /* font-size: 3rem; */
+  /* margin: 0 0 0 0.52vw; */
+
+  /* 폰트 변경 버튼으로 바뀔 부분 */
+  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  margin: 0 0 0.5vw 0.52vw;
+
   line-height: 1;
 `;
 
