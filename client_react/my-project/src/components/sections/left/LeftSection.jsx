@@ -99,39 +99,42 @@ const LeftSection = () => {
 
         console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
-        const response = await axios.get(
-          // getUltraSrtNcst는 초단기실황 정보
-          // 흐림을 표현하기 위해 초단기예보(getUltraSrtFcst)로 수정
+        // 2025/10/02 16:00 [트러블슈팅]
+        // SSL 인증서 문제 해결을 위해 Vercel Serverless Function을 통해 호출
+        // /api/weather.js 참고
 
-          // 초단기예보 코드값 정보
-          // T1H : 기온 (단위 : ℃)
-          // RN1 : 1시간 강수량 (단위 : mm)
-          // SKY : 하늘상태 (단위 : 코드값  1 => 맑음, 3 =>구름많음, 4 => 흐림)
-          // UUU : 동서바람성분 (단위 : m/s  동 => +, 서 => -)
-          // VVV : 남북바람성분 (단위 : m/s  북 => +, 남 => -)
-          // REH : 습도 (단위 : %)
-          // PTY : 강수형태 (단위 : 코드값  0 => 없음, 1 => 비, 2 => 비/눈, 3 => 눈, 5 => 빗방울, 6 => 빗방울눈날림, 7 => 눈날림)
-          // LGT : 낙뢰 (단위 : kA)
-          // VEC : 풍향 (단위 : deg)
-          // WSD : 풍속 (단위 : m/s)
+        // getUltraSrtNcst는 초단기실황 정보
+        // 흐림을 표현하기 위해 초단기예보(getUltraSrtFcst)로 수정
 
-          `${import.meta.env.VITE_WEATHER_API_ENDPOINT}`,
-          {
-            params: {
-              serviceKey: import.meta.env.VITE_WEATHER_API_KEY, // 키
-              numOfRows: "60", // 한번에 가져오는 데이터 수
-              pageNo: "1", // 페이지 번호
-              dataType: "JSON", // 데이터 타입 XML 또는 JSON
-              base_date: `${year}${month}${day}`, // 기준 날짜 ex) 20250301
-              base_time: baseTime, // 기준 시간 ex) 1600
-              nx: "60", // 좌표
-              ny: "127", // 좌표 여긴 중구임
-            },
-          }
-        );
+        // 초단기예보 코드값 정보
+        // T1H : 기온 (단위 : ℃)
+        // RN1 : 1시간 강수량 (단위 : mm)
+        // SKY : 하늘상태 (단위 : 코드값  1 => 맑음, 3 =>구름많음, 4 => 흐림)
+        // UUU : 동서바람성분 (단위 : m/s  동 => +, 서 => -)
+        // VVV : 남북바람성분 (단위 : m/s  북 => +, 남 => -)
+        // REH : 습도 (단위 : %)
+        // PTY : 강수형태 (단위 : 코드값  0 => 없음, 1 => 비, 2 => 비/눈, 3 => 눈, 5 => 빗방울, 6 => 빗방울눈날림, 7 => 눈날림)
+        // LGT : 낙뢰 (단위 : kA)
+        // VEC : 풍향 (단위 : deg)
+        // WSD : 풍속 (단위 : m/s)
 
-        if (response.data?.response?.body?.items?.item) {
-          const weatherData = response.data.response.body.items.item;
+        const response = await axios.get(`/api/weather`, {
+          params: {
+            base_date: `${year}${month}${day}`, // 기준 날짜 ex) 20250301
+            base_time: baseTime, // 기준 시간 ex) 1600
+            nx: "60", // 좌표
+            ny: "127", // 좌표 여긴 중구임
+          },
+        });
+
+        // Serverless Function에서 문자열로 반환될 경우 파싱
+        const data =
+          typeof response.data === "string"
+            ? JSON.parse(response.data)
+            : response.data;
+
+        if (data?.response?.body?.items?.item) {
+          const weatherData = data.response.body.items.item;
           console.log("날씨 데이터:", weatherData);
 
           // 응답 데이터의 첫 번째 항목의 예보 시각을 확인
