@@ -45,7 +45,8 @@ public class WeatherController {
                     .queryParam("base_time", base_time)
                     .queryParam("nx", nx)
                     .queryParam("ny", ny)
-                    .build(true) // true로 설정하여 이미 인코딩된 값 유지
+                    .encode() // URL 인코딩 적용
+                    .build()
                     .toUri();
             
             System.out.println("날씨 API 호출 URL: " + uri.toString());
