@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("/api/weather")
@@ -24,24 +25,29 @@ public class WeatherController {
         try {
             RestTemplate restTemplate = new RestTemplate();
             
-            String url = UriComponentsBuilder
-                    .fromHttpUrl("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst")
-                    .queryParam("serviceKey", apiKey)
-                    .queryParam("numOfRows", "60")
-                    .queryParam("pageNo", "1")
-                    .queryParam("dataType", "JSON")
-                    .queryParam("base_date", base_date)
-                    .queryParam("base_time", base_time)
-                    .queryParam("nx", nx)
-                    .queryParam("ny", ny)
-                    .toUriString();
+            // API 키는 이미 인코딩된 상태이므로 그대로 사용
+            String url = String.format(
+                "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst" +
+                "?serviceKey=%s" +
+                "&numOfRows=60" +
+                "&pageNo=1" +
+                "&dataType=JSON" +
+                "&base_date=%s" +
+                "&base_time=%s" +
+                "&nx=%s" +
+                "&ny=%s",
+                apiKey, base_date, base_time, nx, ny
+            );
+            
+            System.out.println("날씨 API 호출 URL: " + url);
             
             String response = restTemplate.getForObject(url, String.class);
             return ResponseEntity.ok(response);
             
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(500)
-                    .body("{\"error\":\"날씨 정보를 가져오는데 실패했습니다: " + e.getMessage() + "\"}");
+                    .body("{\"error\":\"날씨 정보를 가져오는데 실패했습니다\",\"message\":\"" + e.getMessage() + "\"}");
         }
     }
 }
