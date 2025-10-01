@@ -100,8 +100,7 @@ const LeftSection = () => {
         console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
         // 2025/10/02 16:00 [트러블슈팅]
-        // SSL 인증서 문제 해결을 위해 Vercel Serverless Function을 통해 호출
-        // /api/weather.js 참고
+        // SSL 인증서 문제 해결을 위해 Spring Boot 백엔드 프록시를 통해 호출
 
         // getUltraSrtNcst는 초단기실황 정보
         // 흐림을 표현하기 위해 초단기예보(getUltraSrtFcst)로 수정
@@ -118,16 +117,19 @@ const LeftSection = () => {
         // VEC : 풍향 (단위 : deg)
         // WSD : 풍속 (단위 : m/s)
 
-        const response = await axios.get(`/api/weather`, {
-          params: {
-            base_date: `${year}${month}${day}`, // 기준 날짜 ex) 20250301
-            base_time: baseTime, // 기준 시간 ex) 1600
-            nx: "60", // 좌표
-            ny: "127", // 좌표 여긴 중구임
-          },
-        });
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/api/weather`,
+          {
+            params: {
+              base_date: `${year}${month}${day}`, // 기준 날짜 ex) 20250301
+              base_time: baseTime, // 기준 시간 ex) 1600
+              nx: "60", // 좌표
+              ny: "127", // 좌표 여긴 중구임
+            },
+          }
+        );
 
-        // Serverless Function에서 문자열로 반환될 경우 파싱
+        // 백엔드에서 문자열로 반환될 경우 파싱
         const data =
           typeof response.data === "string"
             ? JSON.parse(response.data)
