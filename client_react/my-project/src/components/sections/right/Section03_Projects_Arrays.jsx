@@ -1,5 +1,132 @@
 export const Section03_Projects_Arrays = () => {
   const projects = [
+    // {
+    //   id: 0,
+    //   title: "스마트 웹 소설 플랫폼",
+    //   description: [
+    //     "스마트 웹 소설 플랫폼입니다.",
+    //     "기존 정적인 소설 플랫폼에서 벗어나 동적인 플랫폼",
+    //   ],
+    //   stack: ["FullStack"],
+    //   roles: [
+    //     "전체적인 매니지먼트 담당(팀장, Github)을 맡아 팀원 관리, 프로젝트 진행 방향 결정, 프로젝트 관리 등을 담당하였습니다.",
+    //     "전체적인 UI Layout을 구현하였고 디자인 파일을 Publishing하는 작업을 진행하였습니다.",
+    //     "GPT API를 활용해 학생 성적을 AI로 분석하는 기능을 구현했습니다.",
+    //     "Jenkins를 활용해 CI(지속적 통합)를 성공적으로 구축했습니다.",
+    //   ],
+    //   skillsTags: [
+    //     "JavaScript",
+    //     "Thymeleaf",
+    //     "SpringBoot",
+    //     "FastAPI",
+    //     "MyBatis/JPA",
+    //     "MySQL",
+    //     "Jenkins",
+    //     "AWS",
+    //   ],
+    //   date: "2024.12.16 ~ 2025.01.09",
+    //   image: "/project/aaa01.png",
+    //   details: {
+    //     Sortation: "팀 프로젝트",
+    //     Achievement: "회사와 연계하여 시작한 첫 프로젝트",
+    //     developers: "FullStack : 한덕용, 강경민, 이원희, 조수진, 최사랑",
+    //     github: "사측 디자인 파일 사용으로 비공개",
+    //     url: "배포 중단",
+    //     features: [
+    //       "문제은행으로부터 시험 문제를 받아와 학생들에게 제공하고 다양한 난이도의 문제를 포함해 학생의 학업 수준을 정확히 평가할 수 있도록 구성했습니다.",
+    //       "시험 결과를 채점하고 데이터를 수집 후 분석하여 정확한 학업 성취도를 진단할 수 있습니다.",
+    //       "시험 결과를 바탕으로 학생의 강점과 약점을 차트로 시각화한 리포트를 제공하고 PDF로 다운로드 할 수 있습니다.",
+    //       "AI 튜터가 학생의 성취도를 분석하고 학습 전략을 제시합니다.",
+    //     ],
+    //     overview:
+    //       "AI 튜터가 피드백 해주는 온라인 학업성취도 평가입니다. 사용자는 문제은행에서 받아온 문제들을 풀고 성취도를 진단받을 수 있습니다.",
+    //     myRole: [
+    //       "전체적인 매니지먼트 담당(팀장, Github)을 맡아 팀원 관리, 프로젝트 진행 방향 결정, 프로젝트 관리 등을 담당하였습니다.",
+    //       "전체적인 UI Layout을 구현하였고 디자인 파일을 Publishing하는 작업을 진행하였습니다.",
+    //       "나의 리포트 FrontEnd 작업을 맡아 구현했습니다.",
+    //       "GPT API와 FastAPI를 활용해 학생 성적을 AI로 분석하는 기능을 구현했습니다.",
+    //       "Jenkins를 활용해 CI(지속적 통합)를 성공적으로 구축했습니다.",
+    //       "Github를 총괄하여 프로젝트를 진행하였습니다.",
+    //     ],
+    //     content: `
+    //     <article>
+    //       <img src="/project/aaa_ppt_02.png" alt="온라인 학업성취도 평가 ppt2" />
+    //     </article>
+    //     <div class="pjDetails">
+    //       <p>로그인/회원가입에선 Member 테이블을 사용하였고 시험 문제 풀이에선 Exam, Item 테이블, Report 에서는 통계 관련 테이블들을 사용하였습니다.</p>
+    //     </div>
+
+    //     <article>
+    //       <img src="/project/aaa_gif_01.gif" alt="온라인 학업성취도 평가 gif1" />
+    //     </article>
+    //     <div class="pjDetails">
+    //       <p>기본 리포트입니다. 치룬 시험지를 선택한 후 점수를 확인할 수 있습니다.</p>
+    //       <p>시험참여 정보와 시험 결과를 확인할 수 있습니다.</p>
+    //       <p>팝업창을 통해 각 문제의 정답, 사용자 답을 체크하고 해설을 확인할 수 있습니다.</p>
+    //     </div>
+
+    //     <article>
+    //       <img src="/project/aaa_gif_02.gif" alt="온라인 학업성취도 평가 gif2" />
+    //     </article>
+    //     <div class="pjDetails">
+    //       <p>상세 리포트입니다. 시험 결과를 차트로 표현해 학생의 성취도를 시각화하였습니다.</p>
+    //       <p>차트는 Chart.js를 활용하여 구현했습니다.</p>
+    //       <p>문항 난이도별 성취율, 문항 난이도 별 문제 풀이 소요 시간, 문항별 정오표, 응답 유형별 정답률을 확인할 수 있습니다.</p>
+    //     </div>
+
+    //     <article>
+    //       <img src="/project/aaa_gif_03.gif" alt="온라인 학업성취도 평가 gif3" />
+    //     </article>
+    //     <div class="pjDetails">
+    //       <p>오답노트와 PDF 다운로드입니다.</p>
+    //       <p>PDF 다운로드는 jsPDF를 활용하여 구현하였습니다.</p>
+    //     </div>
+
+    //     <article>
+    //       <img src="/project/aaa_gif_04.gif" alt="온라인 학업성취도 평가 gif4" />
+    //     </article>
+    //     <div class="pjDetails">
+    //       <p>AI 튜터가 학생의 성적을 분석하고 학습 전략을 제시합니다.</p>
+    //       <p>모델은 Chat-GPT-4o-mini를 사용하였고 좀 더 빠른 응답을 위해 FastAPI로 구현하였습니다.</p>
+    //     </div>
+    //     `,
+    //     trobleShooting: `
+    //       <div class="troubleshootingContainer">
+    //         <details class="troubleItem">
+    //           <summary class="troubleTitle">AI 응답 할루시네이션</summary>
+    //           <div class="troubleContent">
+    //             <p>초기에 AI가 데이터를 잘못 분석하여 학생의 성취도를 잘못 평가하는 문제가 있었습니다.</p>
+    //             <p>원인을 찾아보니 데이터를 직접적으로 보내지 않고 js를 통해 페이지의 정보를 긁어 보내다보니 속도 저하 문제와 데이터 불일치 문제가 발생하였다는것을 깨달았습니다.</p>
+    //             <p>이를 해결하기 위해</p>
+    //             <img src="/project/aaa_code_ai01.png" alt="온라인 학업성취도 평가 code" />
+    //             <img src="/project/aaa_code_ai02.png" alt="온라인 학업성취도 평가 code" />
+    //             <p>위와 같이 데이터를 직접 보내는 방식으로 변경하고 Prompt 템플릿을 작성하여 문제를 해결했습니다.</p>
+
+    //           </div>
+    //         </details>
+
+    //         <details class="troubleItem">
+    //           <summary class="troubleTitle">AI 응답이 매번 다르게 나오는 문제</summary>
+    //           <div class="troubleContent">
+    //             <p>Client가 진단을 할 때마다 세부적인 응답이 다르게 나오는 문제가 있었습니다.</p>
+    //             <p>또한 계속 불필요한 ChatGPT API 요청을 보내 비용과 정보 불일치 문제가 발생하였습니다.</p>
+    //             <p>이를 해결하기 위해</p>
+    //             <img src="/project/aaa_code_ai03.png" alt="온라인 학업성취도 평가 code" />
+    //             <p>초기 시스템 메시지 템플릿을 지정해주었고 대화 기록을 저장하여 시험지에 대한 초기 응답을 받았다면 뒤부터는 기존 진단 불러오기 기능을 구현하여 문제를 해결했습니다.</p>
+    //           </div>
+    //         </details>
+    //       </div>
+    //     `,
+    //     end: `
+    //     <div class="pjDetails">
+    //       <p>풀스택으로 참여한 가장 큰 프로젝트였고 실제 서비스 중인 두 플랫폼을(성취도 평가, 문제은행) 하나의 프로젝트로 녹여내는 작업을 하다보니 실제 현업에서 근무하는듯한 경험을 얻었습니다.</p>
+    //       <p>부트캠프에서 배운 기술에만 의존하지 않고 새로운 시도(FastAPI, Jenkins, AWS)를 해보았고 이를 통해 프로젝트의 가치를 높이는데 큰 도움이 되었습니다.</p>
+    //     </div>
+    //     `,
+    //     links: "",
+    //   },
+    // },
+
     {
       id: 1,
       title: "온라인 학업성취도 평가",
