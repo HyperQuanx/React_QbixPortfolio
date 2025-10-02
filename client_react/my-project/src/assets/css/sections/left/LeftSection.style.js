@@ -34,12 +34,16 @@ export const L_FeelingBox = styled.div`
   cursor: pointer;
 
   &:hover::after {
-    content: "현재 서울 날씨에 따라 아이콘이 바뀝니다!";
+    content: ${(props) =>
+      props.$isError
+        ? '"현재 데이터센터 화재로 복구중에 있습니다."'
+        : '"현재 서울 날씨에 따라 아이콘이 바뀝니다!"'};
     position: absolute;
     bottom: 35px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: ${(props) =>
+      props.$isError ? "rgba(231, 76, 60, 0.9)" : "rgba(0, 0, 0, 0.8)"};
     color: white;
     padding: 0.46vh 0.52vw;
     border-radius: 4px;
@@ -79,6 +83,11 @@ export const WeatherIcon = styled.span`
 
 export const WeatherDescription = styled.span`
   color: black;
+
+  &.error {
+    color: #e74c3c;
+    font-weight: bold;
+  }
 `;
 
 export const L_ShortPR = styled.div`

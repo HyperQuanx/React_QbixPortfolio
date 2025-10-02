@@ -52,6 +52,7 @@ const LeftSection = () => {
     icon: null,
     description: "",
     iconColor: "",
+    isError: false,
   });
 
   // 정보 팝업 표시 상태
@@ -99,8 +100,13 @@ const LeftSection = () => {
 
         console.log("요청 시간:", `${year}${month}${day}`, baseTime);
 
-        // 2025/10/02 16:00 [트러블슈팅]
+        // 2025/10/02 01:00 [트러블슈팅]
         // SSL 인증서 문제 해결을 위해 Spring Boot 백엔드 프록시를 통해 호출
+
+        // 2025/10/02 08:00 [트러블슈팅]
+        // 공공데이터센터 화재가 나서 기상청 api 호출이 안되는 거였음
+        // 이게 무슨 말도안되는 억까야
+        // 다음부턴 리턴값부터 체크하자... AI에 의존하지 말고
 
         // getUltraSrtNcst는 초단기실황 정보
         // 흐림을 표현하기 위해 초단기예보(getUltraSrtFcst)로 수정
@@ -232,6 +238,7 @@ const LeftSection = () => {
             icon: icon,
             description: description,
             iconColor: iconColor,
+            isError: false,
           });
         }
       } catch (error) {
@@ -239,6 +246,13 @@ const LeftSection = () => {
         if (error.response) {
           console.log("외앉뒘? : ", error.response.data);
         }
+        // API 오류 시 슬픔 이모티콘 표시
+        setWeather({
+          icon: "😢",
+          description: "오류",
+          iconColor: "#e74c3c",
+          isError: true,
+        });
       }
     };
 
@@ -264,11 +278,13 @@ const LeftSection = () => {
 
   return (
     <section>
-      <L_FeelingBox>
+      <L_FeelingBox $isError={weather.isError}>
         <TodayText>
           TODAY IS..
           <WeatherIcon color={weather.iconColor}>{weather.icon}</WeatherIcon>
-          <WeatherDescription>{weather.description}</WeatherDescription>
+          <WeatherDescription className={weather.isError ? "error" : ""}>
+            {weather.description}
+          </WeatherDescription>
         </TodayText>
       </L_FeelingBox>
       <L_ProfileImg />

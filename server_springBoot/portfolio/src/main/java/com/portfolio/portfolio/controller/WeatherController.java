@@ -35,7 +35,11 @@ public class WeatherController {
             RestTemplate restTemplate = new RestTemplate();
             
             // UriComponentsBuilder를 사용하여 URL을 안전하게 구성
-            // 기상청 문제임
+            // 기상청 문제임 이거 지울지 말지 고민해봐야할듯
+            // 2025/10/02 08:00 [트러블슈팅]
+            // 공공데이터센터 화재가 나서 기상청 api 호출이 안되는 거였음
+            // 이게 무슨 말도안되는 억까야
+
             URI uri = UriComponentsBuilder
                     .fromHttpUrl("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst")
                     .queryParam("serviceKey", apiKey)
