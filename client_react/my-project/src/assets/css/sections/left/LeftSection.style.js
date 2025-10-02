@@ -36,7 +36,7 @@ export const L_FeelingBox = styled.div`
   &:hover::after {
     content: ${(props) =>
       props.$isError
-        ? '"현재 데이터센터 화재로 복구중에 있습니다."'
+        ? '"현재 데이터센터 화재로 복구중입니다."'
         : '"현재 서울 날씨에 따라 아이콘이 바뀝니다!"'};
     position: absolute;
     bottom: 35px;
