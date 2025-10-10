@@ -18,6 +18,7 @@ import LeftSection from "../sections/left/LeftSection";
 import Section00_Group from "../sections/right/Section00_Group";
 import SectionCategoryGroup from "../sections/right/SectionCategoryGroup";
 import Mobile from "./Mobile";
+import Side_Bar from "../sections/side/Side_Bar";
 
 const Main = () => {
   const [activeSection, setActiveSection] = useState(0);
@@ -79,6 +80,7 @@ const Main = () => {
               </MainBackground3>
             </MainBackground2>
           </MainBackground1>
+          <Side_Bar />
         </>
       )}
     </MainContainer>

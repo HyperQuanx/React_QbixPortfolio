@@ -43,6 +43,19 @@ export const PortfolioGithubLink = styled.a`
   cursor: pointer;
   text-decoration: underline;
   margin-top: auto;
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+
+  &:hover {
+    color: black;
+  }
+
+  &:active {
+    color: black;
+  }
 
   &:hover::after {
     content: "Repository";
