@@ -36,8 +36,8 @@ const Section04_Repository = () => {
     {
       id: 4,
       link: "제 이력서입니다.",
-      href: "https://qbix-resume.vercel.app/",
-      platform: "Web Resume",
+      href: "준비중입니다",
+      platform: "Word",
     },
   ];
 
