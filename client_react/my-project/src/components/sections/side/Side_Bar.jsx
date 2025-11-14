@@ -10,7 +10,7 @@ import { Side_Bar_Container } from "../../../assets/css/sections/side/Side_Bar.s
 const Side_Bar = () => {
   return (
     <Side_Bar_Container>
-      <div>
+      {/* <div>
         <span>친절</span>
         <span>bar</span>
         <span>icon</span>
@@ -42,7 +42,7 @@ const Side_Bar = () => {
       </div>
       <div>
         <span>위로 이동</span>
-      </div>
+      </div> */}
     </Side_Bar_Container>
   );
 };
