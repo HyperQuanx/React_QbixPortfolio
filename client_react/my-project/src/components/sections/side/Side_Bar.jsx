@@ -8,7 +8,43 @@ import { Side_Bar_Container } from "../../../assets/css/sections/side/Side_Bar.s
 // Top 버튼은 필요할듯
 
 const Side_Bar = () => {
-  return <Side_Bar_Container></Side_Bar_Container>;
+  return (
+    <Side_Bar_Container>
+      {/* <div>
+        <span>친절</span>
+        <span>bar</span>
+        <span>icon</span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>개발력</span>
+        <span>bar</span>
+        <span>icon</span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>창의력</span>
+        <span>bar</span>
+        <span>icon</span>
+        <span>0</span>
+      </div>
+      <div>
+        <span>팀워크</span>
+        <span>bar</span>
+        <span>icon</span>
+        <span>0</span>
+      </div>
+
+      <hr />
+
+      <div>
+        <span>폰트 변경</span>
+      </div>
+      <div>
+        <span>위로 이동</span>
+      </div> */}
+    </Side_Bar_Container>
+  );
 };
 
 export default Side_Bar;

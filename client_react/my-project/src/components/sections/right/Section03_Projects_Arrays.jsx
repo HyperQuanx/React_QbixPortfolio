@@ -266,7 +266,7 @@ export const Section03_Projects_Arrays = () => {
         "Onboarding 페이지와 Sign In/Up을 구현하였습니다.",
         "OAuth2.0을 이용한 소셜 로그인을 구현하였습니다.",
         "Socket.io를 이용한 실시간 채팅 기능을 구현하였습니다.",
-        "Axios Interceptor를 활용해 Access/Refresh Token을 관리하여 자동 로그인 및 토큰 재발급 기능을 구현하였습니다",
+        "Axios Interceptor를 활용해 Access/Refresh Token을 관리하여 자동 로그인 및 토큰 재발급 기능을 구현하였습니다.",
       ],
       skillsTags: [
         "React",

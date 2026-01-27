@@ -393,6 +393,9 @@ const Section02_Skills = () => {
                     <SkillDescription>
                       대부분의 프로젝트에서 GitHub 관리 및 브랜치 관리 담당
                     </SkillDescription>
+                    <SkillDescription>
+                      Github Actions를 활용한 자동화 및 배포 설정 경험
+                    </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
 
@@ -404,9 +407,9 @@ const Section02_Skills = () => {
                     />
                   </SkillIcon>
                   <SkillInfo>
-                    <SkillName>SourceTree</SkillName>
+                    <SkillName>AWS</SkillName>
                     <SkillDescription>
-                      SourceTree를 활용한 소스 코드 관리 및 버전 관리 경험
+                      AWS를 활용한 클라우드 서비스 관리 및 버전 관리 경험
                     </SkillDescription>
                   </SkillInfo>
                 </SkillItem>
