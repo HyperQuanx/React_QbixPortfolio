@@ -95,3 +95,4 @@ public class MonpDB {
     @Comment("특이사항")
     private String specialThing;
 }
+
