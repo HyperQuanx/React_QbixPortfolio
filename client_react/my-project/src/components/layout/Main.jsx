@@ -40,7 +40,10 @@ const Main = () => {
   };
 
   return (
-    <MainContainer>
+    <MainContainer as="main" role="main" aria-label="한덕용 웹 개발자 포트폴리오">
+      <h1 className="sr-only">
+        한덕용 웹 개발자 포트폴리오 - React와 Spring Boot 기반 풀스택 개발
+      </h1>
       {isMobile ? (
         <Mobile />
       ) : (

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Primary Meta Tags -->
     <title>
@@ -21,7 +22,14 @@
       content="한덕용, 웹개발자, 포트폴리오, React, Spring Boot, 풀스택 개발자, 프론트엔드, 백엔드, JavaScript, TypeScript, Java, 항해99, 개발자 포트폴리오"
     />
     <meta name="author" content="한덕용" />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta
+      name="googlebot"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
     <meta name="language" content="Korean" />
 
     <!-- Favicon -->
@@ -29,11 +37,11 @@
     <link rel="apple-touch-icon" href="/cyWorldLogoIconBgDelete.png" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://qbix-hyperquanx.store/" />
+    <link rel="canonical" href="https://react-qbix-portfolio.vercel.app/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://qbix-hyperquanx.store/" />
+    <meta property="og:url" content="https://react-qbix-portfolio.vercel.app/" />
     <meta
       property="og:title"
       content="한덕용 | 웹 개발자 포트폴리오 - React & Spring Boot 풀스택 개발자"
@@ -44,14 +52,18 @@
     />
     <meta
       property="og:image"
-      content="https://qbix-hyperquanx.store/cyWorldLogoIconBgDelete.png"
+      content="https://react-qbix-portfolio.vercel.app/cyWorldLogoIconBgDelete.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="한덕용 웹 개발자 포트폴리오 대표 이미지"
     />
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="한덕용 포트폴리오" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://qbix-hyperquanx.store/" />
+    <meta name="twitter:url" content="https://react-qbix-portfolio.vercel.app/" />
     <meta
       name="twitter:title"
       content="한덕용 | 웹 개발자 포트폴리오 - React & Spring Boot 풀스택 개발자"
@@ -62,43 +74,73 @@
     />
     <meta
       name="twitter:image"
-      content="https://qbix-hyperquanx.store/cyWorldLogoIconBgDelete.png"
+      content="https://react-qbix-portfolio.vercel.app/cyWorldLogoIconBgDelete.png"
     />
+    <meta name="twitter:image:alt" content="한덕용 웹 개발자 포트폴리오 대표 이미지" />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0066cc" />
+    <meta name="application-name" content="한덕용 포트폴리오" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "한덕용",
-        "jobTitle": "웹 개발자",
-        "description": "사용자 경험을 중요하게 생각하는 풀스택 웹 개발자",
-        "url": "https://qbix-hyperquanx.store/",
-        "sameAs": ["https://github.com/HyperQuanx"],
-        "knowsAbout": [
-          "React",
-          "Vue.js",
-          "JavaScript",
-          "TypeScript",
-          "Spring Boot",
-          "Java",
-          "MariaDB",
-          "Git",
-          "웹 개발",
-          "풀스택 개발"
-        ],
-        "alumniOf": {
-          "@type": "Organization",
-          "name": "항해99"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://react-qbix-portfolio.vercel.app/#website",
+            "url": "https://react-qbix-portfolio.vercel.app/",
+            "name": "한덕용 포트폴리오",
+            "inLanguage": "ko-KR"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://react-qbix-portfolio.vercel.app/#person",
+            "name": "한덕용",
+            "jobTitle": "웹 개발자",
+            "description": "사용자 경험을 중요하게 생각하는 풀스택 웹 개발자",
+            "url": "https://react-qbix-portfolio.vercel.app/",
+            "sameAs": ["https://github.com/HyperQuanx"],
+            "knowsAbout": [
+              "React",
+              "Vue.js",
+              "JavaScript",
+              "TypeScript",
+              "Spring Boot",
+              "Java",
+              "MariaDB",
+              "Git",
+              "웹 개발",
+              "풀스택 개발"
+            ],
+            "alumniOf": {
+              "@type": "Organization",
+              "name": "항해99"
+            }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://react-qbix-portfolio.vercel.app/#profile",
+            "url": "https://react-qbix-portfolio.vercel.app/",
+            "name": "한덕용 | 웹 개발자 포트폴리오",
+            "isPartOf": {
+              "@id": "https://react-qbix-portfolio.vercel.app/#website"
+            },
+            "mainEntity": {
+              "@id": "https://react-qbix-portfolio.vercel.app/#person"
+            }
+          }
+        ]
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      이 사이트는 JavaScript 기반으로 동작합니다. 한덕용 웹 개발자 포트폴리오를
+      확인하려면 JavaScript를 활성화해 주세요.
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

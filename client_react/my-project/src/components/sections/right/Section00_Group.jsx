@@ -78,24 +78,28 @@ const Section00_Group = ({ setActiveSection, sectionRefs }) => {
         ref={containerRef}
         style={{ width: "100%", height: "100%", padding: "1.04vw" }}
       >
-        <div ref={(e) => (sectionRefs.current[0] = e)}>
+        <section id="info" ref={(e) => (sectionRefs.current[0] = e)} aria-label="소개">
           <Section01_Info />
-        </div>
-        <div ref={(e) => (sectionRefs.current[1] = e)}>
+        </section>
+        <section id="skills" ref={(e) => (sectionRefs.current[1] = e)} aria-label="기술 스택">
           <Section02_Skill />
-        </div>
-        <div ref={(e) => (sectionRefs.current[2] = e)}>
+        </section>
+        <section id="projects" ref={(e) => (sectionRefs.current[2] = e)} aria-label="프로젝트">
           <Section03_Projects />
-        </div>
-        <div ref={(e) => (sectionRefs.current[3] = e)}>
+        </section>
+        <section
+          id="repository"
+          ref={(e) => (sectionRefs.current[3] = e)}
+          aria-label="저장소"
+        >
           <Section04_Repository />
-        </div>
-        <div ref={(e) => (sectionRefs.current[4] = e)}>
+        </section>
+        <section id="contact" ref={(e) => (sectionRefs.current[4] = e)} aria-label="연락처">
           <Section05_Contact />
-        </div>
-        <div ref={(e) => (sectionRefs.current[5] = e)}>
+        </section>
+        <section id="feedback" ref={(e) => (sectionRefs.current[5] = e)} aria-label="피드백">
           <Section06_Feedback />
-        </div>
+        </section>
       </div>
     </>
   );

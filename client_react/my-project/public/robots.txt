@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://react-qbix-portfolio.vercel.app/sitemap.xml
