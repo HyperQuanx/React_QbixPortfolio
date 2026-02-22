@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  SectionTitle,
-  SectionTitleUnderLine,
-} from "../../assets/css/common/Common.styles";
+import Section04_Repository from "../sections/right/Section04_Repository";
 
 const MobileSection04_Repository = () => {
-  return (
-    <section>
-      <SectionTitle>Repository</SectionTitle>
-      <SectionTitleUnderLine></SectionTitleUnderLine>
-    </section>
-  );
+  return <Section04_Repository />;
 };
 
 export default MobileSection04_Repository;

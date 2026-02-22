@@ -15,11 +15,39 @@ import { FlexAlignCenter } from "../../assets/css/common/Common.styles";
 import MobileCategoryGroup from "../mobile/MobileCategoryGroup";
 import MobileSectionGroup from "../mobile/MobileSectionGroup";
 
+const sectionIds = [
+  "info",
+  "skills",
+  "projects",
+  "repository",
+  "contact",
+  "feedback",
+];
+
 const Mobile = () => {
+  const [activeSection, setActiveSection] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const mobileToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleCategoryNavigation = (index) => {
+    const targetId = sectionIds[index];
+    const targetSection = targetId ? document.getElementById(targetId) : null;
+
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    if (typeof index === "number") {
+      setActiveSection(index);
+    }
+
+    setIsMenuOpen(false);
   };
 
   return (
@@ -48,10 +76,13 @@ const Mobile = () => {
       {/* 메인 */}
       <MobileContentContainer>
         <MobileContent isMenuOpen={isMenuOpen}>
-          <MobileSectionGroup />
+          <MobileSectionGroup onSectionActive={setActiveSection} />
         </MobileContent>
         <MobileAside isMenuOpen={isMenuOpen}>
-          <MobileCategoryGroup />
+          <MobileCategoryGroup
+            activeSection={activeSection}
+            onNavigate={handleCategoryNavigation}
+          />
         </MobileAside>
       </MobileContentContainer>
       {/* 메인 */}

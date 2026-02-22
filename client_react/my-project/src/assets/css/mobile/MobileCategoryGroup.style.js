@@ -6,6 +6,8 @@ export const MbSecCateG = styled.ul`
   font-style: normal;
   font-size: 1.25rem;
   color: #ffffff;
+  width: 100%;
+  margin-top: 0.4rem;
 `;
 
 export const MbSecCateGItem = styled.li`
@@ -31,6 +33,7 @@ export const MbSecCateGItem = styled.li`
   border-left: 0;
   cursor: pointer;
   z-index: 100;
+  transition: background 0.2s ease, color 0.2s ease;
 
   &:nth-child(1) {
     top: 12vh;
