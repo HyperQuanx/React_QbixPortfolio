@@ -93,19 +93,6 @@ const Section06_Feedback = () => {
     fetchFeedbacks();
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 760);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
