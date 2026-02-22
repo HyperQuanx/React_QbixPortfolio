@@ -116,6 +116,13 @@ export const FeedbackPopupOverlay = styled.div`
   z-index: 1000;
   backdrop-filter: blur(3px);
   transition: all 0.3s ease-in-out;
+
+  @media (max-width: 760px) {
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 0;
+    overflow-y: auto;
+  }
 `;
 
 export const FeedbackPopupContainer = styled.div`
@@ -128,6 +135,12 @@ export const FeedbackPopupContainer = styled.div`
   transform: translateY(0);
   animation: slideIn 0.3s ease-out;
   border: 1px solid rgba(53, 157, 194, 0.2);
+
+  @media (max-width: 760px) {
+    width: calc(100% - 1.5rem);
+    max-width: none;
+    margin-bottom: 1rem;
+  }
 
   @keyframes slideIn {
     from {

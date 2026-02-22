@@ -58,6 +58,8 @@ const Section06_Feedback = () => {
   const [selectedFeedback, setSelectedFeedback] = useState(null);
   const [actionType, setActionType] = useState(""); // "edit" 또는 "delete"
   const [editMode, setEditMode] = useState(false); // 수정 모드 상태
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 760);
+  const [popupTopOffset, setPopupTopOffset] = useState(16);
 
   const feedbackMaxLengths = {
     feedbackName: 10,
@@ -95,6 +97,18 @@ const Section06_Feedback = () => {
   // 컴포넌트 마운트 시 피드백 목록 조회
   useEffect(() => {
     fetchFeedbacks();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 760);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleChange = (e) => {
@@ -148,6 +162,9 @@ const Section06_Feedback = () => {
     setActionType(action);
     setPasswordModalOpen(true);
     setPasswordInput("");
+    if (isMobile) {
+      setPopupTopOffset(16);
+    }
   };
 
   // 비밀번호 입력 핸들러
@@ -347,6 +364,24 @@ const Section06_Feedback = () => {
     setSelectedFeedback(null);
   };
 
+  const handleWritePopupOpen = (e) => {
+    if (isMobile && e && e.currentTarget) {
+      const buttonRect = e.currentTarget.getBoundingClientRect();
+      const estimatedPopupHeight = Math.min(window.innerHeight * 0.85, 560);
+      const belowTop = buttonRect.bottom + 10;
+      const aboveTop = buttonRect.top - estimatedPopupHeight - 10;
+      const nextTop =
+        belowTop + estimatedPopupHeight < window.innerHeight - 12
+          ? belowTop
+          : Math.max(12, aboveTop);
+      setPopupTopOffset(nextTop);
+    } else {
+      setPopupTopOffset(16);
+    }
+
+    setIsPopupOpen(true);
+  };
+
   // 날짜 포맷 함수
   const formatDate = (dateString) => {
     try {
@@ -429,7 +464,7 @@ const Section06_Feedback = () => {
       <FlexSpaceBetween>
         <SectionTitle>Feedback</SectionTitle>
         <FlexDirectionColumnReverse>
-          <WriteButton onClick={() => setIsPopupOpen(true)}>
+          <WriteButton onClick={handleWritePopupOpen}>
             작성하기
           </WriteButton>
         </FlexDirectionColumnReverse>
@@ -479,7 +514,12 @@ const Section06_Feedback = () => {
       {passwordModalOpen && (
         <FeedbackPopupOverlay>
           <FeedbackPopupContainer
-            style={{ maxWidth: "400px", padding: "20px" }}
+            style={{
+              marginTop: `${isMobile ? popupTopOffset : 0}px`,
+              maxWidth: isMobile ? "none" : "400px",
+              padding: isMobile ? "18px 16px" : "20px",
+              width: isMobile ? "calc(100% - 1.5rem)" : "90%",
+            }}
           >
             <FeedbackPopupTitle>
               {actionType === "edit" ? "피드백 수정" : "피드백 삭제"}
@@ -522,7 +562,16 @@ const Section06_Feedback = () => {
       {/* 작성 및 수정 팝업창 */}
       {isPopupOpen && (
         <FeedbackPopupOverlay>
-          <FeedbackPopupContainer>
+          <FeedbackPopupContainer
+            style={
+              isMobile
+                ? {
+                    marginTop: `${popupTopOffset}px`,
+                    width: "calc(100% - 1.5rem)",
+                  }
+                : {}
+            }
+          >
             <FeedbackPopupTitle>
               {editMode ? "피드백 수정하기" : "피드백 작성하기"}
             </FeedbackPopupTitle>
