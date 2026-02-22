@@ -31,10 +31,10 @@ import {
   FeedbackImageUploadLabel,
   FeedbackImagePreviewContainer,
   FeedbackImagePreview,
-  FeedbackImagePlaceholder,
   FeedbackImageInput,
   FeedbackImageRemoveButton,
 } from "../../../assets/css/sections/right/Section06_Feedback.style";
+import ModalPortal from "../../common/ModalPortal";
 
 const DEFAULT_IMAGE = "/cyHumanRBG.png";
 
@@ -59,7 +59,6 @@ const Section06_Feedback = () => {
   const [actionType, setActionType] = useState(""); // "edit" 또는 "delete"
   const [editMode, setEditMode] = useState(false); // 수정 모드 상태
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 760);
-  const [popupTopOffset, setPopupTopOffset] = useState(16);
 
   const feedbackMaxLengths = {
     feedbackName: 10,
@@ -104,6 +103,7 @@ const Section06_Feedback = () => {
       setIsMobile(window.innerWidth <= 760);
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -162,9 +162,6 @@ const Section06_Feedback = () => {
     setActionType(action);
     setPasswordModalOpen(true);
     setPasswordInput("");
-    if (isMobile) {
-      setPopupTopOffset(16);
-    }
   };
 
   // 비밀번호 입력 핸들러
@@ -364,21 +361,7 @@ const Section06_Feedback = () => {
     setSelectedFeedback(null);
   };
 
-  const handleWritePopupOpen = (e) => {
-    if (isMobile && e && e.currentTarget) {
-      const buttonRect = e.currentTarget.getBoundingClientRect();
-      const estimatedPopupHeight = Math.min(window.innerHeight * 0.85, 560);
-      const belowTop = buttonRect.bottom + 10;
-      const aboveTop = buttonRect.top - estimatedPopupHeight - 10;
-      const nextTop =
-        belowTop + estimatedPopupHeight < window.innerHeight - 12
-          ? belowTop
-          : Math.max(12, aboveTop);
-      setPopupTopOffset(nextTop);
-    } else {
-      setPopupTopOffset(16);
-    }
-
+  const handleWritePopupOpen = () => {
     setIsPopupOpen(true);
   };
 
@@ -512,180 +495,175 @@ const Section06_Feedback = () => {
 
       {/* 비번 확인 모달 */}
       {passwordModalOpen && (
-        <FeedbackPopupOverlay>
-          <FeedbackPopupContainer
-            style={{
-              marginTop: `${isMobile ? popupTopOffset : 0}px`,
-              maxWidth: isMobile ? "none" : "400px",
-              padding: isMobile ? "18px 16px" : "20px",
-              width: isMobile ? "calc(100% - 1.5rem)" : "90%",
-            }}
-          >
-            <FeedbackPopupTitle>
-              {actionType === "edit" ? "피드백 수정" : "피드백 삭제"}
-            </FeedbackPopupTitle>
-            <p style={{ marginBottom: "20px" }}>
-              {actionType === "edit"
-                ? "피드백을 수정하려면 비밀번호를 입력해주세요."
-                : "피드백을 삭제하려면 비밀번호를 입력해주세요."}
-            </p>
-            <FeedbackFormGroup>
-              <FeedbackLabel htmlFor="verifyPassword">비밀번호</FeedbackLabel>
-              <FeedbackInput
-                type="password"
-                id="verifyPassword"
-                value={passwordInput}
-                onChange={handlePasswordChange}
-                autoFocus
-              />
-            </FeedbackFormGroup>
-            <FeedbackButtonGroup>
-              <FeedbackButton
-                type="button"
-                onClick={() => setPasswordModalOpen(false)}
-              >
-                취소
-              </FeedbackButton>
-              <FeedbackButton
-                type="button"
-                primary
-                onClick={handlePasswordSubmit}
-                disabled={loading}
-              >
-                {loading ? "확인 중..." : "확인"}
-              </FeedbackButton>
-            </FeedbackButtonGroup>
-          </FeedbackPopupContainer>
-        </FeedbackPopupOverlay>
+        <ModalPortal>
+          <FeedbackPopupOverlay>
+            <FeedbackPopupContainer
+              style={{
+                width: isMobile ? "95%" : "90%",
+                padding: isMobile ? "18px 16px" : "20px",
+              }}
+            >
+              <FeedbackPopupTitle>
+                {actionType === "edit" ? "피드백 수정" : "피드백 삭제"}
+              </FeedbackPopupTitle>
+              <p style={{ marginBottom: "20px" }}>
+                {actionType === "edit"
+                  ? "피드백을 수정하려면 비밀번호를 입력해주세요."
+                  : "피드백을 삭제하려면 비밀번호를 입력해주세요."}
+              </p>
+              <FeedbackFormGroup>
+                <FeedbackLabel htmlFor="verifyPassword">비밀번호</FeedbackLabel>
+                <FeedbackInput
+                  type="password"
+                  id="verifyPassword"
+                  value={passwordInput}
+                  onChange={handlePasswordChange}
+                  autoFocus
+                />
+              </FeedbackFormGroup>
+              <FeedbackButtonGroup>
+                <FeedbackButton
+                  type="button"
+                  onClick={() => setPasswordModalOpen(false)}
+                >
+                  취소
+                </FeedbackButton>
+                <FeedbackButton
+                  type="button"
+                  primary
+                  onClick={handlePasswordSubmit}
+                  disabled={loading}
+                >
+                  {loading ? "확인 중..." : "확인"}
+                </FeedbackButton>
+              </FeedbackButtonGroup>
+            </FeedbackPopupContainer>
+          </FeedbackPopupOverlay>
+        </ModalPortal>
       )}
 
       {/* 작성 및 수정 팝업창 */}
       {isPopupOpen && (
-        <FeedbackPopupOverlay>
-          <FeedbackPopupContainer
-            style={
-              isMobile
-                ? {
-                    marginTop: `${popupTopOffset}px`,
-                    width: "calc(100% - 1.5rem)",
-                  }
-                : {}
-            }
-          >
-            <FeedbackPopupTitle>
-              {editMode ? "피드백 수정하기" : "피드백 작성하기"}
-            </FeedbackPopupTitle>
-            <form onSubmit={handleSubmit}>
-              <FeedbackFormGroup>
-                <FeedbackLabel htmlFor="feedbackName">이름</FeedbackLabel>
-                <FeedbackInput
-                  type="text"
-                  id="feedbackName"
-                  name="feedbackName"
-                  value={formData.feedbackName}
-                  onChange={handleChange}
-                  required
-                />
-                <FeedbackCharCount
-                  isLimit={
-                    formData.feedbackName.length >
-                    feedbackMaxLengths.feedbackName
-                  }
-                >
-                  {formData.feedbackName.length}/
-                  {feedbackMaxLengths.feedbackName}
-                </FeedbackCharCount>
-              </FeedbackFormGroup>
+        <ModalPortal>
+          <FeedbackPopupOverlay>
+            <FeedbackPopupContainer
+              style={isMobile ? { width: "95%", padding: "18px 16px" } : {}}
+            >
+              <FeedbackPopupTitle>
+                {editMode ? "피드백 수정하기" : "피드백 작성하기"}
+              </FeedbackPopupTitle>
+              <form onSubmit={handleSubmit}>
+                <FeedbackFormGroup>
+                  <FeedbackLabel htmlFor="feedbackName">이름</FeedbackLabel>
+                  <FeedbackInput
+                    type="text"
+                    id="feedbackName"
+                    name="feedbackName"
+                    value={formData.feedbackName}
+                    onChange={handleChange}
+                    required
+                  />
+                  <FeedbackCharCount
+                    isLimit={
+                      formData.feedbackName.length >
+                      feedbackMaxLengths.feedbackName
+                    }
+                  >
+                    {formData.feedbackName.length}/
+                    {feedbackMaxLengths.feedbackName}
+                  </FeedbackCharCount>
+                </FeedbackFormGroup>
 
-              <FeedbackFormGroup>
-                <FeedbackLabel htmlFor="feedbackPassword">
-                  비밀번호
-                </FeedbackLabel>
-                <FeedbackInput
-                  type="password"
-                  id="feedbackPassword"
-                  name="feedbackPassword"
-                  value={formData.feedbackPassword}
-                  onChange={handleChange}
-                  required
-                  readOnly={editMode}
-                />
-                <FeedbackCharCount
-                  isLimit={
-                    formData.feedbackPassword.length >
-                    feedbackMaxLengths.feedbackPassword
-                  }
-                >
-                  {formData.feedbackPassword.length}/
-                  {feedbackMaxLengths.feedbackPassword}
-                </FeedbackCharCount>
-              </FeedbackFormGroup>
+                <FeedbackFormGroup>
+                  <FeedbackLabel htmlFor="feedbackPassword">
+                    비밀번호
+                  </FeedbackLabel>
+                  <FeedbackInput
+                    type="password"
+                    id="feedbackPassword"
+                    name="feedbackPassword"
+                    value={formData.feedbackPassword}
+                    onChange={handleChange}
+                    required
+                    readOnly={editMode}
+                  />
+                  <FeedbackCharCount
+                    isLimit={
+                      formData.feedbackPassword.length >
+                      feedbackMaxLengths.feedbackPassword
+                    }
+                  >
+                    {formData.feedbackPassword.length}/
+                    {feedbackMaxLengths.feedbackPassword}
+                  </FeedbackCharCount>
+                </FeedbackFormGroup>
 
-              <FeedbackImageUploadGroup>
-                <FeedbackImageUploadLabel>이미지</FeedbackImageUploadLabel>
-                <FeedbackImagePreviewContainer
-                  onClick={() => fileInputRef.current.click()}
-                >
-                  <FeedbackImagePreview src={previewUrl} alt="미리보기" />
-                  {!isDefaultImage && (
-                    <FeedbackImageRemoveButton
-                      type="button"
-                      onClick={handleRemoveImage}
-                    >
-                      ✕
-                    </FeedbackImageRemoveButton>
-                  )}
-                </FeedbackImagePreviewContainer>
-                <FeedbackImageInput
-                  type="file"
-                  id="feedbackImage"
-                  name="feedbackImage"
-                  accept="image/jpeg, image/png, image/gif"
-                  onChange={handleImageChange}
-                  ref={fileInputRef}
-                />
-                <FeedbackCharCount>
-                  {isDefaultImage ? "기본 이미지 사용 중" : "이미지 업로드됨"}
-                </FeedbackCharCount>
-              </FeedbackImageUploadGroup>
+                <FeedbackImageUploadGroup>
+                  <FeedbackImageUploadLabel>이미지</FeedbackImageUploadLabel>
+                  <FeedbackImagePreviewContainer
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    <FeedbackImagePreview src={previewUrl} alt="미리보기" />
+                    {!isDefaultImage && (
+                      <FeedbackImageRemoveButton
+                        type="button"
+                        onClick={handleRemoveImage}
+                      >
+                        ✕
+                      </FeedbackImageRemoveButton>
+                    )}
+                  </FeedbackImagePreviewContainer>
+                  <FeedbackImageInput
+                    type="file"
+                    id="feedbackImage"
+                    name="feedbackImage"
+                    accept="image/jpeg, image/png, image/gif"
+                    onChange={handleImageChange}
+                    ref={fileInputRef}
+                  />
+                  <FeedbackCharCount>
+                    {isDefaultImage ? "기본 이미지 사용 중" : "이미지 업로드됨"}
+                  </FeedbackCharCount>
+                </FeedbackImageUploadGroup>
 
-              <FeedbackFormGroup>
-                <FeedbackLabel htmlFor="feedbackContent">내용</FeedbackLabel>
-                <FeedbackTextArea
-                  id="feedbackContent"
-                  name="feedbackContent"
-                  value={formData.feedbackContent}
-                  onChange={handleChange}
-                  required
-                />
-                <FeedbackCharCount
-                  isLimit={
-                    formData.feedbackContent.length >
-                    feedbackMaxLengths.feedbackContent
-                  }
-                >
-                  {formData.feedbackContent.length}/
-                  {feedbackMaxLengths.feedbackContent}
-                </FeedbackCharCount>
-              </FeedbackFormGroup>
+                <FeedbackFormGroup>
+                  <FeedbackLabel htmlFor="feedbackContent">내용</FeedbackLabel>
+                  <FeedbackTextArea
+                    id="feedbackContent"
+                    name="feedbackContent"
+                    value={formData.feedbackContent}
+                    onChange={handleChange}
+                    required
+                  />
+                  <FeedbackCharCount
+                    isLimit={
+                      formData.feedbackContent.length >
+                      feedbackMaxLengths.feedbackContent
+                    }
+                  >
+                    {formData.feedbackContent.length}/
+                    {feedbackMaxLengths.feedbackContent}
+                  </FeedbackCharCount>
+                </FeedbackFormGroup>
 
-              <FeedbackButtonGroup>
-                <FeedbackButton type="button" onClick={resetForm}>
-                  취소
-                </FeedbackButton>
-                <FeedbackButton type="submit" primary disabled={loading}>
-                  {loading
-                    ? editMode
-                      ? "수정 중..."
-                      : "등록 중..."
-                    : editMode
-                    ? "수정"
-                    : "등록"}
-                </FeedbackButton>
-              </FeedbackButtonGroup>
-            </form>
-          </FeedbackPopupContainer>
-        </FeedbackPopupOverlay>
+                <FeedbackButtonGroup>
+                  <FeedbackButton type="button" onClick={resetForm}>
+                    취소
+                  </FeedbackButton>
+                  <FeedbackButton type="submit" primary disabled={loading}>
+                    {loading
+                      ? editMode
+                        ? "수정 중..."
+                        : "등록 중..."
+                      : editMode
+                      ? "수정"
+                      : "등록"}
+                  </FeedbackButton>
+                </FeedbackButtonGroup>
+              </form>
+            </FeedbackPopupContainer>
+          </FeedbackPopupOverlay>
+        </ModalPortal>
       )}
     </section>
   );

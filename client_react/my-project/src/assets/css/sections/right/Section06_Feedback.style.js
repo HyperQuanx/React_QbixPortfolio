@@ -107,22 +107,14 @@ export const FeedbackPopupOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 1000;
   backdrop-filter: blur(3px);
   transition: all 0.3s ease-in-out;
-
-  @media (max-width: 760px) {
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 0;
-    overflow-y: auto;
-  }
 `;
 
 export const FeedbackPopupContainer = styled.div`
@@ -132,24 +124,32 @@ export const FeedbackPopupContainer = styled.div`
   width: 90%;
   max-width: 500px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transform: translateY(0);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 90vh;
+  overflow-y: auto;
   animation: slideIn 0.3s ease-out;
   border: 1px solid rgba(53, 157, 194, 0.2);
 
   @media (max-width: 760px) {
-    width: calc(100% - 1.5rem);
+    width: 95%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 95vh;
     max-width: none;
-    margin-bottom: 1rem;
   }
 
   @keyframes slideIn {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translate(-50%, calc(-50% + 20px));
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, -50%);
     }
   }
 `;
