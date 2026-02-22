@@ -14,36 +14,49 @@ export const M_SkillLayout = styled.div`
 export const M_SkillCategoryMenu = styled.div`
   width: 100%;
   display: flex;
-  gap: 8px;
-  background-color: #f5fbff;
-  padding: 10px;
-  border-bottom: 1px solid #dce9f5;
+  background-color: #f5f9ff;
+  border: 1px solid #dce9f5;
+  border-bottom: none;
+  margin: 0;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 `;
 
 export const M_SkillCategoryItem = styled.div`
   flex: 1;
   text-align: center;
-  padding: 12px 6px;
+  padding: 12px 8px;
   cursor: pointer;
-  border-radius: 10px;
   background-color: ${(props) => (props.active ? "#00bfff" : "transparent")};
   color: ${(props) => (props.active ? "#ffffff" : "#333")};
   font-weight: ${(props) => (props.active ? "700" : "500")};
   font-size: 0.95rem;
-  border: 1px solid ${(props) => (props.active ? "#00bfff" : "#dce9f5")};
+  border-left: 1px solid #dce9f5;
+  border-right: 1px solid #dce9f5;
+  border-top: 0;
+  border-bottom: 0;
   transition: all 0.3s ease;
   letter-spacing: 0.01em;
+  min-width: 0;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
 
   &:hover {
-    border-color: #00bfff;
     color: ${(props) => (props.active ? "#ffffff" : "#00bfff")};
   }
 `;
 
 export const M_SkillContentArea = styled.div`
   flex: 1;
-  padding: 18px 16px 24px;
+  padding: 14px 16px 24px;
   transition: opacity 0.5s ease;
 `;
 
