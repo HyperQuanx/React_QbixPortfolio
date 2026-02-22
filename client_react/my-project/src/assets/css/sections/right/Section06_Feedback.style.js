@@ -51,19 +51,50 @@ export const FeedbackHeader = styled.div`
   border-bottom: 1px solid #d3d3d3;
   padding: 0.3vw 1.5vw;
   color: #434b51;
+  overflow: hidden;
+  white-space: nowrap;
 
   .brushScript {
     font-family: "Nanum Brush Script", sans-serif;
     font-size: 1.5rem;
+    flex: 0 0 auto;
+    width: 60px;
   }
 
   .feedbackName {
     font-weight: 600;
     font-size: 1.1rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
   }
 
   .feedbackRegDate {
     font-size: 0.9rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    padding: 0.5vw  2vw;
+
+    .brushScript {
+      font-size: 1.1rem;
+      width: 48px;
+    }
+
+    .feedbackName {
+      font-size: 0.9rem;
+      max-width: 140px;
+    }
+
+    .feedbackRegDate {
+      font-size: 0.75rem;
+    }
   }
 `;
 
@@ -71,12 +102,41 @@ export const FeedbackHeaderLeft = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+
+  > span {
+    flex-shrink: 0;
+  }
 `;
 
 export const FeedbackHeaderRight = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex: 0 0 95px;
+  justify-content: flex-end;
+  gap: 8px;
+  overflow: hidden;
+  white-space: nowrap;
+
+  button {
+    border: none;
+    background: none;
+    padding: 0;
+    color: #434b51;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    flex-basis: 78px;
+    gap: 6px;
+
+    button {
+      font-size: 0.78rem;
+    }
+  }
 `;
 
 export const FeedbackContent = styled.div`
