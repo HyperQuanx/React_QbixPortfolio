@@ -142,6 +142,13 @@ export const FeedbackHeaderRight = styled.div`
 export const FeedbackContent = styled.div`
   padding: 1vw;
   display: flex;
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 1.8vw 3vw;
+  }
 `;
 
 export const FeedbackContentImage = styled.div`
@@ -152,6 +159,12 @@ export const FeedbackContentImage = styled.div`
   width: 200px;
   height: 200px;
   padding: 1vw;
+
+  @media (max-width: 760px) {
+    width: min(82vw, 220px);
+    height: min(82vw, 220px);
+    padding: 0;
+  }
 `;
 
 export const FeedbackContentText = styled.div`
@@ -160,6 +173,11 @@ export const FeedbackContentText = styled.div`
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: break-word;
+
+  @media (max-width: 760px) {
+    width: 100%;
+    padding: 0 6px 4px;
+  }
 `;
 
 // 팝업
@@ -201,14 +219,14 @@ export const FeedbackPopupContainer = styled.div`
   -webkit-overflow-scrolling: touch;
 
   @media (max-width: 760px) {
-    width: min(96vw, 390px);
+    width: min(92vw, 390px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 14px 12px;
-    max-height: 90vh;
     max-height: 90svh;
+    padding: 14px 12px;
     max-width: none;
+    margin: 0;
   }
 
   @keyframes slideIn {

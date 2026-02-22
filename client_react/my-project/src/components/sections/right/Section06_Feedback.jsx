@@ -58,7 +58,6 @@ const Section06_Feedback = () => {
   const [selectedFeedback, setSelectedFeedback] = useState(null);
   const [actionType, setActionType] = useState(""); // "edit" 또는 "delete"
   const [editMode, setEditMode] = useState(false); // 수정 모드 상태
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 760);
 
   const feedbackMaxLengths = {
     feedbackName: 10,
@@ -490,13 +489,8 @@ const Section06_Feedback = () => {
       {/* 비번 확인 모달 */}
       {passwordModalOpen && (
         <ModalPortal>
-          <FeedbackPopupOverlay>
-            <FeedbackPopupContainer
-              style={{
-                width: isMobile ? "94%" : "90%",
-                padding: isMobile ? "14px 12px" : "20px",
-              }}
-            >
+            <FeedbackPopupOverlay>
+            <FeedbackPopupContainer>
               <FeedbackPopupTitle>
                 {actionType === "edit" ? "피드백 수정" : "피드백 삭제"}
               </FeedbackPopupTitle>
@@ -539,10 +533,8 @@ const Section06_Feedback = () => {
       {/* 작성 및 수정 팝업창 */}
       {isPopupOpen && (
         <ModalPortal>
-          <FeedbackPopupOverlay>
-            <FeedbackPopupContainer
-              style={isMobile ? { width: "94%", padding: "14px 12px" } : {}}
-            >
+            <FeedbackPopupOverlay>
+            <FeedbackPopupContainer>
               <FeedbackPopupTitle>
                 {editMode ? "피드백 수정하기" : "피드백 작성하기"}
               </FeedbackPopupTitle>
