@@ -175,13 +175,18 @@ export const FeedbackPopupOverlay = styled.div`
   z-index: 1000;
   backdrop-filter: blur(3px);
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  overflow-y: auto;
 `;
 
 export const FeedbackPopupContainer = styled.div`
   background-color: white;
   border-radius: 12px;
   padding: 25px;
-  width: 90%;
+  width: min(90vw, 540px);
   max-width: 500px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   position: fixed;
@@ -192,13 +197,17 @@ export const FeedbackPopupContainer = styled.div`
   overflow-y: auto;
   animation: slideIn 0.3s ease-out;
   border: 1px solid rgba(53, 157, 194, 0.2);
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 
   @media (max-width: 760px) {
-    width: 95%;
+    width: min(96vw, 390px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 95vh;
+    padding: 14px 12px;
+    max-height: 90vh;
+    max-height: 90svh;
     max-width: none;
   }
 
@@ -239,11 +248,25 @@ export const FeedbackPopupTitle = styled.h3`
     top: 0;
     font-size: 1.5rem;
   }
+
+  @media (max-width: 760px) {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+
+    &::after {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export const FeedbackFormGroup = styled.div`
   margin: 20px 0;
   position: relative;
+
+  @media (max-width: 760px) {
+    margin: 12px 0;
+  }
 `;
 
 export const FeedbackLabel = styled.label`
@@ -256,6 +279,11 @@ export const FeedbackLabel = styled.label`
 
   ${FeedbackFormGroup}:focus-within & {
     color: #359dc2;
+  }
+
+  @media (max-width: 760px) {
+    font-size: 0.92rem;
+    margin-bottom: 6px;
   }
 `;
 
@@ -294,6 +322,7 @@ export const FeedbackTextArea = styled.textarea`
   transition: all 0.2s ease;
   background-color: #f9f9f9;
   box-sizing: border-box;
+  line-height: 1.4;
 
   &:focus {
     outline: none;
@@ -305,6 +334,12 @@ export const FeedbackTextArea = styled.textarea`
   &:hover {
     border-color: #bbb;
   }
+
+  @media (max-width: 760px) {
+    padding: 8px 10px;
+    font-size: 0.95rem;
+    min-height: 120px;
+  }
 `;
 
 export const FeedbackCharCount = styled.div`
@@ -314,6 +349,10 @@ export const FeedbackCharCount = styled.div`
   margin-top: 6px;
   font-weight: ${(props) => (props.isLimit ? "bold" : "normal")};
   transition: all 0.2s ease;
+
+  @media (max-width: 760px) {
+    font-size: 0.7rem;
+  }
 `;
 
 export const FeedbackButtonGroup = styled.div`
@@ -321,6 +360,11 @@ export const FeedbackButtonGroup = styled.div`
   justify-content: flex-end;
   gap: 12px;
   margin-top: 25px;
+
+  @media (max-width: 760px) {
+    gap: 8px;
+    margin-top: 14px;
+  }
 `;
 
 export const FeedbackButton = styled.button`
@@ -354,12 +398,21 @@ export const FeedbackButton = styled.button`
   &:active {
     transform: translateY(0);
   }
+
+  @media (max-width: 760px) {
+    padding: 6px 12px;
+    font-size: 0.72rem;
+  }
 `;
 
 // 이미지 업로드 관련 스타일 추가
 export const FeedbackImageUploadGroup = styled.div`
   margin: 20px 0;
   position: relative;
+
+  @media (max-width: 760px) {
+    margin: 12px 0;
+  }
 `;
 
 export const FeedbackImageUploadLabel = styled.label`
@@ -369,6 +422,10 @@ export const FeedbackImageUploadLabel = styled.label`
   font-size: 1rem;
   color: #444;
   transition: color 0.2s;
+
+  @media (max-width: 760px) {
+    font-size: 0.92rem;
+  }
 `;
 
 export const FeedbackImagePreviewContainer = styled.div`
@@ -390,12 +447,20 @@ export const FeedbackImagePreviewContainer = styled.div`
     border-color: #359dc2;
     background-color: rgba(53, 157, 194, 0.05);
   }
+
+  @media (max-width: 760px) {
+    min-height: 90px;
+  }
 `;
 
 export const FeedbackImagePreview = styled.img`
   max-width: 100%;
   max-height: 200px;
   object-fit: contain;
+
+  @media (max-width: 760px) {
+    max-height: 150px;
+  }
 `;
 
 export const FeedbackImagePlaceholder = styled.div`

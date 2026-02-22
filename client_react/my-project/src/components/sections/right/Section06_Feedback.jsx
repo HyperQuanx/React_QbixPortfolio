@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {
@@ -71,7 +71,7 @@ const Section06_Feedback = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/api/feedback`
+        `${import.meta.env.VITE_SERVER_URL}/api/feedback`,
       );
       if (response.data.success) {
         setFeedbacks(response.data.data);
@@ -82,11 +82,7 @@ const Section06_Feedback = () => {
     } catch (error) {
       // setError("피드백 목록을 불러오는 중 오류가 발생했습니다.");
       setError("현재 서버 점검 중입니다.");
-      Swal.fire(
-        "오류",
-        "현재 서버 점검 중입니다.",
-        "error"
-      );
+      Swal.fire("오류", "현재 서버 점검 중입니다.", "error");
       // console.error("피드백 목록 조회 오류:", error);
     } finally {
       setLoading(false);
@@ -184,7 +180,7 @@ const Section06_Feedback = () => {
             null,
             {
               params: { password: passwordInput },
-            }
+            },
           );
 
           if (response.data.success) {
@@ -209,7 +205,7 @@ const Section06_Feedback = () => {
             Swal.fire(
               "오류",
               response.data.message || "비밀번호가 일치하지 않습니다.",
-              "error"
+              "error",
             );
           }
         } catch (error) {
@@ -219,7 +215,7 @@ const Section06_Feedback = () => {
             Swal.fire(
               "오류",
               error.response.data.message || "비밀번호가 일치하지 않습니다.",
-              "error"
+              "error",
             );
           } else {
             Swal.fire("오류", "비밀번호 확인 중 오류가 발생했습니다.", "error");
@@ -233,7 +229,7 @@ const Section06_Feedback = () => {
             }`,
             {
               params: { password: passwordInput },
-            }
+            },
           );
 
           if (response.data.success) {
@@ -244,7 +240,7 @@ const Section06_Feedback = () => {
             Swal.fire(
               "오류",
               response.data.message || "비밀번호가 일치하지 않습니다.",
-              "error"
+              "error",
             );
           }
         } catch (error) {
@@ -254,7 +250,7 @@ const Section06_Feedback = () => {
             Swal.fire(
               "오류",
               error.response.data.message || "비밀번호가 일치하지 않습니다.",
-              "error"
+              "error",
             );
           } else {
             Swal.fire("오류", "삭제 중 오류가 발생했습니다.", "error");
@@ -303,7 +299,7 @@ const Section06_Feedback = () => {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
       } else {
         response = await axios.post(
@@ -313,7 +309,7 @@ const Section06_Feedback = () => {
             headers: {
               "Content-Type": "multipart/form-data",
             },
-          }
+          },
         );
       }
 
@@ -321,7 +317,7 @@ const Section06_Feedback = () => {
         Swal.fire(
           "성공",
           editMode ? "피드백이 수정되었습니다." : "피드백이 등록되었습니다.",
-          "success"
+          "success",
         );
         fetchFeedbacks();
         resetForm();
@@ -332,14 +328,14 @@ const Section06_Feedback = () => {
     } catch (error) {
       console.error(
         editMode ? "피드백 수정 오류:" : "피드백 등록 오류:",
-        error
+        error,
       );
       Swal.fire(
         "오류",
         editMode
           ? "피드백 수정 중 오류가 발생했습니다."
           : "피드백 등록 중 오류가 발생했습니다.",
-        "error"
+        "error",
       );
     } finally {
       setLoading(false);
@@ -447,9 +443,7 @@ const Section06_Feedback = () => {
       <FlexSpaceBetween>
         <SectionTitle>Feedback</SectionTitle>
         <FlexDirectionColumnReverse>
-          <WriteButton onClick={handleWritePopupOpen}>
-            작성하기
-          </WriteButton>
+          <WriteButton onClick={handleWritePopupOpen}>작성하기</WriteButton>
         </FlexDirectionColumnReverse>
       </FlexSpaceBetween>
       <SectionTitleUnderLine></SectionTitleUnderLine>
@@ -499,8 +493,8 @@ const Section06_Feedback = () => {
           <FeedbackPopupOverlay>
             <FeedbackPopupContainer
               style={{
-                width: isMobile ? "95%" : "90%",
-                padding: isMobile ? "18px 16px" : "20px",
+                width: isMobile ? "94%" : "90%",
+                padding: isMobile ? "14px 12px" : "20px",
               }}
             >
               <FeedbackPopupTitle>
@@ -547,7 +541,7 @@ const Section06_Feedback = () => {
         <ModalPortal>
           <FeedbackPopupOverlay>
             <FeedbackPopupContainer
-              style={isMobile ? { width: "95%", padding: "18px 16px" } : {}}
+              style={isMobile ? { width: "94%", padding: "14px 12px" } : {}}
             >
               <FeedbackPopupTitle>
                 {editMode ? "피드백 수정하기" : "피드백 작성하기"}
@@ -656,8 +650,8 @@ const Section06_Feedback = () => {
                         ? "수정 중..."
                         : "등록 중..."
                       : editMode
-                      ? "수정"
-                      : "등록"}
+                        ? "수정"
+                        : "등록"}
                   </FeedbackButton>
                 </FeedbackButtonGroup>
               </form>
