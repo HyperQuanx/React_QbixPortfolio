@@ -1,0 +1,16 @@
+www.qbix-portfolio.shop {
+	redir https://qbix-portfolio.shop{uri} permanent
+}
+
+qbix-portfolio.shop {
+	encode gzip zstd
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
+
+	import /etc/caddy/conf.d/portfolio-upstream.caddy
+}

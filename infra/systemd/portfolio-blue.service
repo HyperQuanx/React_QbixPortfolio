@@ -1,0 +1,19 @@
+[Unit]
+Description=Portfolio Spring Boot (blue)
+After=network.target mariadb.service
+Wants=network.target mariadb.service
+
+[Service]
+Type=simple
+User=portfolio
+Group=portfolio
+WorkingDirectory=/opt/portfolio/current-blue
+EnvironmentFile=-/etc/portfolio/portfolio-common.env
+EnvironmentFile=-/etc/portfolio/portfolio-blue.env
+ExecStart=/usr/bin/java -jar /opt/portfolio/current-blue/portfolio.jar
+Restart=always
+RestartSec=5
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

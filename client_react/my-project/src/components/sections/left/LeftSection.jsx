@@ -53,6 +53,13 @@ const LeftSection = () => {
     description: "",
     iconColor: "",
   });
+  const weatherApiEndpoint =
+    window.location.protocol === "https:"
+      ? import.meta.env.VITE_WEATHER_API_ENDPOINT?.replace(
+          /^http:\/\//,
+          "https://"
+        )
+      : import.meta.env.VITE_WEATHER_API_ENDPOINT;
 
   // 정보 팝업 표시 상태
   const [showInfo, setShowInfo] = useState(false);
@@ -115,7 +122,7 @@ const LeftSection = () => {
           // VEC : 풍향 (단위 : deg)
           // WSD : 풍속 (단위 : m/s)
 
-          `${import.meta.env.VITE_WEATHER_API_ENDPOINT}`,
+          `${weatherApiEndpoint}`,
           {
             params: {
               serviceKey: import.meta.env.VITE_WEATHER_API_KEY, // 키
@@ -238,7 +245,7 @@ const LeftSection = () => {
     };
 
     getWeather();
-  }, []);
+  }, [weatherApiEndpoint]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
