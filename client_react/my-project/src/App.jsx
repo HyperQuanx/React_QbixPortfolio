@@ -1,14 +1,43 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/layout/Main";
+import InitialLoading from "./components/common/InitialLoading";
+import { PortfolioContent } from "./assets/css/common/InitialLoading.styles";
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const elements = [document.documentElement, document.body];
+    const previousOverflow = elements.map((element) => ({
+      value: element.style.getPropertyValue("overflow"),
+      priority: element.style.getPropertyPriority("overflow"),
+    }));
+    elements.forEach((element) => element.style.setProperty("overflow", "hidden"));
+    const timer = window.setTimeout(() => setIsLoading(false), 4000);
+
+    return () => {
+      window.clearTimeout(timer);
+      elements.forEach((element, index) => {
+        const { value, priority } = previousOverflow[index];
+        if (value) element.style.setProperty("overflow", value, priority);
+        else element.style.removeProperty("overflow");
+      });
+    };
+  }, [isLoading]);
+
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-        </Routes>
-      </BrowserRouter>
+      {isLoading && <InitialLoading />}
+      <PortfolioContent inert={isLoading} aria-hidden={isLoading ? true : undefined}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+          </Routes>
+        </BrowserRouter>
+      </PortfolioContent>
     </>
   );
 };
