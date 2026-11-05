@@ -218,7 +218,7 @@ const MobileSection03_Projects = () => {
                     <FaFolderOpen className="folderIcon" />
                     {selectedProject.title}
                   </ModalTitle>
-                  <ModalCloseButton onClick={closeModal}>
+                  <ModalCloseButton onClick={closeModal} aria-label="프로젝트 상세 닫기">
                     <FaTimes />
                   </ModalCloseButton>
                 </ModalHeader>

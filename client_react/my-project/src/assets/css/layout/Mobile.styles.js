@@ -3,24 +3,24 @@ import styled from "styled-components";
 export const MobileContainer = styled.div`
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 `;
 
 export const MobileHeader = styled.header`
-  min-height: 5vh;
+  min-height: 32px;
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
   background-color: #f1f1f1;
   color: black;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: relative;
+  z-index: 200;
 `;
 
 export const MobileLogo = styled.img`
@@ -78,7 +78,7 @@ export const MobileContentContainer = styled.div`
   position: relative;
   flex: 1;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   min-height: 0;
 `;
 
@@ -87,8 +87,12 @@ export const MobileContent = styled.main`
   border: 2px solid #d4d4d4;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  min-height: 100vh;
-  height: auto;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scroll-padding-top: 16px;
   padding: 1rem;
   padding-right: calc(3% + 1rem);
   box-sizing: border-box;
@@ -109,11 +113,12 @@ export const MobileContentInner = styled.div`
 `;
 
 export const MobileAside = styled.aside`
-  position: fixed;
-  top: 5vh;
+  position: absolute;
+  top: 0;
   right: -5%;
   width: 34%;
-  height: calc(100% - 5vh);
+  height: 100%;
+  box-sizing: border-box;
   margin: 0;
   z-index: 50;
   transition: transform 0.3s ease-in-out;

@@ -10,6 +10,9 @@ const MobileSectionGroup = ({ onSectionActive }) => {
   const sectionRefs = useRef([]);
 
   useEffect(() => {
+    const scrollContainer = document.querySelector("[data-mobile-scroll]");
+    if (!scrollContainer) return;
+
     const handleScroll = () => {
       let closestIndex = 0;
       let closestDistance = Number.POSITIVE_INFINITY;
@@ -20,7 +23,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
         }
 
         const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top);
+        const distance = Math.abs(rect.top - scrollContainer.getBoundingClientRect().top - 16);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -33,11 +36,11 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      scrollContainer.removeEventListener("scroll", handleScroll);
     };
   }, [onSectionActive]);
 
@@ -46,7 +49,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="info"
         ref={(el) => (sectionRefs.current[0] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection01_Info />
       </div>
@@ -54,7 +57,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="skills"
         ref={(el) => (sectionRefs.current[1] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection02_Skills />
       </div>
@@ -62,7 +65,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="projects"
         ref={(el) => (sectionRefs.current[2] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection03_Projects />
       </div>
@@ -70,7 +73,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="repository"
         ref={(el) => (sectionRefs.current[3] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection04_Repository />
       </div>
@@ -78,7 +81,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="contact"
         ref={(el) => (sectionRefs.current[4] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection05_Contact />
       </div>
@@ -86,7 +89,7 @@ const MobileSectionGroup = ({ onSectionActive }) => {
       <div
         id="feedback"
         ref={(el) => (sectionRefs.current[5] = el)}
-        style={{ scrollMarginTop: "5rem" }}
+        style={{ scrollMarginTop: "16px" }}
       >
         <MobileSection06_Feedback />
       </div>

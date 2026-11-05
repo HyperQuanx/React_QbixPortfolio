@@ -226,6 +226,10 @@ export const ProjectModal = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  @media (max-width: 760px) {
+    max-height: calc(100dvh - 24px);
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -236,6 +240,11 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   max-height: 90vh;
+
+  @media (max-width: 760px) {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+  }
 `;
 
 export const ModalHeader = styled.div`
@@ -244,6 +253,13 @@ export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 760px) {
+    padding: 16px;
+    gap: 10px;
+    flex-shrink: 0;
+    align-items: flex-start;
+  }
 `;
 
 export const ModalTitle = styled.h2`
@@ -255,6 +271,16 @@ export const ModalTitle = styled.h2`
   .folderIcon {
     margin-right: 0.875rem;
     font-size: 1.8rem;
+  }
+
+  @media (max-width: 760px) {
+    min-width: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+
+    .folderIcon { font-size: 20px; margin-right: 8px; }
   }
 `;
 
@@ -268,6 +294,12 @@ export const ModalCloseButton = styled.button`
 
   &:hover {
     color: #e74c3c;
+  }
+
+  @media (max-width: 760px) {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
   }
 `;
 
@@ -384,6 +416,13 @@ export const ModalBody = styled.div`
   &:first-child h4 {
     margin-top: 0;
   }
+
+  @media (max-width: 760px) {
+    padding: 4px 20px 20px;
+    min-height: 0;
+    max-height: none;
+    overscroll-behavior-y: contain;
+  }
 `;
 
 export const ModalFooter = styled.div`
@@ -406,6 +445,13 @@ export const ModalFooter = styled.div`
     &:hover {
       color: #2980b9;
     }
+  }
+
+  @media (max-width: 760px) {
+    padding: 14px 20px;
+    flex-shrink: 0;
+    font-size: 14px;
+    a { font-size: 14px; }
   }
 `;
 
@@ -486,13 +532,39 @@ export const ProjectInfoTable = styled.table`
     display: block;
     margin: 0 auto;
   }
+
+  @media (max-width: 760px) {
+    &, tbody, tr { display: block; }
+    tr { padding: 14px 0; border-bottom: 1px solid #edf0f2; }
+    border-bottom: 0;
+
+    tbody > tr > td:first-child {
+      display: flex;
+      align-items: center;
+      width: auto;
+      padding: 0 0 7px;
+      font-size: 13px;
+      color: #627480;
+      white-space: normal;
+    }
+
+    tbody > tr > td:last-child {
+      padding: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+
+    .iconCell { width: 18px; margin-right: 8px; }
+  }
 `;
 
 // 글로벌 스타일 추가 dangerouslySetInnerHTML는 글로벌 스타일 추가 필요
 export const ProjectDetailStyles = createGlobalStyle`
   .projectModalContent article {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     margin: 0 auto;
     justify-content: center;
@@ -582,6 +654,17 @@ export const ProjectDetailStyles = createGlobalStyle`
     margin-bottom: 1rem;
     border-radius: 6px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .projectModalContent img:not(table img) {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    display: block;
+    margin: 16px auto 24px;
+    background-color: #f5f7f9;
   }
 
   /* YouTube 비디오 컨테이너 스타일 */

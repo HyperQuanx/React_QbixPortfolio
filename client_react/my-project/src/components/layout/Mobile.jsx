@@ -36,10 +36,12 @@ const Mobile = () => {
     const targetId = sectionIds[index];
     const targetSection = targetId ? document.getElementById(targetId) : null;
 
-    if (targetSection) {
-      targetSection.scrollIntoView({
+    const scrollContainer = document.querySelector("[data-mobile-scroll]");
+    if (targetSection && scrollContainer) {
+      scrollContainer.scrollTo({
+        top: scrollContainer.scrollTop + targetSection.getBoundingClientRect().top
+          - scrollContainer.getBoundingClientRect().top - 16,
         behavior: "smooth",
-        block: "start",
       });
     }
 
@@ -75,7 +77,7 @@ const Mobile = () => {
 
       {/* 메인 */}
       <MobileContentContainer>
-        <MobileContent isMenuOpen={isMenuOpen}>
+        <MobileContent data-mobile-scroll isMenuOpen={isMenuOpen}>
           <MobileSectionGroup onSectionActive={setActiveSection} />
         </MobileContent>
         <MobileAside isMenuOpen={isMenuOpen}>
