@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const spinRecord = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
 
 export const Side_Bar_Container = styled.aside`
   position: absolute;
@@ -56,6 +61,9 @@ export const TrackDisplay = styled.div`
 `;
 
 export const DiscIcon = styled.span`
+  animation: ${spinRecord} 4s linear infinite;
+  animation-play-state: ${(props) => props.$playing ? "running" : "paused"};
+  @media (prefers-reduced-motion: reduce) { animation: none; }
   flex: 0 0 13px;
   width: 13px;
   height: 13px;

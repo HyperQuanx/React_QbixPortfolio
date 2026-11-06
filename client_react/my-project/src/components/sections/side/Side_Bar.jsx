@@ -81,7 +81,7 @@ const Side_Bar = () => {
           ))}
         </FontSwitch>
         <TrackDisplay title={musicTracks[trackIndex].title} aria-live="polite">
-          <DiscIcon aria-hidden="true" />
+          <DiscIcon $playing={playing} aria-hidden="true" />
           <span>{musicTracks[trackIndex].title}</span>
         </TrackDisplay>
         <PlayerControls>
