@@ -14,6 +14,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { FlexAlignCenter } from "../../assets/css/common/Common.styles";
 import MobileCategoryGroup from "../mobile/MobileCategoryGroup";
 import MobileSectionGroup from "../mobile/MobileSectionGroup";
+import Side_Bar from "../sections/side/Side_Bar";
 
 const sectionIds = [
   "info",
@@ -94,6 +95,7 @@ const Mobile = () => {
             activeSection={activeSection}
             onNavigate={handleCategoryNavigation}
           />
+          <Side_Bar />
         </MobileAside>
       </MobileContentContainer>
       {/* 메인 */}

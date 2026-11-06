@@ -6,8 +6,12 @@ export const MbSecCateG = styled.ul`
   font-style: normal;
   font-size: 1.25rem;
   color: #ffffff;
-  width: 100%;
-  margin-top: 0.4rem;
+  width: min(100%, max(100px, calc(34vw - 30px)));
+  flex-shrink: 0;
+  display: grid;
+  gap: 1vh;
+  padding-top: 12vh;
+  margin: 0;
 `;
 
 export const MbSecCateGItem = styled.li`
@@ -44,25 +48,6 @@ export const MbSecCateGItem = styled.li`
     border-radius: inherit;
   }
   > button:focus-visible { outline: 2px solid #ef6500; outline-offset: 2px; }
-
-  &:nth-child(1) {
-    top: 12vh;
-  }
-  &:nth-child(2) {
-    top: 13vh;
-  }
-  &:nth-child(3) {
-    top: 14vh;
-  }
-  &:nth-child(4) {
-    top: 15vh;
-  }
-  &:nth-child(5) {
-    top: 16vh;
-  }
-  &:nth-child(6) {
-    top: 17vh;
-  }
 
   &:hover {
     background-color: #ffffff;

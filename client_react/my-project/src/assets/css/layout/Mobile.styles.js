@@ -76,6 +76,7 @@ export const MenuIconFace = styled.div`
 `;
 
 export const MobileContentContainer = styled.div`
+  --mobile-menu-width: min(290px, calc(100vw - 32px));
   position: relative;
   flex: 1;
   width: 100%;
@@ -106,7 +107,7 @@ export const MobileContent = styled.main`
   transition: transform 0.3s ease-in-out;
   @media (prefers-reduced-motion: reduce) { transition: none; }
   transform: ${(props) =>
-    props.$isMenuOpen ? "translateX(-34%)" : "translateX(0)"};
+    props.$isMenuOpen ? "translateX(calc(0px - var(--mobile-menu-width) - 3vw))" : "translateX(0)"};
   z-index: 100;
 `;
 
@@ -118,7 +119,7 @@ export const MobileAside = styled.aside`
   position: absolute;
   top: 0;
   right: 0;
-  width: 34%;
+  width: var(--mobile-menu-width);
   height: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -128,5 +129,12 @@ export const MobileAside = styled.aside`
   transform: ${(props) =>
     props.$isMenuOpen ? "translateX(0)" : "translateX(100%)"};
   padding: 15px;
+  padding-bottom: max(15px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
   overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
 `;

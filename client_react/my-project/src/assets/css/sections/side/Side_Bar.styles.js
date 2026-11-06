@@ -19,6 +19,14 @@ export const Side_Bar_Container = styled.aside`
   color: #555754;
   font-family: var(--portfolio-font);
   z-index: 100;
+  @media (max-width: 760px) {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: 260px;
+    flex-shrink: 0;
+  }
 `;
 
 export const QuickLinks = styled.nav`
