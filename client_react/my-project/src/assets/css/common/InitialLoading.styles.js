@@ -35,7 +35,7 @@ export const LoadingOverlay = styled.div`
   background-size: 150px;
   color: #34495e;
   font-family: var(--portfolio-font);
-  animation: ${fadeOut} 0.3s ease 3.7s forwards;
+  animation: ${fadeOut} 0.3s ease 2.2s forwards;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;

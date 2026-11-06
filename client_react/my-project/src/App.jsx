@@ -29,7 +29,7 @@ const App = () => {
       priority: element.style.getPropertyPriority("overflow"),
     }));
     elements.forEach((element) => element.style.setProperty("overflow", "hidden"));
-    const timer = window.setTimeout(() => setIsLoading(false), 4000);
+    const timer = window.setTimeout(() => setIsLoading(false), 2500);
 
     return () => {
       window.clearTimeout(timer);
