@@ -1,5 +1,6 @@
-# Serve only the requested BGM file. Caddy supports byte-range requests for seeking.
-handle /media/cyworld_bgm100.mp3 {
+# Keep the old MP3 route for pages already open; new players use indexed AAC/M4A.
+@portfolioMusic path /media/cyworld_bgm100.m4a /media/cyworld_bgm100.mp3
+handle @portfolioMusic {
     root * /srv/portfolio-media
     uri strip_prefix /media
     header Cache-Control "public, max-age=3600"

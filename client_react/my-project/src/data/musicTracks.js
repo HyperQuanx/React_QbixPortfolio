@@ -1,4 +1,4 @@
-// Chapter timestamps supplied for cyworld_bgm100.mp3.
+// Chapter timestamps supplied for cyworld_bgm100.m4a.
 export const musicTracks = [
   {
     "start": 1,

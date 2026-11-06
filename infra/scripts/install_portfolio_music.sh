@@ -6,9 +6,10 @@ if [[ ${EUID} -ne 0 ]]; then
   exit 1
 fi
 
-source_file=${1:?Usage: sudo bash install_portfolio_music.sh /absolute/path/cyworld_bgm100.mp3}
+source_file=${1:?Usage: sudo bash install_portfolio_music.sh /absolute/path/cyworld_bgm100.m4a}
 repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 [[ -f "$source_file" ]] || { echo "Audio file not found." >&2; exit 1; }
+[[ "$source_file" == *.m4a ]] || { echo "Expected the AAC/M4A file; MP3 is no longer used by new players." >&2; exit 1; }
 
 # Keep the production configuration (including unrelated sites and API routes).
 backup_dir=$(mktemp -d /etc/caddy/portfolio-music-backup.XXXXXX)
@@ -27,8 +28,8 @@ rollback() {
 trap rollback ERR
 
 install -d -m 0755 /srv/portfolio-media /etc/caddy/conf.d
-install -m 0644 "$source_file" /srv/portfolio-media/cyworld_bgm100.mp3.new
-mv /srv/portfolio-media/cyworld_bgm100.mp3.new /srv/portfolio-media/cyworld_bgm100.mp3
+install -m 0644 "$source_file" /srv/portfolio-media/cyworld_bgm100.m4a.new
+mv /srv/portfolio-media/cyworld_bgm100.m4a.new /srv/portfolio-media/cyworld_bgm100.m4a
 install -m 0644 "$repo_root/infra/caddy/portfolio-music.caddy" "$snippet"
 python3 - <<'PY'
 from pathlib import Path
@@ -46,4 +47,4 @@ caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 systemctl reload caddy
 trap - ERR
 printf 'Music installed. Configuration backup: %s\n' "$backup_dir"
-printf 'Playback URL: https://qbix-portfolio.shop/media/cyworld_bgm100.mp3\n'
+printf 'Playback URL: https://qbix-portfolio.shop/media/cyworld_bgm100.m4a\n'

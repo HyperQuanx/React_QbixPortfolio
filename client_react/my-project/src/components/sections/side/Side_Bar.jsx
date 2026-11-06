@@ -3,7 +3,7 @@ import { FaPlay, FaPause, FaStop, FaStepBackward, FaStepForward, FaVolumeUp, FaV
 import { musicTracks, trackIndexAt } from "../../../data/musicTracks";
 import { Side_Bar_Container, QuickLinks, PlayerPanel, TrackDisplay, DiscIcon, PlayerControls, VolumeSlider, PlayerMessage } from "../../../assets/css/sections/side/Side_Bar.styles";
 
-const audioUrl = import.meta.env.VITE_BGM_URL || "https://qbix-portfolio.shop/media/cyworld_bgm100.mp3";
+const audioUrl = import.meta.env.VITE_BGM_URL || "https://qbix-portfolio.shop/media/cyworld_bgm100.m4a";
 const links = [
   ["Github", "https://github.com/HyperQuanx"],
   ["Resume", "https://qbix-resume.vercel.app/"],

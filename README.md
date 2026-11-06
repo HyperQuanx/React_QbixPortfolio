@@ -58,16 +58,16 @@
 ## Desktop BGM
 
 The desktop-only player uses `VITE_BGM_URL`, defaulting to
-`https://qbix-portfolio.shop/media/cyworld_bgm100.mp3`. Audio is loaded only after
+`https://qbix-portfolio.shop/media/cyworld_bgm100.m4a`. Audio is loaded only after
 playback is requested. The 100 chapter timestamps live in
 `client_react/my-project/src/data/musicTracks.js`; stopping returns to the current
 chapter's start, and previous/next selects adjacent chapters without wrapping.
 Mobile does not mount the player.
 
-Install the source MP3 outside Git on the miniPC:
+Install the source M4A outside Git on the miniPC:
 
 ```bash
-sudo bash infra/scripts/install_portfolio_music.sh /absolute/path/cyworld_bgm100.mp3
+sudo bash infra/scripts/install_portfolio_music.sh /absolute/path/cyworld_bgm100.m4a
 ```
 
 The installer copies only this file to `/srv/portfolio-media`, backs up the existing
