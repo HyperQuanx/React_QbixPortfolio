@@ -8,6 +8,7 @@ export const MbSecCateG = styled.ul`
   color: #ffffff;
   width: min(100%, max(100px, calc(34vw - 30px)));
   flex-shrink: 0;
+  align-self: flex-start;
   display: grid;
   gap: 1vh;
   padding-top: 12vh;

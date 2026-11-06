@@ -130,6 +130,7 @@ export const MobileAside = styled.aside`
     props.$isMenuOpen ? "translateX(0)" : "translateX(100%)"};
   padding: 15px;
   padding-bottom: max(15px, env(safe-area-inset-bottom));
+  padding-left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
