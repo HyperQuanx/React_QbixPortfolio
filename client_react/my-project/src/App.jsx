@@ -1,10 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/layout/Main";
 import InitialLoading from "./components/common/InitialLoading";
 import { PortfolioContent } from "./assets/css/common/InitialLoading.styles";
 
+import { FontPreferenceContext, readFontPreference } from "./contexts/FontPreferenceContext";
+
 const App = () => {
+  const [font, setFont] = useState(readFontPreference);
+
+  useLayoutEffect(() => {
+    document.documentElement.dataset.font = font;
+    try {
+      localStorage.setItem("portfolio-font", font);
+    } catch {
+      // Keep the switch usable when browser storage is unavailable.
+    }
+  }, [font]);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -29,7 +42,7 @@ const App = () => {
   }, [isLoading]);
 
   return (
-    <>
+    <FontPreferenceContext.Provider value={{ font, setFont }}>
       {isLoading && <InitialLoading />}
       <PortfolioContent inert={isLoading} aria-hidden={isLoading ? true : undefined}>
         <BrowserRouter>
@@ -38,7 +51,7 @@ const App = () => {
           </Routes>
         </BrowserRouter>
       </PortfolioContent>
-    </>
+    </FontPreferenceContext.Provider>
   );
 };
 

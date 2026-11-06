@@ -7,8 +7,7 @@ export const WriteButton = styled.button`
   /* font-family: "Nanum Brush Script", sans-serif; */
   /* font-size: 1.5rem; */
 
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-size: 1rem;
 
@@ -55,7 +54,7 @@ export const FeedbackHeader = styled.div`
   white-space: nowrap;
 
   .brushScript {
-    font-family: "Nanum Brush Script", sans-serif;
+    font-family: var(--portfolio-font);
     font-size: 1.5rem;
     flex: 0 0 auto;
     width: 60px;
@@ -254,8 +253,7 @@ export const FeedbackPopupTitle = styled.h3`
   /* font-size:1.8rem;*/
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-size: 1.25rem;
 
@@ -402,8 +400,7 @@ export const FeedbackButton = styled.button`
   /*font-size: 0.875rem;*/
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-size: 0.75rem;
 

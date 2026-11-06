@@ -12,7 +12,7 @@ export const Side_Bar_Container = styled.aside`
   box-shadow: inset 0 0 0 2px #d1d3d2, 0 0 0 1px #424a4c;
   background: linear-gradient(125deg, #ffffff, #fafafa);
   color: #555754;
-  font-family: Arial, "Noto Sans KR", sans-serif;
+  font-family: var(--portfolio-font);
   z-index: 100;
 `;
 
@@ -114,4 +114,40 @@ export const PlayerMessage = styled.p`
   font-size: 12px;
   line-height: 1.5;
   word-break: keep-all;
+`;
+
+export const FontSwitch = styled.fieldset`
+  display: flex;
+  min-width: 0;
+  margin: 0 0 7px;
+  padding: 2px;
+  border: 1px solid #b8bab7;
+  border-radius: 3px;
+  background: #e5e6e3;
+
+  label { position: relative; flex: 1; min-width: 0; cursor: pointer; }
+  input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    font-size: 10px;
+    line-height: 1.3;
+    white-space: nowrap;
+    border-radius: 2px;
+    color: #555754;
+  }
+  input:checked + span {
+    background: #fff;
+    color: #b94e00;
+    box-shadow: 0 1px 3px #0002;
+    font-weight: 700;
+  }
+  input:focus-visible + span { outline: 2px solid #ef6500; outline-offset: -2px; }
 `;

@@ -96,7 +96,7 @@ export const MobileContent = styled.main`
   padding: 1rem;
   padding-right: calc(3% + 1rem);
   box-sizing: border-box;
-  font-family: "Nanum Gothic", sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-style: normal;
   display: flex;

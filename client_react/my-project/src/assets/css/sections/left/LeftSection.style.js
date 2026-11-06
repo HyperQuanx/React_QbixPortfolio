@@ -20,8 +20,7 @@ export const L_FeelingBox = styled.div`
   /* font-family: "Nanum Pen Script", cursive; */
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
 
   border: 1px solid black;
@@ -55,8 +54,7 @@ export const L_FeelingBox = styled.div`
     /* font-family: "Noto Sans KR", sans-serif; */
 
     /* 폰트 변경 버튼으로 바뀔 부분 */
-    font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--portfolio-font);
     font-weight: 400;
   }
 `;
@@ -104,8 +102,7 @@ export const L_ShortPR = styled.div`
   /* font-family: "Nanum Pen Script", cursive; */
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
 `;
 
@@ -130,8 +127,7 @@ export const L_CyWriteInfo = styled.div`
   /* font-family: "Hi Melody", cursive; */
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
 `;
 

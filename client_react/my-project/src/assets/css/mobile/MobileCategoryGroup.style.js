@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MbSecCateG = styled.ul`
-  font-family: "Hi Melody", sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-style: normal;
   font-size: 1.25rem;

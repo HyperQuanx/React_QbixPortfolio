@@ -34,7 +34,7 @@ export const LoadingOverlay = styled.div`
   background: #a3a3a3 url("/pattern.png") repeat;
   background-size: 150px;
   color: #34495e;
-  font-family: "Galmuri11", "Noto Sans KR", sans-serif;
+  font-family: var(--portfolio-font);
   animation: ${fadeOut} 0.3s ease 3.7s forwards;
 
   @media (prefers-reduced-motion: reduce) {

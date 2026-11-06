@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaStop, FaStepBackward, FaStepForward, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { musicTracks, trackIndexAt } from "../../../data/musicTracks";
-import { Side_Bar_Container, QuickLinks, PlayerPanel, TrackDisplay, DiscIcon, PlayerControls, VolumeSlider, PlayerMessage } from "../../../assets/css/sections/side/Side_Bar.styles";
+import { Side_Bar_Container, FontSwitch, QuickLinks, PlayerPanel, TrackDisplay, DiscIcon, PlayerControls, VolumeSlider, PlayerMessage } from "../../../assets/css/sections/side/Side_Bar.styles";
+
+import { FontPreferenceContext, fontOptions } from "../../../contexts/FontPreferenceContext";
 
 const audioUrl = import.meta.env.VITE_BGM_URL || "https://qbix-portfolio.shop/media/cyworld_bgm100.m4a";
 const links = [
@@ -12,6 +14,7 @@ const links = [
 ];
 
 const Side_Bar = () => {
+  const { font, setFont } = useContext(FontPreferenceContext);
   const audioRef = useRef(null);
   const pendingSeek = useRef(musicTracks[0].start);
   const [trackIndex, setTrackIndex] = useState(0);
@@ -68,6 +71,15 @@ const Side_Bar = () => {
         {links.map(([label, href]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer">{label}</a>)}
       </QuickLinks>
       <PlayerPanel>
+        <FontSwitch aria-label="사이트 전체 글꼴">
+          {fontOptions.map((option) => (
+            <label key={option.value}>
+              <input type="radio" name="portfolio-font" value={option.value}
+                checked={font === option.value} onChange={() => setFont(option.value)} />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </FontSwitch>
         <TrackDisplay title={musicTracks[trackIndex].title} aria-live="polite">
           <DiscIcon aria-hidden="true" />
           <span>{musicTracks[trackIndex].title}</span>

@@ -9,8 +9,7 @@ export const InfoMain = styled.section`
   display: flex;
   flex-direction: column;
   /* font-family: "Nanum Gothic", sans-serif; */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   padding: 2rem;
   background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
@@ -109,7 +108,7 @@ export const CharacteristicTitle = styled.h3`
   }
 
   code {
-    font-family: "Consolas", monospace;
+    font-family: var(--portfolio-font);
     color: #9cdcfe;
     background-color: #1f1f1f;
     padding: 2px 4px;
@@ -159,7 +158,7 @@ export const CharacteristicHeader = styled.h4`
   margin-bottom: 0.8rem;
 
   code {
-    font-family: "Consolas", monospace;
+    font-family: var(--portfolio-font);
     color: #9cdcfe;
     background-color: #1f1f1f;
     padding: 2px 4px;
@@ -193,8 +192,7 @@ export const ScrollButton = styled.button`
   /* font-size: 1rem; */
 
   /* 폰트 변경 버튼으로 바뀔 부분 */
-  font-family: "Galmuri11", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--portfolio-font);
   font-weight: 400;
   font-size: 0.875rem;
 
