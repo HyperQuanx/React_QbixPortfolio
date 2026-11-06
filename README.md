@@ -54,3 +54,24 @@
 - Rotate any passwords that were previously shared in plaintext.
 - Keep MariaDB on `127.0.0.1` and do not expose port `3306`.
 - Use SSH keys only and disable password login for the miniPC.
+
+## Desktop BGM
+
+The desktop-only player uses `VITE_BGM_URL`, defaulting to
+`https://qbix-portfolio.shop/media/cyworld_bgm100.mp3`. Audio is loaded only after
+playback is requested. The 100 chapter timestamps live in
+`client_react/my-project/src/data/musicTracks.js`; stopping returns to the current
+chapter's start, and previous/next selects adjacent chapters without wrapping.
+Mobile does not mount the player.
+
+Install the source MP3 outside Git on the miniPC:
+
+```bash
+sudo bash infra/scripts/install_portfolio_music.sh /absolute/path/cyworld_bgm100.mp3
+```
+
+The installer copies only this file to `/srv/portfolio-media`, backs up the existing
+Caddy configuration, adds the exact media route, validates, then reloads Caddy.
+Existing site/API routes are preserved. Re-run the installer if replacing the
+whole Caddyfile during server bootstrap. Before deploying the frontend, verify
+that a Range request to the public audio URL returns `206 Partial Content`.

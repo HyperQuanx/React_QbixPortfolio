@@ -1,0 +1,7 @@
+# Serve only the requested BGM file. Caddy supports byte-range requests for seeking.
+handle /media/cyworld_bgm100.mp3 {
+    root * /srv/portfolio-media
+    uri strip_prefix /media
+    header Cache-Control "public, max-age=3600"
+    file_server
+}

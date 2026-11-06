@@ -23,7 +23,7 @@ import Side_Bar from "../sections/side/Side_Bar";
 const Main = () => {
   const [activeSection, setActiveSection] = useState(0);
   const sectionRefs = useRef([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 760);
 
   useEffect(() => {
     checkIfMobile();
@@ -82,8 +82,8 @@ const Main = () => {
                 </MainBackground3_2>
               </MainBackground3>
             </MainBackground2>
+            <Side_Bar />
           </MainBackground1>
-          <Side_Bar />
         </>
       )}
     </MainContainer>
