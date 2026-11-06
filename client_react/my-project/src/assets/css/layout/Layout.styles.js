@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 // 적응형 기점 포인트
 const breakpoints = {

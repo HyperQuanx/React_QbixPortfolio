@@ -1,4 +1,3 @@
-import React from "react";
 import Section06_Feedback from "../sections/right/Section06_Feedback";
 
 const MobileSection06_Feedback = () => {

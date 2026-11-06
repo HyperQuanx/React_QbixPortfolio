@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   SectionTitle,
   SectionTitleUnderLine,
@@ -28,11 +28,6 @@ const MobileSection02_Skills = () => {
   const etcRef = useRef(null);
 
   useEffect(() => {
-    // 초기 인디케이터 위치 설정
-    updateIndicator();
-  }, [activeCategory]);
-
-  const updateIndicator = () => {
     let ref;
     switch (activeCategory) {
       case "FrontEnd":
@@ -53,7 +48,7 @@ const MobileSection02_Skills = () => {
       setIndicatorPosition(offsetTop);
       setIndicatorHeight(clientHeight);
     }
-  };
+  }, [activeCategory]);
 
   const handleCategoryClick = (category) => {
     if (category !== activeCategory && !isAnimating) {

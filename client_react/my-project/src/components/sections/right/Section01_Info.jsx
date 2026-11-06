@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   FlexCenter,
   SectionTitle,
@@ -127,7 +127,7 @@ const Section01_Info = () => {
                 <span className="codeLet">let&nbsp;</span>
                 characteristic
                 <span className="whiteEqual">&nbsp;=&nbsp;</span>
-                <span>""</span>
+                <span>&quot;&quot;</span>
               </code>
               &nbsp;] 사람입니다.
             </CharacteristicTitle>
@@ -139,7 +139,7 @@ const Section01_Info = () => {
                   <code>
                     characteristic
                     <span className="whiteEqual">&nbsp;=&nbsp;</span>
-                    <span> "사용자 경험을 중요하게 생각하는"</span>
+                    <span> &quot;사용자 경험을 중요하게 생각하는&quot;</span>
                   </code>
                   &nbsp;] 사람입니다.
                 </CharacteristicHeader>
@@ -158,7 +158,7 @@ const Section01_Info = () => {
                   <code>
                     characteristic
                     <span className="whiteEqual">&nbsp;=&nbsp;</span>
-                    <span>"친화력이 좋고 팀원들과 원활하게 소통하는"</span>
+                    <span>&quot;친화력이 좋고 팀원들과 원활하게 소통하는&quot;</span>
                   </code>
                   &nbsp;] 사람입니다.
                 </CharacteristicHeader>
@@ -180,7 +180,7 @@ const Section01_Info = () => {
                   <code>
                     characteristic
                     <span className="whiteEqual">&nbsp;=&nbsp;</span>
-                    <span>"개발을 너무 좋아하는"</span>
+                    <span>&quot;개발을 너무 좋아하는&quot;</span>
                   </code>
                   &nbsp;] 사람입니다.
                 </CharacteristicHeader>

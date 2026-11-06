@@ -6,6 +6,7 @@ import MobileSection04_Repository from "./MobileSection04_Repository";
 import MobileSection05_Contact from "./MobileSection05_Contact";
 import MobileSection06_Feedback from "./MobileSection06_Feedback";
 
+/** @param {{ onSectionActive?: (index: number) => void }} props */
 const MobileSectionGroup = ({ onSectionActive }) => {
   const sectionRefs = useRef([]);
 

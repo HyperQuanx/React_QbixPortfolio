@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import {
   FlexSpaceBetween,
@@ -160,9 +160,9 @@ const Section05_Contact = () => {
         <ContactForm onSubmit={handleSubmit}>
           <ContactFormGroup>
             <FlexSpaceBetween style={{ margin: "10px 0" }}>
-              <ContactLabel>이름</ContactLabel>
+              <ContactLabel htmlFor="name">이름</ContactLabel>
               <ContactCharCount
-                isLimit={formData.name.length > maxLengths.name}
+                $isLimit={formData.name.length > maxLengths.name}
               >
                 {formData.name.length}/{maxLengths.name}
               </ContactCharCount>
@@ -170,6 +170,7 @@ const Section05_Contact = () => {
             <ContactInput
               type="text"
               id="name"
+              autoComplete="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -181,7 +182,7 @@ const Section05_Contact = () => {
             <FlexSpaceBetween style={{ margin: "10px 0" }}>
               <ContactLabel htmlFor="email">이메일</ContactLabel>
               <ContactCharCount
-                isLimit={formData.email.length > maxLengths.email}
+                $isLimit={formData.email.length > maxLengths.email}
               >
                 {formData.email.length}/{maxLengths.email}
               </ContactCharCount>
@@ -189,6 +190,7 @@ const Section05_Contact = () => {
             <ContactInput
               type="email"
               id="email"
+              autoComplete="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -200,7 +202,7 @@ const Section05_Contact = () => {
             <FlexSpaceBetween style={{ margin: "10px 0" }}>
               <ContactLabel htmlFor="subject">제목</ContactLabel>
               <ContactCharCount
-                isLimit={formData.subject.length > maxLengths.subject}
+                $isLimit={formData.subject.length > maxLengths.subject}
               >
                 {formData.subject.length}/{maxLengths.subject}
               </ContactCharCount>
@@ -219,7 +221,7 @@ const Section05_Contact = () => {
             <FlexSpaceBetween style={{ margin: "10px 0" }}>
               <ContactLabel htmlFor="message">내용</ContactLabel>
               <ContactCharCount
-                isLimit={formData.message.length > maxLengths.message}
+                $isLimit={formData.message.length > maxLengths.message}
               >
                 {formData.message.length}/{maxLengths.message}
               </ContactCharCount>
@@ -247,7 +249,7 @@ const Section05_Contact = () => {
             >
               취소
             </ContactButton>
-            <ContactButton type="submit" primary>
+            <ContactButton type="submit" $primary>
               보내기
             </ContactButton>
           </ContactButtonGroup>

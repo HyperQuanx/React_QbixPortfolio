@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import useProjectDialog from "../../hooks/useProjectDialog";
+import { useCallback, useState, useRef } from "react";
 import {
   SectionTitle,
   SectionTitleUnderLine,
@@ -47,7 +48,6 @@ import {
   FaUserTie,
   FaClipboardList,
   FaFlagCheckered,
-  FaLink,
 } from "react-icons/fa";
 import { Section03_Projects_Arrays } from "../sections/right/Section03_Projects_Arrays";
 import ModalPortal from "../common/ModalPortal";
@@ -56,12 +56,6 @@ const MobileSection03_Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const modalRef = useRef(null);
 
-  // 각 섹션별 ref 배열 생성 (설명, 스택, 역할, 스킬)
-  const descriptionRefs = useRef([]);
-  const stackRefs = useRef([]);
-  const rolesRefs = useRef([]);
-  const skillsRefs = useRef([]);
-
   // 프로젝트 목록
   const projects = Section03_Projects_Arrays();
 
@@ -69,76 +63,11 @@ const MobileSection03_Projects = () => {
     setSelectedProject(project);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedProject(null);
-  };
+  }, []);
 
-  // 같은 행에 있는 섹션들의 높이를 일치시키는 함수
-  const equalizeHeights = () => {
-    // 각 행마다 2개의 프로젝트씩 그룹화
-    const rows = Math.ceil(projects.length / 2);
-
-    for (let row = 0; row < rows; row++) {
-      const startIdx = row * 2;
-      const endIdx = Math.min(startIdx + 1, projects.length - 1); // 마지막 행은 프로젝트가 하나일 수 있음
-
-      // 설명 섹션 높이 맞추기
-      if (
-        descriptionRefs.current[startIdx] &&
-        descriptionRefs.current[endIdx]
-      ) {
-        const height1 = descriptionRefs.current[startIdx].offsetHeight;
-        const height2 = descriptionRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        descriptionRefs.current[startIdx].style.height = `${maxHeight}px`;
-        descriptionRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 스택 섹션 높이 맞추기
-      if (stackRefs.current[startIdx] && stackRefs.current[endIdx]) {
-        const height1 = stackRefs.current[startIdx].offsetHeight;
-        const height2 = stackRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        stackRefs.current[startIdx].style.height = `${maxHeight}px`;
-        stackRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 역할 섹션 높이 맞추기
-      if (rolesRefs.current[startIdx] && rolesRefs.current[endIdx]) {
-        const height1 = rolesRefs.current[startIdx].offsetHeight;
-        const height2 = rolesRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        rolesRefs.current[startIdx].style.height = `${maxHeight}px`;
-        rolesRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 스킬 섹션 높이 맞추기
-      if (skillsRefs.current[startIdx] && skillsRefs.current[endIdx]) {
-        const height1 = skillsRefs.current[startIdx].offsetHeight;
-        const height2 = skillsRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        skillsRefs.current[startIdx].style.height = `${maxHeight}px`;
-        skillsRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-    }
-  };
-
-  // refs 초기화 및 높이 조정
-  useEffect(() => {
-    // refs 배열 초기화
-    descriptionRefs.current = descriptionRefs.current.slice(0, projects.length);
-    stackRefs.current = stackRefs.current.slice(0, projects.length);
-    rolesRefs.current = rolesRefs.current.slice(0, projects.length);
-    skillsRefs.current = skillsRefs.current.slice(0, projects.length);
-
-    // 컴포넌트가 마운트된 후 및 리사이징 시 높이 조정
-    equalizeHeights();
-    window.addEventListener("resize", equalizeHeights);
-
-    return () => {
-      window.removeEventListener("resize", equalizeHeights);
-    };
-  }, [projects.length]);
+  useProjectDialog(Boolean(selectedProject), modalRef, closeModal);
 
   return (
     <section>
@@ -148,13 +77,20 @@ const MobileSection03_Projects = () => {
 
       <ProjectsContainer>
         <ProjectGrid>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <ProjectCard
               key={project.id}
+              role="button" tabIndex={0} aria-label={`${project.title} 상세 보기`}
+              onKeyDown={(event) => {
+                if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
+                  event.preventDefault();
+                  handleProjectClick(project);
+                }
+              }}
               onClick={() => handleProjectClick(project)}
             >
               <ProjectImageContainer>
-                <ProjectImage src={project.image} />
+                <ProjectImage src={project.image} alt={`${project.title} 화면`} loading="lazy" />
               </ProjectImageContainer>
 
               <ProjectTitle>
@@ -165,7 +101,6 @@ const MobileSection03_Projects = () => {
               </ProjectTitle>
 
               <ProjectContainerSection
-                ref={(el) => (descriptionRefs.current[index] = el)}
               >
                 {project.description.map((desc, descIndex) => (
                   <ProjectDescription key={descIndex}>
@@ -175,13 +110,11 @@ const MobileSection03_Projects = () => {
               </ProjectContainerSection>
 
               <ProjectContainerSection
-                ref={(el) => (stackRefs.current[index] = el)}
               >
                 <ProjectTag>{project.stack}</ProjectTag>
               </ProjectContainerSection>
 
               <ProjectContainerSection
-                ref={(el) => (rolesRefs.current[index] = el)}
               >
                 {project.roles.map((tag, roleIndex) => (
                   <RoleDescription key={roleIndex}>{tag}</RoleDescription>
@@ -189,7 +122,6 @@ const MobileSection03_Projects = () => {
               </ProjectContainerSection>
 
               <ProjectContainerSection
-                ref={(el) => (skillsRefs.current[index] = el)}
               >
                 {project.skillsTags.map((tag, skillIndex) => (
                   <SkillsTags key={skillIndex}>{tag}</SkillsTags>
@@ -211,10 +143,10 @@ const MobileSection03_Projects = () => {
         <>
           <ModalPortal>
             <ModalOverlay onClick={closeModal} />
-            <ProjectModal ref={modalRef}>
+            <ProjectModal ref={modalRef} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title">
               <ModalContent className="projectModalContent">
                 <ModalHeader>
-                  <ModalTitle>
+                  <ModalTitle id="project-dialog-title">
                     <FaFolderOpen className="folderIcon" />
                     {selectedProject.title}
                   </ModalTitle>

@@ -12,6 +12,7 @@ const categories = [
   "Feedback",
 ];
 
+/** @param {{ activeSection?: number, onNavigate?: (index: number) => void }} props */
 const MobileCategoryGroup = ({ activeSection = 0, onNavigate }) => {
   const handleClick = (index) => {
     if (onNavigate) {

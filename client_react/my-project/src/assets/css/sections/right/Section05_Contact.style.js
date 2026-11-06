@@ -8,6 +8,8 @@ export const ContactContainer = styled.div`
 `;
 
 export const ContactHeader = styled.div`
+  word-break: keep-all;
+  overflow-wrap: anywhere;
   margin-bottom: 20px;
   line-height: 1.6;
   color: #555;
@@ -17,6 +19,10 @@ export const ContactHeader = styled.div`
   border-radius: 6px;
   border-left: 4px solid #3b7ead;
   position: relative;
+  @media (max-width: 760px) {
+    font-size: 1rem;
+    padding: 12px;
+  }
 `;
 
 export const ContactHighlightText = styled.span`
@@ -35,7 +41,7 @@ export const ContactFormGroup = styled.div`
   flex-direction: column;
 `;
 
-export const ContactLabel = styled.div`
+export const ContactLabel = styled.label`
   width: 80px;
   font-size: 1rem;
   font-weight: bold;
@@ -78,14 +84,14 @@ export const ContactButtonGroup = styled.div`
 `;
 
 export const ContactButton = styled.button`
-  background-color: ${(props) => (props.primary ? "#359dc2" : "#f0f0f0")};
-  color: ${(props) => (props.primary ? "white" : "#333")};
-  border: 1px solid ${(props) => (props.primary ? "#359dc2" : "#ddd")};
+  background-color: ${(props) => (props.$primary ? "#359dc2" : "#f0f0f0")};
+  color: ${(props) => (props.$primary ? "white" : "#333")};
+  border: 1px solid ${(props) => (props.$primary ? "#359dc2" : "#ddd")};
   border-radius: 4px;
   padding: 6px 15px;
   cursor: pointer;
   &:hover {
-    background-color: ${(props) => (props.primary ? "#359df0" : "#e0e0e0")};
+    background-color: ${(props) => (props.$primary ? "#359df0" : "#e0e0e0")};
   }
 
   /* 폰트 변경 버튼으로 바꿀 부분 */
@@ -97,9 +103,10 @@ export const ContactButton = styled.button`
   font-family: var(--portfolio-font);
   font-weight: 400;
   font-size: 0.75rem;
+  @media (max-width: 760px) { min-height: 44px; font-size: 1rem; }
 `;
 
 export const ContactCharCount = styled.span`
   font-size: 0.875rem;
-  color: ${(props) => (props.isLimit ? "#e74c3c" : "#999")};
+  color: ${(props) => (props.$isLimit ? "#e74c3c" : "#999")};
 `;

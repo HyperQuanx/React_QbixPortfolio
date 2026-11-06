@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import ModalPortal from "../../common/ModalPortal";
+import useProjectDialog from "../../../hooks/useProjectDialog";
+import { useCallback, useState, useRef, useEffect } from "react";
 import {
   SectionTitle,
   SectionTitleUnderLine,
@@ -47,7 +49,6 @@ import {
   FaUserTie,
   FaClipboardList,
   FaFlagCheckered,
-  FaLink,
 } from "react-icons/fa";
 import { Section03_Projects_Arrays } from "./Section03_Projects_Arrays";
 
@@ -68,77 +69,79 @@ const Section03_Projects = () => {
     setSelectedProject(project);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedProject(null);
-  };
+  }, []);
 
-  // 같은 행에 있는 섹션들의 높이를 일치시키는 함수
-  const equalizeHeights = () => {
-    // 먼저 모든 높이 스타일을 초기화하여 실제 콘텐츠 높이를 측정할 수 있도록
-    // 이거 안넣었더니 깨짐;
-    descriptionRefs.current.forEach((ref) => {
-      if (ref) ref.style.height = "auto";
-    });
-    stackRefs.current.forEach((ref) => {
-      if (ref) ref.style.height = "auto";
-    });
-    rolesRefs.current.forEach((ref) => {
-      if (ref) ref.style.height = "auto";
-    });
-    skillsRefs.current.forEach((ref) => {
-      if (ref) ref.style.height = "auto";
-    });
-
-    // 각 행마다 2개의 프로젝트씩 그룹화
-    const rows = Math.ceil(projects.length / 2);
-
-    for (let row = 0; row < rows; row++) {
-      const startIdx = row * 2;
-      const endIdx = Math.min(startIdx + 1, projects.length - 1); // 마지막 행은 프로젝트가 하나일 수 있음
-
-      // 설명 섹션 높이 맞추기
-      if (
-        descriptionRefs.current[startIdx] &&
-        descriptionRefs.current[endIdx]
-      ) {
-        const height1 = descriptionRefs.current[startIdx].offsetHeight;
-        const height2 = descriptionRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        descriptionRefs.current[startIdx].style.height = `${maxHeight}px`;
-        descriptionRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 스택 섹션 높이 맞추기
-      if (stackRefs.current[startIdx] && stackRefs.current[endIdx]) {
-        const height1 = stackRefs.current[startIdx].offsetHeight;
-        const height2 = stackRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        stackRefs.current[startIdx].style.height = `${maxHeight}px`;
-        stackRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 역할 섹션 높이 맞추기
-      if (rolesRefs.current[startIdx] && rolesRefs.current[endIdx]) {
-        const height1 = rolesRefs.current[startIdx].offsetHeight;
-        const height2 = rolesRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        rolesRefs.current[startIdx].style.height = `${maxHeight}px`;
-        rolesRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-
-      // 스킬 섹션 높이 맞추기
-      if (skillsRefs.current[startIdx] && skillsRefs.current[endIdx]) {
-        const height1 = skillsRefs.current[startIdx].offsetHeight;
-        const height2 = skillsRefs.current[endIdx].offsetHeight;
-        const maxHeight = Math.max(height1, height2);
-        skillsRefs.current[startIdx].style.height = `${maxHeight}px`;
-        skillsRefs.current[endIdx].style.height = `${maxHeight}px`;
-      }
-    }
-  };
+  useProjectDialog(Boolean(selectedProject), modalRef, closeModal);
 
   // refs 초기화 및 높이 조정
   useEffect(() => {
+    // 같은 행에 있는 섹션들의 높이를 일치시키는 함수
+    const equalizeHeights = () => {
+      // 먼저 모든 높이 스타일을 초기화하여 실제 콘텐츠 높이를 측정할 수 있도록
+      // 이거 안넣었더니 깨짐;
+      descriptionRefs.current.forEach((ref) => {
+        if (ref) ref.style.height = "auto";
+      });
+      stackRefs.current.forEach((ref) => {
+        if (ref) ref.style.height = "auto";
+      });
+      rolesRefs.current.forEach((ref) => {
+        if (ref) ref.style.height = "auto";
+      });
+      skillsRefs.current.forEach((ref) => {
+        if (ref) ref.style.height = "auto";
+      });
+
+      // 각 행마다 2개의 프로젝트씩 그룹화
+      const rows = Math.ceil(projects.length / 2);
+
+      for (let row = 0; row < rows; row++) {
+        const startIdx = row * 2;
+        const endIdx = Math.min(startIdx + 1, projects.length - 1); // 마지막 행은 프로젝트가 하나일 수 있음
+
+        // 설명 섹션 높이 맞추기
+        if (
+          descriptionRefs.current[startIdx] &&
+          descriptionRefs.current[endIdx]
+        ) {
+          const height1 = descriptionRefs.current[startIdx].offsetHeight;
+          const height2 = descriptionRefs.current[endIdx].offsetHeight;
+          const maxHeight = Math.max(height1, height2);
+          descriptionRefs.current[startIdx].style.height = `${maxHeight}px`;
+          descriptionRefs.current[endIdx].style.height = `${maxHeight}px`;
+        }
+
+        // 스택 섹션 높이 맞추기
+        if (stackRefs.current[startIdx] && stackRefs.current[endIdx]) {
+          const height1 = stackRefs.current[startIdx].offsetHeight;
+          const height2 = stackRefs.current[endIdx].offsetHeight;
+          const maxHeight = Math.max(height1, height2);
+          stackRefs.current[startIdx].style.height = `${maxHeight}px`;
+          stackRefs.current[endIdx].style.height = `${maxHeight}px`;
+        }
+
+        // 역할 섹션 높이 맞추기
+        if (rolesRefs.current[startIdx] && rolesRefs.current[endIdx]) {
+          const height1 = rolesRefs.current[startIdx].offsetHeight;
+          const height2 = rolesRefs.current[endIdx].offsetHeight;
+          const maxHeight = Math.max(height1, height2);
+          rolesRefs.current[startIdx].style.height = `${maxHeight}px`;
+          rolesRefs.current[endIdx].style.height = `${maxHeight}px`;
+        }
+
+        // 스킬 섹션 높이 맞추기
+        if (skillsRefs.current[startIdx] && skillsRefs.current[endIdx]) {
+          const height1 = skillsRefs.current[startIdx].offsetHeight;
+          const height2 = skillsRefs.current[endIdx].offsetHeight;
+          const maxHeight = Math.max(height1, height2);
+          skillsRefs.current[startIdx].style.height = `${maxHeight}px`;
+          skillsRefs.current[endIdx].style.height = `${maxHeight}px`;
+        }
+      }
+    };
+
     // refs 배열 초기화
     descriptionRefs.current = descriptionRefs.current.slice(0, projects.length);
     stackRefs.current = stackRefs.current.slice(0, projects.length);
@@ -165,10 +168,17 @@ const Section03_Projects = () => {
           {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
+              role="button" tabIndex={0} aria-label={`${project.title} 상세 보기`}
+              onKeyDown={(event) => {
+                if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
+                  event.preventDefault();
+                  handleProjectClick(project);
+                }
+              }}
               onClick={() => handleProjectClick(project)}
             >
               <ProjectImageContainer>
-                <ProjectImage src={project.image} />
+                <ProjectImage src={project.image} alt={`${project.title} 화면`} loading="lazy" />
               </ProjectImageContainer>
 
               <ProjectTitle>
@@ -223,201 +233,203 @@ const Section03_Projects = () => {
 
       {selectedProject && (
         <>
-          <ModalOverlay onClick={closeModal} />
-          <ProjectModal ref={modalRef}>
-            <ModalContent className="projectModalContent">
-              <ModalHeader>
-                <ModalTitle>
-                  <FaFolderOpen className="folderIcon" />
-                  {selectedProject.title}
-                </ModalTitle>
-                <ModalCloseButton onClick={closeModal} aria-label="프로젝트 상세 닫기">
-                  <FaTimes />
-                </ModalCloseButton>
-              </ModalHeader>
-              <ModalBody>
-                <ProjectInfoTable>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <FaProjectDiagram className="iconCell" />
-                        프로젝트 구분
-                      </td>
-                      <td>{selectedProject.details.Sortation}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaTrophy className="iconCell" />
-                        성과
-                      </td>
-                      <td>{selectedProject.details.Achievement}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaTasks className="iconCell" />
-                        역할
-                      </td>
-                      <td>{selectedProject.stack}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaUsers className="iconCell" />
-                        개발자
-                      </td>
-                      <td>{selectedProject.details.developers}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaCalendarAlt className="iconCell" />
-                        기간
-                      </td>
-                      <td>{selectedProject.date}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaGithub className="iconCell" />
-                        Github
-                      </td>
-                      <td>
-                        {selectedProject.details.github ===
-                        "사측 디자인 파일 사용으로 비공개" ? (
-                          <span style={{ textDecoration: "line-through" }}>
-                            {selectedProject.details.github}
-                          </span>
-                        ) : (
-                          <a
-                            href={selectedProject.details.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {selectedProject.details.github}
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaGlobe className="iconCell" />
-                        URL
-                      </td>
-                      <td>
-                        {selectedProject.details.url === "배포 중단" ? (
-                          <span style={{ textDecoration: "line-through" }}>
-                            배포 중단 (AWS 만료)
-                          </span>
-                        ) : (
-                          <a
-                            href={selectedProject.details.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {selectedProject.details.url}
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaFileAlt className="iconCell" />
-                        Short Description
-                      </td>
-                      <td>{selectedProject.description[0]}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <FaCode className="iconCell" />
-                        Skills
-                      </td>
-                      <td>
-                        {selectedProject.skillsTags.map((tag, index) => (
-                          <SkillsTags key={index}>{tag}</SkillsTags>
-                        ))}
-                      </td>
-                    </tr>
-                  </tbody>
-                </ProjectInfoTable>
+          <ModalPortal>
+            <ModalOverlay onClick={closeModal} />
+            <ProjectModal ref={modalRef} role="dialog" aria-modal="true" aria-labelledby="project-dialog-title">
+              <ModalContent className="projectModalContent">
+                <ModalHeader>
+                  <ModalTitle id="project-dialog-title">
+                    <FaFolderOpen className="folderIcon" />
+                    {selectedProject.title}
+                  </ModalTitle>
+                  <ModalCloseButton onClick={closeModal} aria-label="프로젝트 상세 닫기">
+                    <FaTimes />
+                  </ModalCloseButton>
+                </ModalHeader>
+                <ModalBody>
+                  <ProjectInfoTable>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <FaProjectDiagram className="iconCell" />
+                          프로젝트 구분
+                        </td>
+                        <td>{selectedProject.details.Sortation}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaTrophy className="iconCell" />
+                          성과
+                        </td>
+                        <td>{selectedProject.details.Achievement}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaTasks className="iconCell" />
+                          역할
+                        </td>
+                        <td>{selectedProject.stack}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaUsers className="iconCell" />
+                          개발자
+                        </td>
+                        <td>{selectedProject.details.developers}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaCalendarAlt className="iconCell" />
+                          기간
+                        </td>
+                        <td>{selectedProject.date}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaGithub className="iconCell" />
+                          Github
+                        </td>
+                        <td>
+                          {selectedProject.details.github ===
+                          "사측 디자인 파일 사용으로 비공개" ? (
+                            <span style={{ textDecoration: "line-through" }}>
+                              {selectedProject.details.github}
+                            </span>
+                          ) : (
+                            <a
+                              href={selectedProject.details.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {selectedProject.details.github}
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaGlobe className="iconCell" />
+                          URL
+                        </td>
+                        <td>
+                          {selectedProject.details.url === "배포 중단" ? (
+                            <span style={{ textDecoration: "line-through" }}>
+                              배포 중단 (AWS 만료)
+                            </span>
+                          ) : (
+                            <a
+                              href={selectedProject.details.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {selectedProject.details.url}
+                            </a>
+                          )}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaFileAlt className="iconCell" />
+                          Short Description
+                        </td>
+                        <td>{selectedProject.description[0]}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <FaCode className="iconCell" />
+                          Skills
+                        </td>
+                        <td>
+                          {selectedProject.skillsTags.map((tag, index) => (
+                            <SkillsTags key={index}>{tag}</SkillsTags>
+                          ))}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </ProjectInfoTable>
 
-                <h4>
-                  <FaRegFileAlt /> 개요
-                </h4>
-                <p>{selectedProject.details.overview}</p>
+                  <h4>
+                    <FaRegFileAlt /> 개요
+                  </h4>
+                  <p>{selectedProject.details.overview}</p>
 
-                <h4>
-                  <FaCogs /> 주요 기능
-                </h4>
-                <ul>
-                  {selectedProject.details.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
+                  <h4>
+                    <FaCogs /> 주요 기능
+                  </h4>
+                  <ul>
+                    {selectedProject.details.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
 
-                <h4>
-                  <FaUserTie />
-                  역할
-                </h4>
-                <ul>
-                  {selectedProject.details.myRole.map((role, index) => (
-                    <li key={index}>{role}</li>
-                  ))}
-                </ul>
+                  <h4>
+                    <FaUserTie />
+                    역할
+                  </h4>
+                  <ul>
+                    {selectedProject.details.myRole.map((role, index) => (
+                      <li key={index}>{role}</li>
+                    ))}
+                  </ul>
 
-                <h4>
-                  <FaClipboardList />
-                  프로젝트 상세
-                </h4>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: selectedProject.details.content,
-                  }}
-                />
+                  <h4>
+                    <FaClipboardList />
+                    프로젝트 상세
+                  </h4>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: selectedProject.details.content,
+                    }}
+                  />
 
-                {selectedProject.details.trobleShooting && (
-                  <>
-                    <h4>
-                      <FaExclamationTriangle /> 트러블슈팅
-                    </h4>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: selectedProject.details.trobleShooting,
-                      }}
-                    />
-                  </>
-                )}
+                  {selectedProject.details.trobleShooting && (
+                    <>
+                      <h4>
+                        <FaExclamationTriangle /> 트러블슈팅
+                      </h4>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: selectedProject.details.trobleShooting,
+                        }}
+                      />
+                    </>
+                  )}
 
-                <h4>
-                  <FaFlagCheckered />
-                  마무리
-                </h4>
+                  <h4>
+                    <FaFlagCheckered />
+                    마무리
+                  </h4>
 
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: selectedProject.details.end,
-                  }}
-                />
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: selectedProject.details.end,
+                    }}
+                  />
 
-                {/* <h4>
-                  <FaLink />
-                  링크
-                </h4> */}
-              </ModalBody>
-              <ModalFooter>
-                {selectedProject.details.github ===
-                "사측 디자인 파일 사용으로 비공개" ? (
-                  <span style={{ textDecoration: "line-through" }}>
-                    <FaGithub /> 비공개
-                  </span>
-                ) : (
-                  <a
-                    href={`${selectedProject.details.github}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub /> GitHub
-                  </a>
-                )}
-              </ModalFooter>
-            </ModalContent>
-          </ProjectModal>
+                  {/* <h4>
+                    <FaLink />
+                    링크
+                  </h4> */}
+                </ModalBody>
+                <ModalFooter>
+                  {selectedProject.details.github ===
+                  "사측 디자인 파일 사용으로 비공개" ? (
+                    <span style={{ textDecoration: "line-through" }}>
+                      <FaGithub /> 비공개
+                    </span>
+                  ) : (
+                    <a
+                      href={`${selectedProject.details.github}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub /> GitHub
+                    </a>
+                  )}
+                </ModalFooter>
+              </ModalContent>
+            </ProjectModal>
+          </ModalPortal>
         </>
       )}
     </section>

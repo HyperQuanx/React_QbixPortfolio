@@ -1,4 +1,3 @@
-import React from "react";
 import Section05_Contact from "../sections/right/Section05_Contact";
 
 const MobileSection05_Contact = () => {

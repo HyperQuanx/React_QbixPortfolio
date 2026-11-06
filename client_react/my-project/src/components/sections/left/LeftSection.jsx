@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { WiDaySunny, WiRain, WiCloudy, WiSnow } from "react-icons/wi";
 import { FaCaretRight, FaTimes } from "react-icons/fa";
@@ -32,7 +32,6 @@ import {
   bounce,
 } from "../../../assets/css/sections/left/LeftSection.style";
 import {
-  FlexCenter,
   FlexSpaceBetween,
 } from "../../../assets/css/common/Common.styles";
 
@@ -236,7 +235,7 @@ const LeftSection = () => {
             iconColor: iconColor,
           });
         }
-      } catch (error) {
+      } catch {
         // console.error("날씨 정보 가져오기 실패 : ", error);
         // if (error.response) {
         //   console.log("외앉뒘? : ", error.response.data);

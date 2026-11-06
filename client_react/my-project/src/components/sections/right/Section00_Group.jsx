@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Section01_Info from "./Section01_Info";
 import Section02_Skill from "./Section02_Skills";
 import Section03_Projects from "./Section03_Projects";
@@ -6,6 +6,7 @@ import Section04_Repository from "./Section04_Repository";
 import Section05_Contact from "./Section05_Contact";
 import Section06_Feedback from "./Section06_Feedback";
 
+/** @param {{ setActiveSection: (index: number) => void, sectionRefs: import("react").RefObject<Array<HTMLElement | null>> }} props */
 const Section00_Group = ({ setActiveSection, sectionRefs }) => {
   const containerRef = useRef(null);
 

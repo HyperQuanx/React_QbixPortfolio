@@ -69,20 +69,17 @@ const Section06_Feedback = () => {
   const fetchFeedbacks = async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/api/feedback`,
       );
       if (response.data.success) {
         setFeedbacks(response.data.data);
       } else {
-        setError(response.data.message);
-        Swal.fire("오류", response.data.message, "error");
+        setError(response.data.message || "피드백을 불러오지 못했습니다.");
       }
-    } catch (error) {
-      // setError("피드백 목록을 불러오는 중 오류가 발생했습니다.");
-      setError("현재 서버 점검 중입니다.");
-      Swal.fire("오류", "현재 서버 점검 중입니다.", "error");
-      // console.error("피드백 목록 조회 오류:", error);
+    } catch {
+      setError("피드백을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.");
     } finally {
       setLoading(false);
     }
@@ -354,7 +351,7 @@ const Section06_Feedback = () => {
       // 1. YYYY-MM-DD HH:MM:SS.ms 형식
       // 2. YYYY.MM.DD HH:MM[:SS[.ms]] 형식 (초와 밀리초는 선택적)
       const datePattern =
-        /^(\d{4})[-.\/](\d{2})[-.\/](\d{2}) (\d{2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?$/;
+        /^(\d{4})[-./](\d{2})[-./](\d{2}) (\d{2}):(\d{2})(?::(\d{2})(?:\.\d+)?)?$/;
       const matches = dateString.match(datePattern);
 
       if (matches) {
@@ -435,7 +432,10 @@ const Section06_Feedback = () => {
       <SectionTitleUnderLine></SectionTitleUnderLine>
       <FeedbackContainer>
         {loading && <p>로딩 중...</p>}
-        {error && <p>오류: {error}</p>}
+        {error && <div role="status">
+          <p>{error}</p>
+          <WriteButton type="button" onClick={fetchFeedbacks} disabled={loading}>다시 시도</WriteButton>
+        </div>}
         {!loading && !error && feedbacks.length === 0 && (
           <p>등록된 피드백이 없습니다.</p>
         )}

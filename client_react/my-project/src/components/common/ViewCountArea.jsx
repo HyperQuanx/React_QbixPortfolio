@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ViewCountGroup } from "../../assets/css/common/Common.styles";
 import axios from "axios";
 
@@ -19,7 +19,7 @@ const ViewCountArea = () => {
   useEffect(() => {
     const incrementVisitorCount = async () => {
       try {
-        const response = await api.post(
+        await api.post(
           "/api/visitors/increment",
           {},
           {

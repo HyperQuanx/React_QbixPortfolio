@@ -3,6 +3,7 @@ import {
   SectionCategoryList,
 } from "../../../assets/css/sections/right/SectionCategoryGroup.style";
 
+/** @param {{ activeSection: number, sectionRefs: import("react").RefObject<Array<HTMLElement | null>> }} props */
 const SectionCategoryGroup = ({ activeSection, sectionRefs }) => {
   const scrollToSection = (i) => {
     const element = sectionRefs.current[i];

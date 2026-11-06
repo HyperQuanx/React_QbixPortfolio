@@ -1,4 +1,4 @@
-import styled, { keyframes, css, createGlobalStyle } from "styled-components";
+import styled, { keyframes, createGlobalStyle } from "styled-components";
 
 const fadeInProject = keyframes`
   from { opacity: 0; }
@@ -16,10 +16,6 @@ const expandAnimation = keyframes`
   }
 `;
 
-const slideUp = keyframes`
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-`;
 
 export const ProjectsContainer = styled.div`
   padding: 1.5rem 0;
@@ -36,6 +32,7 @@ export const ProjectGrid = styled.div`
 `;
 
 export const ProjectCard = styled.div`
+  &:focus-visible { outline: 2px solid #359dc2; outline-offset: 3px; }
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -218,6 +215,7 @@ export const ProjectModal = styled.div`
   max-width: 1200px;
   max-height: 90vh;
   animation: ${expandAnimation} 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @media (prefers-reduced-motion: reduce) { animation: none; }
 
   @media (max-width: 760px) {
     width: 95%;
