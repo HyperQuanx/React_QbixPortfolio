@@ -17,10 +17,10 @@ export const SectionCategoryList = styled.ul`
 export const SectionCategoryItem = styled.li`
   border: 1px solid black;
   background: ${(props) =>
-    props.active
+    props.$active
       ? "linear-gradient(to bottom right, #ffffff, #f5f9ff)"
       : "#359dc2"};
-  color: ${(props) => (props.active ? "#000000" : "#ffffff")};
+  color: ${(props) => (props.$active ? "#000000" : "#ffffff")};
   border-left: 1px solid white;
   width: 5.21vw;
   min-width: 100px;
@@ -43,6 +43,15 @@ export const SectionCategoryItem = styled.li`
   border-left: 0;
   cursor: pointer;
   z-index: 100;
+
+  > button {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    font: inherit;
+    border-radius: inherit;
+  }
+  > button:focus-visible { outline: 2px solid #ef6500; outline-offset: 2px; }
 
   &:nth-child(1) {
     top: 12vh;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import {
   MobileContainer,
   MobileContentContainer,
@@ -25,11 +25,12 @@ const sectionIds = [
 ];
 
 const Mobile = () => {
+  const menuButtonRef = useRef(null);
   const [activeSection, setActiveSection] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const mobileToggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((open) => !open);
   };
 
   const handleCategoryNavigation = (index) => {
@@ -41,7 +42,7 @@ const Mobile = () => {
       scrollContainer.scrollTo({
         top: scrollContainer.scrollTop + targetSection.getBoundingClientRect().top
           - scrollContainer.getBoundingClientRect().top - 16,
-        behavior: "smooth",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
       });
     }
 
@@ -50,10 +51,16 @@ const Mobile = () => {
     }
 
     setIsMenuOpen(false);
+    menuButtonRef.current?.focus();
   };
 
   return (
-    <MobileContainer>
+    <MobileContainer onKeyDown={(event) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    }}>
       {/* 헤더 */}
       <MobileHeader>
         <FlexAlignCenter>
@@ -61,8 +68,10 @@ const Mobile = () => {
           Web Developer Portfolio
         </FlexAlignCenter>
         <FlexAlignCenter>
-          <MobileMenuButton onClick={mobileToggleMenu}>
-            <MenuIconWrapper isMenuOpen={isMenuOpen}>
+          <MobileMenuButton ref={menuButtonRef} type="button" onClick={mobileToggleMenu}
+            aria-label={isMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={isMenuOpen} aria-controls="mobile-navigation">
+            <MenuIconWrapper $isMenuOpen={isMenuOpen} aria-hidden="true">
               <MenuIconFace className="front">
                 <FaBars />
               </MenuIconFace>
@@ -77,10 +86,10 @@ const Mobile = () => {
 
       {/* 메인 */}
       <MobileContentContainer>
-        <MobileContent data-mobile-scroll isMenuOpen={isMenuOpen}>
+        <MobileContent data-mobile-scroll $isMenuOpen={isMenuOpen}>
           <MobileSectionGroup onSectionActive={setActiveSection} />
         </MobileContent>
-        <MobileAside isMenuOpen={isMenuOpen}>
+        <MobileAside id="mobile-navigation" $isMenuOpen={isMenuOpen} inert={!isMenuOpen} aria-hidden={!isMenuOpen}>
           <MobileCategoryGroup
             activeSection={activeSection}
             onNavigate={handleCategoryNavigation}

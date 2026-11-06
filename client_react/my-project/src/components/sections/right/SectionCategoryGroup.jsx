@@ -1,4 +1,3 @@
-import React from "react";
 import {
   SectionCategoryItem,
   SectionCategoryList,
@@ -17,49 +16,19 @@ const SectionCategoryGroup = ({ activeSection, sectionRefs }) => {
 
     container.scrollTo({
       top: elementTop,
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
     });
   };
 
   return (
-    <nav>
+    <nav aria-label="본문 메뉴">
       <SectionCategoryList>
-        <SectionCategoryItem
-          active={activeSection === 0}
-          onClick={() => scrollToSection(0)}
-        >
-          Info
-        </SectionCategoryItem>
-        <SectionCategoryItem
-          active={activeSection === 1}
-          onClick={() => scrollToSection(1)}
-        >
-          Skills
-        </SectionCategoryItem>
-        <SectionCategoryItem
-          active={activeSection === 2}
-          onClick={() => scrollToSection(2)}
-        >
-          Projects
-        </SectionCategoryItem>
-        <SectionCategoryItem
-          active={activeSection === 3}
-          onClick={() => scrollToSection(3)}
-        >
-          Repository
-        </SectionCategoryItem>
-        <SectionCategoryItem
-          active={activeSection === 4}
-          onClick={() => scrollToSection(4)}
-        >
-          Contact
-        </SectionCategoryItem>
-        <SectionCategoryItem
-          active={activeSection === 5}
-          onClick={() => scrollToSection(5)}
-        >
-          Feedback
-        </SectionCategoryItem>
+        {["Info", "Skills", "Projects", "Repository", "Contact", "Feedback"].map((label, index) => (
+          <SectionCategoryItem key={label} $active={activeSection === index}>
+            <button type="button" aria-current={activeSection === index ? "location" : undefined}
+              onClick={() => scrollToSection(index)}>{label}</button>
+          </SectionCategoryItem>
+        ))}
       </SectionCategoryList>
     </nav>
   );

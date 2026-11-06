@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import MobileSection01_Info from "./MobileSection01_Info";
 import MobileSection02_Skills from "./MobileSection02_Skills";
 import MobileSection03_Projects from "./MobileSection03_Projects";
@@ -14,25 +14,19 @@ const MobileSectionGroup = ({ onSectionActive }) => {
     if (!scrollContainer) return;
 
     const handleScroll = () => {
-      let closestIndex = 0;
-      let closestDistance = Number.POSITIVE_INFINITY;
-
+      let currentIndex = 0;
+      const top = scrollContainer.getBoundingClientRect().top + 17;
       sectionRefs.current.forEach((section, index) => {
-        if (!section) {
-          return;
-        }
-
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - scrollContainer.getBoundingClientRect().top - 16);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
+        if (section && section.getBoundingClientRect().top <= top) currentIndex = index;
       });
+      // The final section can be shorter than the viewport.
+      if (scrollContainer.scrollTop > 0 &&
+          scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 2) {
+        currentIndex = sectionRefs.current.length - 1;
+      }
 
       if (onSectionActive) {
-        onSectionActive(closestIndex);
+        onSectionActive(currentIndex);
       }
     };
 

@@ -13,16 +13,17 @@ export const MbSecCateG = styled.ul`
 export const MbSecCateGItem = styled.li`
   border: 1px solid black;
   background: ${(props) =>
-    props.active
+    props.$active
       ? "linear-gradient(to bottom right, #ffffff, #f5f9ff)"
       : "#359dc2"};
-  color: ${(props) => (props.active ? "#000000" : "#ffffff")};
+  color: ${(props) => (props.$active ? "#000000" : "#ffffff")};
   border-left: 1px solid white;
-  width: 5.21vw;
-  min-width: 100px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   height: 3.24vh;
   min-height: 35px;
-  font-size: 1.563rem;
+  font-size: 0.875rem;
   text-align: center;
   position: relative;
   display: flex;
@@ -34,6 +35,15 @@ export const MbSecCateGItem = styled.li`
   cursor: pointer;
   z-index: 100;
   transition: background 0.2s ease, color 0.2s ease;
+
+  > button {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    font: inherit;
+    border-radius: inherit;
+  }
+  > button:focus-visible { outline: 2px solid #ef6500; outline-offset: 2px; }
 
   &:nth-child(1) {
     top: 12vh;

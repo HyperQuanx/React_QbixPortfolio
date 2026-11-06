@@ -1,4 +1,3 @@
-import React from "react";
 import {
   MbSecCateG,
   MbSecCateGItem,
@@ -25,10 +24,10 @@ const MobileCategoryGroup = ({ activeSection = 0, onNavigate }) => {
       {categories.map((category, index) => (
         <MbSecCateGItem
           key={category}
-          active={activeSection === index}
-          onClick={() => handleClick(index)}
+          $active={activeSection === index}
         >
-          {category}
+          <button type="button" aria-current={activeSection === index ? "location" : undefined}
+            onClick={() => handleClick(index)}>{category}</button>
         </MbSecCateGItem>
       ))}
     </MbSecCateG>

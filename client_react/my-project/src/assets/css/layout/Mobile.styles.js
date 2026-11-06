@@ -51,9 +51,10 @@ export const MenuIconWrapper = styled.div`
   width: 100%;
   height: 100%;
   transform: ${(props) =>
-    props.isMenuOpen ? "rotateY(-180deg)" : "rotateY(0)"};
+    props.$isMenuOpen ? "rotateY(-180deg)" : "rotateY(0)"};
   transition: transform 0.5s ease;
   transform-style: preserve-3d;
+  @media (prefers-reduced-motion: reduce) { transition: none; }
 `;
 
 export const MenuIconFace = styled.div`
@@ -103,8 +104,9 @@ export const MobileContent = styled.main`
   flex-direction: column;
   background: linear-gradient(to bottom right, #ffffff, #f5f9ff);
   transition: transform 0.3s ease-in-out;
+  @media (prefers-reduced-motion: reduce) { transition: none; }
   transform: ${(props) =>
-    props.isMenuOpen ? "translateX(-34%)" : "translateX(0)"};
+    props.$isMenuOpen ? "translateX(-34%)" : "translateX(0)"};
   z-index: 100;
 `;
 
@@ -115,15 +117,16 @@ export const MobileContentInner = styled.div`
 export const MobileAside = styled.aside`
   position: absolute;
   top: 0;
-  right: -5%;
+  right: 0;
   width: 34%;
   height: 100%;
   box-sizing: border-box;
   margin: 0;
   z-index: 50;
   transition: transform 0.3s ease-in-out;
+  @media (prefers-reduced-motion: reduce) { transition: none; }
   transform: ${(props) =>
-    props.isMenuOpen ? "translateX(0)" : "translateX(100%)"};
+    props.$isMenuOpen ? "translateX(0)" : "translateX(100%)"};
   padding: 15px;
   overflow-y: auto;
 `;
