@@ -44,7 +44,7 @@ export const LoadingOverlay = styled.div`
 
 export const LoadingFrame = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 750px;
   box-sizing: border-box;
   flex-shrink: 0;
   margin: auto;
@@ -55,6 +55,7 @@ export const LoadingFrame = styled.div`
 
   @media (max-width: 760px) {
     padding: 11px;
+    max-width: 520px;
   }
 `;
 
