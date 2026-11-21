@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export const fontOptions = [
   { value: "galmuri", label: "Galmuri11" },
-  { value: "noto", label: "Noto Sans KR" },
+  { value: "noto", label: "Noto Sans" },
   { value: "gowun", label: "고운돋움" },
 ];
 
