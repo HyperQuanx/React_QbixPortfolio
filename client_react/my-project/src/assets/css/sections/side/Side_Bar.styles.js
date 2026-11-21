@@ -19,6 +19,9 @@ export const Side_Bar_Container = styled.aside`
   color: #555754;
   font-family: var(--portfolio-font);
   z-index: 100;
+  @media (min-width: 2560px) {
+    left: calc(100% + 44px + (100vw - 1920px) * 0.0261);
+  }
   @media (max-width: 760px) {
     position: relative;
     top: auto;
